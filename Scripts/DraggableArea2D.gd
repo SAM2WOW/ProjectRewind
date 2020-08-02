@@ -1,5 +1,7 @@
 extends Area2D
 
+signal on_dragging
+signal on_released
 
 const FOLLOW_SPEED = 20.0
 
@@ -11,28 +13,34 @@ var original_position: Vector2
 
 
 func _ready():
-	original_position = get_global_position()
+	original_position = get_position()
 
 
-func _process(delta):
+func _input(event):
 	# Turn on dragging when mouse clicked on the area
 	if is_mouse_hover and Input.is_action_just_pressed("touch"):
 		is_dragging = true
-		$AnimationPlayer.play("pick_up")
+		emit_signal("on_dragging")
+		#$AnimationPlayer.play("pick_up")
 	elif Input.is_action_just_released("touch"):
 		is_dragging = false
-	
+		emit_signal("on_released")
+
+
+func _process(delta):	
 	# Drag the object
 	if is_dragging == true:
 		var mouse_pos = get_global_mouse_position()
-		set_global_position(position.linear_interpolate(mouse_pos, delta * FOLLOW_SPEED))
+		set_global_position(global_position.linear_interpolate(mouse_pos, delta * FOLLOW_SPEED))
+	else:
+		set_position(position.linear_interpolate(original_position, delta * FOLLOW_SPEED))
 
 
 # Check if mouse is hovering
 func _on_Sushi_Piece_mouse_entered():
 	is_mouse_hover = true
-	$AnimationPlayer.play("hovering")
+	#$AnimationPlayer.play("hovering")
 
 func _on_Sushi_Piece_mouse_exited():
 	is_mouse_hover = false
-	$AnimationPlayer.play_backwards("hovering")
+	#$AnimationPlayer.play_backwards("hovering")
