@@ -20,6 +20,10 @@ config/description="(c) unSAME Studio 2020"
 run/main_scene="res://Maps/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [display]
 
 window/size/width=1920

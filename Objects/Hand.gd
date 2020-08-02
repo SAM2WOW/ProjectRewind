@@ -13,6 +13,11 @@ func _process(delta):
 func _input(event):
 	# Change sprites
 	if Input.is_action_just_pressed("touch"):
+		
 		$Sprite.set_texture(hand_close)
+		$Sprite.set_modulate(Color("37ffffff"))
+		
 	elif Input.is_action_just_released("touch"):
+		
 		$Sprite.set_texture(hand_open)
+		$Sprite.set_modulate(Color("d6ffffff"))
