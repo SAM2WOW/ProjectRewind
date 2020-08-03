@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Sushi/Sushi_Plate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Tools/Spoon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/Ingredients/Rice.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
 
@@ -27,135 +26,6 @@ position = Vector2( 2116.61, 147.078 )
 
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 1405.63, 996.982 )
-
-[node name="TestRice" type="Node2D" parent="Node2D"]
-position = Vector2( 1306, 40 )
-
-[node name="Rice" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 834.289, 565.857 )
-
-[node name="Rice2" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 769.206, 565.857 )
-
-[node name="Rice3" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 834.289, 640.465 )
-
-[node name="Rice4" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 769.206, 640.465 )
-
-[node name="Rice5" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 970.81, 567.445 )
-
-[node name="Rice6" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 905.723, 567.445 )
-
-[node name="Rice7" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 970.81, 642.053 )
-
-[node name="Rice8" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 905.723, 642.053 )
-
-[node name="Rice9" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 834.289, 708.724 )
-
-[node name="Rice10" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 769.206, 708.724 )
-
-[node name="Rice11" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 834.289, 783.331 )
-
-[node name="Rice12" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 769.206, 783.331 )
-
-[node name="Rice13" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 970.81, 710.311 )
-
-[node name="Rice14" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 905.723, 710.311 )
-
-[node name="Rice15" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 970.81, 784.919 )
-
-[node name="Rice17" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1040.65, 569.032 )
-
-[node name="Rice18" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1040.65, 643.64 )
-
-[node name="Rice19" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1040.65, 711.898 )
-
-[node name="Rice20" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1040.65, 786.506 )
-
-[node name="Rice16" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 905.723, 784.919 )
-
-[node name="Rice21" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 831.116, 853.177 )
-
-[node name="Rice22" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 766.032, 853.177 )
-
-[node name="Rice23" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 967.632, 854.765 )
-
-[node name="Rice24" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1037.48, 856.352 )
-
-[node name="Rice26" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1108.91, 570.62 )
-
-[node name="Rice31" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 834.289, 496.012 )
-
-[node name="Rice32" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 769.206, 496.012 )
-
-[node name="Rice33" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 970.81, 497.599 )
-
-[node name="Rice34" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 905.723, 497.599 )
-
-[node name="Rice35" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1040.65, 499.186 )
-
-[node name="Rice36" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1108.91, 500.774 )
-
-[node name="Rice27" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1108.91, 645.227 )
-
-[node name="Rice28" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1108.91, 713.486 )
-
-[node name="Rice29" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1108.91, 788.094 )
-
-[node name="Rice30" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1105.73, 857.939 )
-
-[node name="Rice37" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1177.17, 572.207 )
-
-[node name="Rice38" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1177.17, 502.361 )
-
-[node name="Rice39" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1177.17, 646.815 )
-
-[node name="Rice40" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1177.17, 715.073 )
-
-[node name="Rice41" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1177.17, 789.681 )
-
-[node name="Rice42" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 1173.99, 859.527 )
-
-[node name="Rice25" parent="Node2D/TestRice" instance=ExtResource( 5 )]
-position = Vector2( 902.549, 854.765 )
 
 [node name="Box" parent="Node2D" instance=ExtResource( 6 )]
 position = Vector2( 227.138, 696.647 )
