@@ -31,7 +31,7 @@ func _process(delta):
 	# Drag the object
 	if is_dragging == true:
 		var mouse_pos = get_global_mouse_position()
-		set_global_position(global_position.linear_interpolate(mouse_pos, delta * FOLLOW_SPEED))
+		set_global_position(mouse_pos)
 	else:
 		set_position(position.linear_interpolate(original_position, delta * FOLLOW_SPEED))
 
