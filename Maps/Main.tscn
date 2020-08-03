@@ -19,10 +19,10 @@ position = Vector2( 970.81, 692.012 )
 [node name="ConveyorBelt" parent="Node2D" instance=ExtResource( 1 )]
 
 [node name="Sushi_Plate" parent="Node2D/ConveyorBelt" instance=ExtResource( 3 )]
-position = Vector2( 1679.14, 147.078 )
+position = Vector2( 1679.14, 155.078 )
 
 [node name="Sushi_Plate2" parent="Node2D/ConveyorBelt" instance=ExtResource( 3 )]
-position = Vector2( 2116.61, 147.078 )
+position = Vector2( 2116.61, 155.078 )
 
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 1405.63, 996.982 )
