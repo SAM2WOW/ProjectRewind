@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PHbelt.png-2cb4bbda948de917863762621b0e7eef.stex"
+path="res://.import/PHbelt.png-c73f1a39737274ac23d8eb7158ca9372.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/PHbelt.png"
-dest_files=[ "res://.import/PHbelt.png-2cb4bbda948de917863762621b0e7eef.stex" ]
+source_file="res://Arts/Scene/PHbelt.png"
+dest_files=[ "res://.import/PHbelt.png-c73f1a39737274ac23d8eb7158ca9372.stex" ]
 
 [params]
 

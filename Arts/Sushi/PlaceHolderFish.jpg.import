@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PHplate.png-7a329fe42cb4254f42bd83b938ab7d7b.stex"
+path="res://.import/PlaceHolderFish.jpg-25a5a9aa13a265357fe9062b01eedc22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/PHplate.png"
-dest_files=[ "res://.import/PHplate.png-7a329fe42cb4254f42bd83b938ab7d7b.stex" ]
+source_file="res://Arts/Sushi/PlaceHolderFish.jpg"
+dest_files=[ "res://.import/PlaceHolderFish.jpg-25a5a9aa13a265357fe9062b01eedc22.stex" ]
 
 [params]
 

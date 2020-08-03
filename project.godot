@@ -41,6 +41,11 @@ touch={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Default"
+2d_physics/layer_2="Rice"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
