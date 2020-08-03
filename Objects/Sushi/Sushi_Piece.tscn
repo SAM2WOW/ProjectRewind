@@ -7,7 +7,7 @@
 radius = 56.0006
 height = 175.998
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "drop"
 length = 0.1
 tracks/0/type = "value"
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "pick_up"
+[sub_resource type="Animation" id=3]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -56,8 +55,8 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/drop = SubResource( 3 )
-anims/pick_up = SubResource( 2 )
+anims/drop = SubResource( 2 )
+anims/pick_up = SubResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]

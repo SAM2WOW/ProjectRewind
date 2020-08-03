@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Sushi/Sushi_Piece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Sushi_Scenes/Nigiri.gd" type="Script" id=2]
+
+[node name="Nigiri" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sushi_Piece" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -39.7895 )
+z_index = 11
+
+[node name="Sushi_Piece2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 40.3914 )
+ingredient = 4
+[connection signal="on_dropped" from="Sushi_Piece" to="." method="_on_Sushi_Piece_on_dropped"]
+[connection signal="on_dropped" from="Sushi_Piece2" to="." method="_on_Sushi_Piece2_on_dropped"]
