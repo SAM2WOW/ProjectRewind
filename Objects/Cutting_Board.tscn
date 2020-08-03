@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Arts/PHcutting_board.jpg" type="Texture" id=1]
+[ext_resource path="res://Objects/Cutting_Board.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 404.622, 294.563 )
+
+[node name="Cutting_Board" type="Area2D"]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 0.606769, 0.60994 )
+texture = ExtResource( 1 )

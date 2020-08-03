@@ -4,7 +4,7 @@ const SPEED = -300
 
 var width = 0
 
-var sushi_plate = preload("res://Objects/Sushi_Plate.tscn")
+var sushi_plate = preload("res://Objects/Sushi/Sushi_Plate.tscn")
 
 
 func _ready():
