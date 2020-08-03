@@ -20,9 +20,9 @@ func _input(event):
 	if Input.is_action_just_pressed("touch"):
 		
 		$Sprite.set_texture(hand_close)
-		$Sprite.set_modulate(Color("37ffffff"))
+		$Sprite.set_modulate(Color("bdffffff"))
 		
 	elif Input.is_action_just_released("touch"):
 		
 		$Sprite.set_texture(hand_open)
-		$Sprite.set_modulate(Color("d6ffffff"))
+		$Sprite.set_modulate(Color("ffffff"))
