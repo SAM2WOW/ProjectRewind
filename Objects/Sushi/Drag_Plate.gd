@@ -6,7 +6,7 @@ var droppable = false
 var board_ref
 
 # Define what type of sushi
-var type = Global.S_TYPE.ROLL
+var type = Global.S_TYPE.NIGIRI
 
 # For Nigiri recipe: [meat]
 # For Roll recipe: [ingredient1, ingredient2, ingredient3...]
