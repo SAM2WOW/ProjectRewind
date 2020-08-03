@@ -52,6 +52,8 @@ tracks/1/keys = {
 
 [node name="Sushi_Piece" type="Area2D"]
 z_index = 10
+collision_layer = 8
+collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -66,5 +68,8 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hovering = SubResource( 2 )
 anims/pick_up = SubResource( 3 )
+[connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Sushi_Piece_mouse_exited"]
+[connection signal="on_released" from="." to="." method="_on_Sushi_Piece_on_released"]
