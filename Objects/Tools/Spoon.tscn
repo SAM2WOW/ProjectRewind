@@ -11,6 +11,7 @@ height = 239.999
 radius = 64.0
 
 [node name="Spoon" type="Area2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -25,7 +26,7 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="ScrapArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScrapArea"]
