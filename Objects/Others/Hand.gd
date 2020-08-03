@@ -1,8 +1,8 @@
 extends Node2D
 
 
-var hand_open = preload("res://Arts/PHgand_open.png")
-var hand_close = preload("res://Arts/PHhand_close.png")
+var hand_open = preload("res://Arts/open_hand.png")
+var hand_close = preload("res://Arts/closed_hand.png")
 
 
 func _ready():
