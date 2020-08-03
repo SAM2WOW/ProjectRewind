@@ -7,12 +7,14 @@
 script = ExtResource( 2 )
 
 [node name="Belt" type="Sprite" parent="."]
-position = Vector2( 0, 153 )
+position = Vector2( 0, 225.789 )
+scale = Vector2( 1, 0.519545 )
 texture = ExtResource( 1 )
 offset = Vector2( 960, 0 )
 
 [node name="Belt2" type="Sprite" parent="."]
-position = Vector2( 1920, 153 )
+position = Vector2( 1920, 225.789 )
+scale = Vector2( 1, 0.519545 )
 texture = ExtResource( 1 )
 offset = Vector2( 960, 0 )
 
