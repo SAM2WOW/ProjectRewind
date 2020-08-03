@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Arts/Sushi/PlaceHolderFish.jpg" type="Texture" id=1]
-[ext_resource path="res://Objects/Sushi_Piece.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Sushi/Sushi_Piece.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 56.0006
 height = 175.998
 
-[sub_resource type="Animation" id=2]
-resource_name = "hovering"
+[sub_resource type="Animation" id=3]
+resource_name = "drop"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -18,13 +18,15 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( -2, -2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
+resource_name = "pick_up"
 length = 0.3
+step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
@@ -32,28 +34,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 0.5, 2, 1 ),
+"times": PoolRealArray( 0, 0.04, 0.1, 0.18, 0.3 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( -2, -2, -2, 1 ),
-"update": 0,
-"values": [ 0.0, -9.0, 9.0, 0.0 ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 0.9 ), Vector2( 1.2, 1.2 ), Vector2( 1.1, 1.1 ) ]
 }
 
 [node name="Sushi_Piece" type="Area2D"]
 z_index = 10
 collision_layer = 8
-collision_mask = 16
+collision_mask = 48
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -66,10 +56,11 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hovering = SubResource( 2 )
-anims/pick_up = SubResource( 3 )
+anims/drop = SubResource( 3 )
+anims/pick_up = SubResource( 2 )
 [connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Sushi_Piece_mouse_exited"]
+[connection signal="on_dragging" from="." to="." method="_on_Sushi_Piece_on_dragging"]
 [connection signal="on_released" from="." to="." method="_on_Sushi_Piece_on_released"]

@@ -1,5 +1,6 @@
 extends Node2D
 
+
 const COLORS_LIST = ["e23d3d", "e29e3d", "e23dd4", "5ce04a", "4ac0e0", "e2e2e2"]
 
 const SPEED = -300
