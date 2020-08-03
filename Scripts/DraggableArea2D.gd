@@ -16,13 +16,12 @@ func _ready():
 	original_position = get_position()
 
 
-func _input(event):
+func _input(_event):
 	# Turn on dragging when mouse clicked on the area
 	if is_mouse_hover and Input.is_action_just_pressed("touch"):
 		is_dragging = true
 		emit_signal("on_dragging")
-		#$AnimationPlayer.play("pick_up")
-	elif Input.is_action_just_released("touch"):
+	elif is_mouse_hover and Input.is_action_just_released("touch"):
 		is_dragging = false
 		emit_signal("on_released")
 
@@ -39,8 +38,11 @@ func _process(delta):
 # Check if mouse is hovering
 func _on_Sushi_Piece_mouse_entered():
 	is_mouse_hover = true
-	#$AnimationPlayer.play("hovering")
 
 func _on_Sushi_Piece_mouse_exited():
 	is_mouse_hover = false
-	#$AnimationPlayer.play_backwards("hovering")
+
+
+# Set the original position to new location
+func set_original_position(position: Vector2):
+	original_position = position
