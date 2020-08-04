@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PHcutting_board.jpg-92ae6e28c290db4093858024fde689ac.stex"
+path="res://.import/wooden_spoon.png-b408c84ee4c279fd994bff239c508d38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/PHcutting_board.jpg"
-dest_files=[ "res://.import/PHcutting_board.jpg-92ae6e28c290db4093858024fde689ac.stex" ]
+source_file="res://Arts/wooden_spoon.png"
+dest_files=[ "res://.import/wooden_spoon.png-b408c84ee4c279fd994bff239c508d38.stex" ]
 
 [params]
 
