@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PHspoon.png-cf2c9b258c83362dde347e61dbf0b71a.stex"
+path="res://.import/cutting_board.png-a256f70ed58fbc3a9c906819433de65b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/PHspoon.png"
-dest_files=[ "res://.import/PHspoon.png-cf2c9b258c83362dde347e61dbf0b71a.stex" ]
+source_file="res://Arts/cutting_board.png"
+dest_files=[ "res://.import/cutting_board.png-a256f70ed58fbc3a9c906819433de65b.stex" ]
 
 [params]
 
