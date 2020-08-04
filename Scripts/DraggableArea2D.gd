@@ -11,6 +11,9 @@ var is_dragging: bool = false
 # The position to return to when dropping failed
 var original_position: Vector2
 
+# Decided wheather this thing is dragable right now
+export var is_draggable = true
+
 
 func _ready():
 	original_position = get_position()
@@ -18,7 +21,7 @@ func _ready():
 
 func _input(_event):
 	# Turn on dragging when mouse clicked on the area
-	if is_mouse_hover and Input.is_action_just_pressed("touch"):
+	if is_mouse_hover and Input.is_action_just_pressed("touch") and is_draggable:
 		is_dragging = true
 		
 		Global.mouse_selected = true
@@ -43,7 +46,9 @@ func _process(delta):
 # Check if mouse is hovering
 func _on_Sushi_Piece_mouse_entered():
 	is_mouse_hover = true
-	set_scale(Vector2(1.1, 1.1))
+	
+	if is_draggable:
+		set_scale(Vector2(1.1, 1.1))
 
 func _on_Sushi_Piece_mouse_exited():
 	is_mouse_hover = false
