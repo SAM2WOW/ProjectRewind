@@ -6,11 +6,24 @@ var droppable = false
 var board_ref
 
 # Define what type of sushi
-var type = Global.S_TYPE.NIGIRI
+var type = Global.S_TYPE.ROLL
 
 # For Nigiri recipe: [meat]
 # For Roll recipe: [ingredient1, ingredient2, ingredient3...]
-var recipe = [Global.INGREDIENT.SALMON, Global.INGREDIENT.CUCUMBER]
+var recipe = [Global.INGREDIENT.SALMON, Global.INGREDIENT.CUCUMBER, Global.INGREDIENT.RADISH]
+
+
+func _ready():
+	# Randomize Orders
+	type = randi() % Global.S_TYPE.size()
+	
+	# Randomize Ingredients
+	match type:
+		Global.S_TYPE.NIGIRI:
+			pass
+		Global.S_TYPE.ROLL:
+			for i in range(3):
+				recipe[i] = randi() % Global.INGREDIENT.size()
 
 
 func _on_Drag_Plate_on_dragging():

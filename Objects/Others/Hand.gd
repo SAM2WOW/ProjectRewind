@@ -10,12 +10,12 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
-func _process(delta):
+func _process(_delta):
 	# Follow mouse
 	set_global_position(get_global_mouse_position())
 
 
-func _input(event):
+func _input(_event):
 	# Change sprites
 	if Input.is_action_just_pressed("touch"):
 		
