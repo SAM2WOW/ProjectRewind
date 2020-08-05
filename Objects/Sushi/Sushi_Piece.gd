@@ -52,7 +52,11 @@ func _on_Sushi_Piece_area_entered(area):
 		if area.ingredient == ingredient:
 			droppable = true
 	
-	if "Cutting_Board" in area.name:
+	elif "Trash" in area.name:
+		box_ref = area
+		droppable = true
+	
+	elif "Cutting_Board" in area.name:
 		on_cutting_board = true
 
 
@@ -61,5 +65,8 @@ func _on_Sushi_Piece_area_exited(area):
 		if area.ingredient == ingredient:
 			droppable = false
 	
-	if "Cutting_Board" in area.name:
+	elif "Trash" in area.name:
+		droppable = false
+	
+	elif "Cutting_Board" in area.name:
 		on_cutting_board = false
