@@ -22,7 +22,7 @@ func change_ingredient():
 		Global.INGREDIENT.SALMON:
 			pass
 		Global.INGREDIENT.SHRIMP:
-			pass
+			$Sprite.set_texture(load("res://Arts/Sushi/shrimp.png"))
 		Global.INGREDIENT.CUCUMBER:
 			pass
 		Global.INGREDIENT.RADISH:
