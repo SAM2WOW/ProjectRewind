@@ -6,16 +6,15 @@
 [ext_resource path="res://Objects/Sushi/Drag_Plate.gd" type="Script" id=4]
 [ext_resource path="res://Arts/Particles/explosion.png" type="Texture" id=5]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 40.0001
 height = 95.9998
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 96.0
 height = 16.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "pick_up"
+[sub_resource type="Animation" id=3]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -31,8 +30,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 0.9 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "flip"
+[sub_resource type="Animation" id=4]
 length = 0.4
 step = 0.02
 tracks/0/type = "value"
@@ -106,7 +104,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base_Plate"]
 rotation = 1.57079
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Plate" type="Sprite" parent="."]
 modulate = Color( 0.87451, 0.87451, 0.87451, 1 )
@@ -133,13 +131,13 @@ z_index = 11
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Plate"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Drag_Plate"]
-anims/pick_up = SubResource( 2 )
+anims/pick_up = SubResource( 3 )
 
 [node name="PlateAnimation" type="AnimationPlayer" parent="."]
-anims/flip = SubResource( 3 )
+anims/flip = SubResource( 4 )
 [connection signal="area_entered" from="Base_Plate" to="." method="_on_Base_Plate_area_entered"]
 [connection signal="area_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_entered"]
 [connection signal="area_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_exited"]
