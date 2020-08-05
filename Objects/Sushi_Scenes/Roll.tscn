@@ -65,25 +65,33 @@ shape = SubResource( 1 )
 [node name="Actual_Roll" type="Node2D" parent="."]
 scale = Vector2( 1, 0.01 )
 
-[node name="Sushi_Piece5" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece1" parent="Actual_Roll" instance=ExtResource( 3 )]
 position = Vector2( -116.151, -72.9184 )
+is_draggable = false
 ingredient = 1
-
-[node name="Sushi_Piece6" parent="Actual_Roll" instance=ExtResource( 3 )]
-position = Vector2( 124.266, -72.9184 )
-ingredient = 1
-
-[node name="Sushi_Piece" parent="Actual_Roll" instance=ExtResource( 3 )]
-position = Vector2( -118.82, -151.598 )
 
 [node name="Sushi_Piece2" parent="Actual_Roll" instance=ExtResource( 3 )]
-position = Vector2( 121.596, -151.598 )
+position = Vector2( 124.266, -72.9184 )
+is_draggable = false
+ingredient = 1
 
 [node name="Sushi_Piece3" parent="Actual_Roll" instance=ExtResource( 3 )]
-position = Vector2( -118.82, -227.324 )
+position = Vector2( -118.82, -151.598 )
+is_draggable = false
 
 [node name="Sushi_Piece4" parent="Actual_Roll" instance=ExtResource( 3 )]
+position = Vector2( 121.596, -151.598 )
+is_draggable = false
+
+[node name="Sushi_Piece5" parent="Actual_Roll" instance=ExtResource( 3 )]
+position = Vector2( -118.82, -227.324 )
+is_draggable = false
+ingredient = 2
+
+[node name="Sushi_Piece6" parent="Actual_Roll" instance=ExtResource( 3 )]
 position = Vector2( 121.596, -227.324 )
+is_draggable = false
+ingredient = 3
 
 [node name="Rices" type="Node2D" parent="Actual_Roll"]
 

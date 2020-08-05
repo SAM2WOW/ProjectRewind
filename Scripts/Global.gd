@@ -21,10 +21,17 @@ func ingredient_to_address(i):
 		INGREDIENT.SHRIMP:
 			return "res://Arts/Sushi/shrimp.png"
 		INGREDIENT.CUCUMBER:
-			return "res://Arts/Sushi/shrimp.png"
+			return "res://Arts/Sushi/zucchini.png"
 		INGREDIENT.RADISH:
-			return "res://Arts/Sushi/shrimp.png"
+			return "res://Arts/Sushi/yellow_radish.png"
 		INGREDIENT.RICE:
-			return "res://Arts/Sushi/shrimp.png"
+			return "res://Arts/Sushi/nigiri_rice.png"
 		INGREDIENT.SEAWEED:
 			return "res://Arts/Sushi/PHseaweed.jpg"
+
+
+# Used for reparenting nodes
+func reparent(child: Node, new_parent: Node):
+	var old_parent = child.get_parent()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
