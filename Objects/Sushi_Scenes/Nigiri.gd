@@ -9,6 +9,8 @@ var ingredient = Global.INGREDIENT.SALMON
 func _ready():
 	$Sushi_Piece.ingredient = ingredient
 	$Sushi_Piece.change_ingredient()
+	
+	$AnimationPlayer.play("spawn")
 
 
 func _on_Sushi_Piece_on_dropped():

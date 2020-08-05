@@ -3,8 +3,6 @@
 [ext_resource path="res://Arts/Scene/cutting_board.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Cutting_Board.gd" type="Script" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 375.558, 274.906 )
 

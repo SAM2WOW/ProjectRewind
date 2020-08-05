@@ -40,12 +40,14 @@ func _process(_delta):
 		set_position(Vector2(0, new_pos))
 		
 		# Change Size
-		set_scale(Vector2(1, (-new_pos - 455) / -455))
+		set_scale(Vector2(1, (new_pos + 455) / 455))
 		
 		# Change roll size
 		$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
 		
+		# When finished unrolling
 		if get_scale().y <= 0.01:
+			get_parent().finished_unroll()
 			queue_free()
 
 

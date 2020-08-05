@@ -23,17 +23,12 @@ position = Vector2( 970.81, 692.012 )
 [node name="ConveyorBelt" parent="Node2D" instance=ExtResource( 1 )]
 
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
-position = Vector2( 1405.63, 996.982 )
+position = Vector2( 1726.85, 729.815 )
 
 [node name="RiceBox" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 1649.43, 556.32 )
+position = Vector2( 1649.43, 505.866 )
 script = ExtResource( 8 )
 ingredient = 4
-
-[node name="RiceBox2" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 1654.19, 803.676 )
-script = ExtResource( 8 )
-ingredient = 5
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 143.489, 55.75 )
