@@ -7,7 +7,8 @@ var hand_close = preload("res://Arts/closed_hand.png")
 
 func _ready():
 	# Hide mouse while in game
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 
 
 func _process(_delta):

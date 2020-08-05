@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Sushi_Scenes/Roll.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/PHseaweed.jpg" type="Texture" id=2]
@@ -6,9 +6,14 @@
 [ext_resource path="res://Objects/Ingredients/Rice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Ingredients/Top_Seaweed.gd" type="Script" id=5]
 [ext_resource path="res://Objects/Ingredients/Bottom_Seaweed.gd" type="Script" id=6]
+[ext_resource path="res://Arts/Scene/cutting_board.png" type="Texture" id=7]
+[ext_resource path="res://Arts/Lightmask.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60.9922, 272.145 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+light_mode = 2
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 234.521, 272.144 )
@@ -62,8 +67,24 @@ texture = ExtResource( 2 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
+[node name="Light2D" type="Light2D" parent="Top_Seaweed"]
+position = Vector2( -4.76837e-07, -227.324 )
+scale = Vector2( 3.97967, 2.7163 )
+z_index = 14
+texture = ExtResource( 8 )
+mode = 2
+range_item_cull_mask = 2
+
+[node name="Fake_Cuttingboard" type="Sprite" parent="."]
+light_mask = 2
+material = SubResource( 5 )
+position = Vector2( 0, -212 )
+z_index = 14
+texture = ExtResource( 7 )
+region_filter_clip = true
+
 [node name="Actual_Roll" type="Node2D" parent="."]
-scale = Vector2( 1, 0.01 )
+light_mask = 2
 
 [node name="Sushi_Piece1" parent="Actual_Roll" instance=ExtResource( 3 )]
 position = Vector2( -116.151, -72.9184 )
