@@ -18,19 +18,7 @@ func _ready():
 
 
 func change_ingredient():
-	match ingredient:
-		Global.INGREDIENT.SALMON:
-			pass
-		Global.INGREDIENT.SHRIMP:
-			$Sprite.set_texture(load("res://Arts/Sushi/shrimp.png"))
-		Global.INGREDIENT.CUCUMBER:
-			pass
-		Global.INGREDIENT.RADISH:
-			pass
-		Global.INGREDIENT.RICE:
-			pass
-		Global.INGREDIENT.SEAWEED:
-			pass
+	$Sprite.set_texture(load(Global.ingredient_to_address(ingredient)))
 
 
 func _on_Sushi_Piece_on_dragging():

@@ -1,21 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Sushi/Sushi_Plate.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/salmon.png" type="Texture" id=2]
 [ext_resource path="res://Arts/Scene/PHplate.png" type="Texture" id=3]
 [ext_resource path="res://Objects/Sushi/Drag_Plate.gd" type="Script" id=4]
 [ext_resource path="res://Arts/Particles/explosion.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/flip_the_plate.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/grab.wav" type="AudioStream" id=8]
+[ext_resource path="res://Arts/Sushi/PHroll.jpg" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 40.0001
 height = 95.9998
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 96.0
 height = 16.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "pick_up"
+[sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -31,8 +34,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 0.9 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "flip"
+[sub_resource type="Animation" id=4]
 length = 0.4
 step = 0.02
 tracks/0/type = "value"
@@ -106,7 +108,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base_Plate"]
 rotation = 1.57079
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Plate" type="Sprite" parent="."]
 modulate = Color( 0.87451, 0.87451, 0.87451, 1 )
@@ -127,19 +129,42 @@ collision_layer = 64
 collision_mask = 32
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Drag_Plate"]
+[node name="Meat" type="Sprite" parent="Drag_Plate"]
 scale = Vector2( 0.464474, 0.474273 )
 z_index = 11
 texture = ExtResource( 2 )
 
+[node name="Rice" type="Sprite" parent="Drag_Plate"]
+position = Vector2( 0, 35.0809 )
+scale = Vector2( 0.464474, 0.474273 )
+z_index = 11
+texture = ExtResource( 2 )
+
+[node name="Roll" type="Sprite" parent="Drag_Plate"]
+visible = false
+position = Vector2( -0.002165, 23.7136 )
+scale = Vector2( 0.464474, 0.474273 )
+z_index = 11
+texture = ExtResource( 9 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Plate"]
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Drag_Plate"]
-anims/pick_up = SubResource( 2 )
+anims/pick_up = SubResource( 7 )
+
+[node name="Grab_Sound" type="AudioStreamPlayer2D" parent="Drag_Plate"]
+stream = ExtResource( 8 )
+bus = "SFX"
+script = ExtResource( 7 )
 
 [node name="PlateAnimation" type="AnimationPlayer" parent="."]
-anims/flip = SubResource( 3 )
+anims/flip = SubResource( 4 )
+
+[node name="Flip_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+script = ExtResource( 7 )
 [connection signal="area_entered" from="Base_Plate" to="." method="_on_Base_Plate_area_entered"]
 [connection signal="area_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_entered"]
 [connection signal="area_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_exited"]

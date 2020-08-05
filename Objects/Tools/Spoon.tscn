@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Arts/Objects/wooden_spoon.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Tools/Spoon.gd" type="Script" id=2]
-
+[ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/spoon.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 80.0003
@@ -33,5 +34,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScrapArea"]
 position = Vector2( -176, 0 )
 shape = SubResource( 2 )
+
+[node name="Spoon_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+script = ExtResource( 3 )
 [connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Sushi_Piece_mouse_exited"]
+[connection signal="on_dragging" from="." to="." method="_on_Spoon_on_dragging"]

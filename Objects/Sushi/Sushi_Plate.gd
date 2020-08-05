@@ -39,6 +39,10 @@ func _on_Base_Plate_area_entered(area):
 	# Flip the plate when touch spoons
 	if "Scrap" in area.name:
 		$PlateAnimation.play("flip")
+		$Flip_Sound.play()
+		
+		# Do once
+		$Base_Plate.queue_free()
 
 
 func _on_PlateAnimation_animation_finished(anim_name):

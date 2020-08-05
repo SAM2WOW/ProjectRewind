@@ -13,6 +13,7 @@ func _on_Rice_area_entered(area):
 	# Scrap the rice if scrappable
 	if scrappable and "Scrap" in area.name:
 		$AnimationPlayer.play("Scrapped")
+		$AudioStreamPlayer2D.play()
 	
 	# Else Check if anything on top of the rice
 	elif "Sushi" in area.name:
