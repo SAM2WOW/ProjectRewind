@@ -33,3 +33,14 @@ func _on_Sushi_on_released():
 	is_sushi_dragging = false
 	
 	$Plate.set_self_modulate(Color("ffffff"))
+
+
+func _on_Base_Plate_area_entered(area):
+	# Flip the plate when touch spoons
+	if "Scrap" in area.name:
+		$PlateAnimation.play("flip")
+
+
+func _on_PlateAnimation_animation_finished(anim_name):
+	if "flip" in anim_name:
+		queue_free()
