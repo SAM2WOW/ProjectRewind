@@ -4,3 +4,15 @@
 
 [node name="Console" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Money" type="Label" parent="."]
+margin_left = 1495.52
+margin_top = 69.5612
+margin_right = 1519.52
+margin_bottom = 83.5612
+rect_scale = Vector2( 19.2031, 16.9586 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
