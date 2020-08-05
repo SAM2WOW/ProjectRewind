@@ -13,7 +13,6 @@ func _ready():
 		var sushi = get_node("Actual_Roll/Sushi_Piece" + str(i + 1))
 		sushi.ingredient = ingredient[order[i]]
 		sushi.change_ingredient()
-		print(ingredient)
 
 
 func finished_unroll():

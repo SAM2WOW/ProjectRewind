@@ -56,6 +56,9 @@ anims/Scrapped = SubResource( 2 )
 stream = ExtResource( 4 )
 bus = "SFX"
 script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="area_entered" from="." to="." method="_on_Rice_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Rice_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

@@ -43,7 +43,7 @@ func _process(_delta):
 		set_scale(Vector2(1, (new_pos + 455) / 455))
 		
 		# Change roll size
-		$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
+		#$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
 		
 		# When finished unrolling
 		if get_scale().y <= 0.01:

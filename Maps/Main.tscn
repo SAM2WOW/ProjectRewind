@@ -44,8 +44,9 @@ offset = Vector2( 960, 540 )
 position = Vector2( 1649.43, 993.73 )
 
 [node name="Control" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
