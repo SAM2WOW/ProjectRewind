@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
+[ext_resource path="res://Arts/Scene/background.png" type="Texture" id=9]
 
 [node name="Main" type="Node"]
 
@@ -18,7 +19,7 @@
 [node name="Hand" parent="Node2D" instance=ExtResource( 2 )]
 
 [node name="Cutting_Board" parent="Node2D" instance=ExtResource( 7 )]
-position = Vector2( 970.81, 692.012 )
+position = Vector2( 960, 637.012 )
 
 [node name="ConveyorBelt" parent="Node2D" instance=ExtResource( 1 )]
 
@@ -32,6 +33,11 @@ ingredient = 4
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 143.489, 55.75 )
+
+[node name="BG" type="Sprite" parent="Node2D"]
+z_index = -20
+texture = ExtResource( 9 )
+offset = Vector2( 960, 540 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0

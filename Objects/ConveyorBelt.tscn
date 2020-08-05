@@ -7,12 +7,12 @@
 script = ExtResource( 2 )
 
 [node name="Belt" type="Sprite" parent="."]
-position = Vector2( 0, 225.789 )
+position = Vector2( 0, 201.789 )
 texture = ExtResource( 3 )
 offset = Vector2( 957.5, 0 )
 
 [node name="Belt2" type="Sprite" parent="."]
-position = Vector2( 1915, 225.789 )
+position = Vector2( 1915, 201.789 )
 texture = ExtResource( 3 )
 offset = Vector2( 957.5, 0 )
 
@@ -21,5 +21,5 @@ wait_time = 1.5
 autostart = true
 
 [node name="SpawnPosition" type="Position2D" parent="."]
-position = Vector2( 2118.49, 147.078 )
+position = Vector2( 2118.49, 123.078 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

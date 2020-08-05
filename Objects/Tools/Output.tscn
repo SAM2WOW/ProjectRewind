@@ -4,8 +4,8 @@
 [ext_resource path="res://Objects/Tools/Output.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Tools/OutputControl.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 184.885, 628.194 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 184.885, 403.333 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "MoveIn"
@@ -22,8 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( -300, 379.215 ), Vector2( 148.245, 379.215 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=3]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -38,8 +37,7 @@ tracks/0/keys = {
 "values": [ Vector2( 148.245, 379.215 ), Vector2( 98.4403, 379.215 ), Vector2( -1.16977, 379.215 ), Vector2( -100.78, 379.215 ), Vector2( -200.39, 379.215 ), Vector2( -300, 379.215 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "MoveIn"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -53,8 +51,7 @@ tracks/0/keys = {
 "values": [ Vector2( -300, 658.598 ), Vector2( 147.647, 661.772 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=5]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -69,8 +66,7 @@ tracks/0/keys = {
 "values": [ Vector2( 148.245, 658.598 ), Vector2( -300, 658.598 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "MoveIn"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -84,8 +80,7 @@ tracks/0/keys = {
 "values": [ Vector2( -363.496, 944.33 ), Vector2( 157.172, 937.98 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=7]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -107,15 +102,15 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBox"]
-position = Vector2( 145.083, 568.441 )
-shape = SubResource( 7 )
+position = Vector2( 187.036, 658.598 )
+shape = SubResource( 1 )
 
 [node name="Box1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148.245, 379.215 )
 
 [node name="Ani" type="AnimationPlayer" parent="Box1"]
 anims/MoveIn = SubResource( 2 )
-"anims/New Anim" = SubResource( 1 )
+"anims/New Anim" = SubResource( 3 )
 
 [node name="Label" type="RichTextLabel" parent="Box1"]
 margin_left = -100.515
@@ -143,8 +138,8 @@ __meta__ = {
 }
 
 [node name="Ani" type="AnimationPlayer" parent="Box2"]
-anims/MoveIn = SubResource( 3 )
-"anims/New Anim" = SubResource( 4 )
+anims/MoveIn = SubResource( 4 )
+"anims/New Anim" = SubResource( 5 )
 
 [node name="Box3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148.245, 937.98 )
@@ -161,8 +156,8 @@ __meta__ = {
 }
 
 [node name="Ani" type="AnimationPlayer" parent="Box3"]
-anims/MoveIn = SubResource( 5 )
-"anims/New Anim" = SubResource( 6 )
+anims/MoveIn = SubResource( 6 )
+"anims/New Anim" = SubResource( 7 )
 [connection signal="mouse_entered" from="AreaBox" to="." method="_on_AreaBox_mouse_entered"]
 [connection signal="mouse_exited" from="AreaBox" to="." method="_on_AreaBox_mouse_exited"]
 [connection signal="animation_finished" from="Box1/Ani" to="Box1" method="_on_Ani_animation_finished"]
