@@ -1,0 +1,170 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Tools/Output.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Tools/OutputControl.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 184.885, 628.194 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "MoveIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -300, 379.215 ), Vector2( 148.245, 379.215 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.245, 379.215 ), Vector2( 98.4403, 379.215 ), Vector2( -1.16977, 379.215 ), Vector2( -100.78, 379.215 ), Vector2( -200.39, 379.215 ), Vector2( -300, 379.215 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MoveIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -300, 658.598 ), Vector2( 147.647, 661.772 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.245, 658.598 ), Vector2( -300, 658.598 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "MoveIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -363.496, 944.33 ), Vector2( 157.172, 937.98 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 148.245, 937.98 ), Vector2( 98.44, 937.98 ), Vector2( -1.17, 937.98 ), Vector2( -100.78, 937.98 ), Vector2( -200.39, 937.98 ), Vector2( -300, 937.98 ) ]
+}
+
+[node name="Output" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AreaBox" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBox"]
+position = Vector2( 145.083, 568.441 )
+shape = SubResource( 7 )
+
+[node name="Box1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 148.245, 379.215 )
+
+[node name="Ani" type="AnimationPlayer" parent="Box1"]
+anims/MoveIn = SubResource( 2 )
+"anims/New Anim" = SubResource( 1 )
+
+[node name="Label" type="RichTextLabel" parent="Box1"]
+margin_left = -100.515
+margin_top = 25.4916
+margin_right = -39.5153
+margin_bottom = 48.4916
+rect_scale = Vector2( 3.97681, 3.52185 )
+text = "SALMON"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 148.245, 658.598 )
+ingredient = 5
+
+[node name="Label" type="RichTextLabel" parent="Box2"]
+margin_left = -93.7752
+margin_top = 15.4667
+margin_right = -37.7752
+margin_bottom = 33.4667
+rect_scale = Vector2( 3.97681, 3.52185 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ani" type="AnimationPlayer" parent="Box2"]
+anims/MoveIn = SubResource( 3 )
+"anims/New Anim" = SubResource( 4 )
+
+[node name="Box3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 148.245, 937.98 )
+ingredient = 5
+
+[node name="Label" type="RichTextLabel" parent="Box3"]
+margin_left = -97.39
+margin_top = 4.13135
+margin_right = -41.39
+margin_bottom = 22.1313
+rect_scale = Vector2( 3.97681, 3.52185 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ani" type="AnimationPlayer" parent="Box3"]
+anims/MoveIn = SubResource( 5 )
+"anims/New Anim" = SubResource( 6 )
+[connection signal="mouse_entered" from="AreaBox" to="." method="_on_AreaBox_mouse_entered"]
+[connection signal="mouse_exited" from="AreaBox" to="." method="_on_AreaBox_mouse_exited"]
+[connection signal="animation_finished" from="Box1/Ani" to="Box1" method="_on_Ani_animation_finished"]
+[connection signal="animation_finished" from="Box2/Ani" to="Box2" method="_on_Ani_animation_finished"]
+[connection signal="animation_finished" from="Box3/Ani" to="Box3" method="_on_Ani_animation_finished"]

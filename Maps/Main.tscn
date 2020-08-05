@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Console.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Tools/Spoon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Tools/Output.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
 
 [node name="Main" type="Node"]
+
+[node name="Console" parent="." instance=ExtResource( 3 )]
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -20,28 +25,18 @@ position = Vector2( 970.81, 692.012 )
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 1405.63, 996.982 )
 
-[node name="Box" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 227.138, 696.647 )
-
-[node name="Box2" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 227.138, 451.33 )
-ingredient = 1
-
-[node name="Box3" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 227.138, 944.301 )
-ingredient = 2
-
-[node name="Box4" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 1679.14, 696.647 )
-ingredient = 1
-
-[node name="Box5" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 1679.14, 451.33 )
+[node name="RiceBox" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1649.43, 556.32 )
+script = ExtResource( 8 )
 ingredient = 4
 
-[node name="Box6" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( 1679.14, 944.301 )
+[node name="RiceBox2" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( 1654.19, 803.676 )
+script = ExtResource( 8 )
 ingredient = 5
+
+[node name="Output" parent="Node2D" instance=ExtResource( 5 )]
+position = Vector2( 143.489, 55.75 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
