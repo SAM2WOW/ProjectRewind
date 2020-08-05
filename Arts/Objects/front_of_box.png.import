@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wooden_spoon.png-b408c84ee4c279fd994bff239c508d38.stex"
+path="res://.import/front_of_box.png-b6a3fb4cd30879227c9ccea1100729e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/wooden_spoon.png"
-dest_files=[ "res://.import/wooden_spoon.png-b408c84ee4c279fd994bff239c508d38.stex" ]
+source_file="res://Arts/Objects/front_of_box.png"
+dest_files=[ "res://.import/front_of_box.png-b6a3fb4cd30879227c9ccea1100729e3.stex" ]
 
 [params]
 

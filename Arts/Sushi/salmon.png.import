@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PHbox.jpg-00665341e10c9a6430d9cc1f930e6f6e.stex"
+path="res://.import/salmon.png-7eef5cb63a9373c884a4a6cb70afddff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/PHbox.jpg"
-dest_files=[ "res://.import/PHbox.jpg-00665341e10c9a6430d9cc1f930e6f6e.stex" ]
+source_file="res://Arts/Sushi/salmon.png"
+dest_files=[ "res://.import/salmon.png-7eef5cb63a9373c884a4a6cb70afddff.stex" ]
 
 [params]
 

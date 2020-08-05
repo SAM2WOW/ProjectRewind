@@ -1,21 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Arts/Scene/PHbelt.png" type="Texture" id=1]
 [ext_resource path="res://Objects/ConveyorBelt.gd" type="Script" id=2]
+[ext_resource path="res://Arts/Scene/conveyer_belt.png" type="Texture" id=3]
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Belt" type="Sprite" parent="."]
-position = Vector2( 0, 225.789 )
-scale = Vector2( 1, 0.519545 )
-texture = ExtResource( 1 )
+position = Vector2( -4.74, 225.789 )
+scale = Vector2( 1.00547, 1 )
+texture = ExtResource( 3 )
 offset = Vector2( 960, 0 )
 
 [node name="Belt2" type="Sprite" parent="."]
-position = Vector2( 1920, 225.789 )
-scale = Vector2( 1, 0.519545 )
-texture = ExtResource( 1 )
+position = Vector2( 1915.64, 225.789 )
+texture = ExtResource( 3 )
 offset = Vector2( 960, 0 )
 
 [node name="Timer" type="Timer" parent="."]
