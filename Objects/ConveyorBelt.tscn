@@ -7,15 +7,14 @@
 script = ExtResource( 2 )
 
 [node name="Belt" type="Sprite" parent="."]
-position = Vector2( -4.74, 225.789 )
-scale = Vector2( 1.00547, 1 )
+position = Vector2( 0, 225.789 )
 texture = ExtResource( 3 )
-offset = Vector2( 960, 0 )
+offset = Vector2( 957.5, 0 )
 
 [node name="Belt2" type="Sprite" parent="."]
-position = Vector2( 1915.64, 225.789 )
+position = Vector2( 1915, 225.789 )
 texture = ExtResource( 3 )
-offset = Vector2( 960, 0 )
+offset = Vector2( 957.5, 0 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
