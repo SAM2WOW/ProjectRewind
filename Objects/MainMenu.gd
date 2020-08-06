@@ -7,7 +7,7 @@ func _ready():
 
 func _on_Play_pressed():
 	$AnimationPlayer.play("intro")
-	print("Play!")
+	$BGM.play()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
