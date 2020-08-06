@@ -30,6 +30,7 @@ func checkOutput():
 		output()
 
 func output():
+	get_node("CollisionShape2D").disabled = true
 	get_parent().countOutput(ingredient,statu)
 	$Ani.play("New Anim")
 	statu = 0
@@ -37,6 +38,7 @@ func output():
 
 
 func swipe():
+	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	self.ingredient = Global.Console.getIng()
 	print(Global.INGREDIENT.keys()[ingredient])
