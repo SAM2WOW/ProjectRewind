@@ -1,9 +1,5 @@
 extends Node2D
 
-const SPEED = -300
-
-# Changed the width slightly shorter so the seam would dissapear
-const WIDTH = 1912
 
 var sushi_plate = preload("res://Objects/Sushi/Sushi_Plate.tscn")
 
