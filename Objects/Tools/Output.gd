@@ -21,6 +21,17 @@ func _input(_event):
 		$Box2.output()
 		$Box3.output()
 
+func checkOutput(statu):
+	var combo = 0
+	if statu == 1:
+		combo += 1
+
+func countOutput(type,statu):
+	if statu == 1:
+		Global.Console.addPoint()
+
+
+
 func _on_AreaBox_mouse_entered():
 	is_mouse_hover = true # Replace with function body.
 
