@@ -12,7 +12,14 @@ func _ready():
 func _on_Rice_area_entered(area):
 	# Scrap the rice if scrappable
 	if scrappable and "Scrap" in area.name:
-		$AnimationPlayer.play("Scrapped")
+		
+		#$AnimationPlayer.play("Scrapped")
+		$Tween.interpolate_property(self, "global_position",
+			get_global_position(), Global.rice_box_pos, 0.2,
+			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
+		
+		$AudioStreamPlayer2D.play()
 	
 	# Else Check if anything on top of the rice
 	elif "Sushi" in area.name:
@@ -27,3 +34,7 @@ func _on_Rice_area_exited(area):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if "Scrap" in anim_name:
 		queue_free()
+
+
+func _on_Tween_tween_all_completed():
+	queue_free()

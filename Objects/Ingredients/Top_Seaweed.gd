@@ -40,21 +40,23 @@ func _process(_delta):
 		set_position(Vector2(0, new_pos))
 		
 		# Change Size
-		set_scale(Vector2(1, (-new_pos - 455) / -455))
+		set_scale(Vector2(1, (new_pos + 455) / 455))
 		
 		# Change roll size
-		$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
+		#$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
 		
-		if get_scale().y <= 0.01:
+		# When finished unrolling
+		if get_scale().y <= 0.02:
+			get_parent().finished_unroll()
 			queue_free()
 
 
 # Check if mouse is hovering
 func _on_Top_Seaweed_mouse_entered():
 	is_mouse_hover = true
-	set_scale(Vector2(1.1, 1.1))
+	$Sprite.set_scale(Vector2(0.402, 0.12) * 1.1)
 
 
 func _on_Top_Seaweed_mouse_exited():
 	is_mouse_hover = false
-	set_scale(Vector2(1, 1))
+	$Sprite.set_scale(Vector2(0.402, 0.12))

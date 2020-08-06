@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Sushi_Scenes/Roll.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/PHseaweed.jpg" type="Texture" id=2]
@@ -6,15 +6,19 @@
 [ext_resource path="res://Objects/Ingredients/Rice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Ingredients/Top_Seaweed.gd" type="Script" id=5]
 [ext_resource path="res://Objects/Ingredients/Bottom_Seaweed.gd" type="Script" id=6]
+[ext_resource path="res://Arts/Scene/cutting_board.png" type="Texture" id=7]
+[ext_resource path="res://Arts/Lightmask.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60.9922, 272.145 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 234.521, 272.144 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "drop"
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -24,13 +28,12 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
 "update": 0,
 "values": [ Vector2( 0.468, 0.173 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "pick_up"
+[sub_resource type="Animation" id=5]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -62,28 +65,64 @@ texture = ExtResource( 2 )
 rotation = 1.57079
 shape = SubResource( 1 )
 
+[node name="Light2D" type="Light2D" parent="Top_Seaweed"]
+position = Vector2( -7.62939e-06, -266.922 )
+scale = Vector2( 2.61187, 3.11228 )
+z_index = 14
+texture = ExtResource( 8 )
+mode = 2
+range_item_cull_mask = 2
+
+[node name="Fake_Cuttingboard" type="Sprite" parent="."]
+light_mask = 2
+material = SubResource( 2 )
+position = Vector2( 0, -212 )
+z_index = 14
+texture = ExtResource( 7 )
+region_filter_clip = true
+
 [node name="Actual_Roll" type="Node2D" parent="."]
-scale = Vector2( 1, 0.01 )
+light_mask = 2
 
-[node name="Sushi_Piece5" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece1" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( -116.151, -72.9184 )
+is_draggable = false
 ingredient = 1
 
-[node name="Sushi_Piece6" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece2" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( 124.266, -72.9184 )
+is_draggable = false
 ingredient = 1
 
-[node name="Sushi_Piece" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece3" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( -118.82, -151.598 )
+is_draggable = false
 
-[node name="Sushi_Piece2" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece4" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( 121.596, -151.598 )
+is_draggable = false
 
-[node name="Sushi_Piece3" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece5" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( -118.82, -227.324 )
+is_draggable = false
+ingredient = 2
 
-[node name="Sushi_Piece4" parent="Actual_Roll" instance=ExtResource( 3 )]
+[node name="Sushi_Piece6" parent="Actual_Roll" groups=[
+"roll_ingredients",
+] instance=ExtResource( 3 )]
 position = Vector2( 121.596, -227.324 )
+is_draggable = false
+ingredient = 3
 
 [node name="Rices" type="Node2D" parent="Actual_Roll"]
 
@@ -181,7 +220,7 @@ position = Vector2( 207.966, -72.9184 )
 position = Vector2( 0, -229.713 )
 z_index = 2
 collision_layer = 8
-collision_mask = 48
+collision_mask = 176
 script = ExtResource( 6 )
 is_draggable = false
 ingredient = 5
@@ -192,11 +231,11 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actual_Roll/Bottom_Seaweed"]
 rotation = 1.57079
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actual_Roll/Bottom_Seaweed"]
-anims/drop = SubResource( 3 )
-anims/pick_up = SubResource( 4 )
+anims/drop = SubResource( 4 )
+anims/pick_up = SubResource( 5 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
 [connection signal="area_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_area_entered"]

@@ -20,14 +20,22 @@ func _ready():
 	# Randomize Ingredients
 	match type:
 		Global.S_TYPE.NIGIRI:
-			pass
+			recipe[0] = randi() % 4
+			$Meat.set_texture(load(Global.ingredient_to_address(recipe[0])))
+			
 		Global.S_TYPE.ROLL:
 			for i in range(3):
-				recipe[i] = randi() % Global.INGREDIENT.size()
+				recipe[i] = randi() % 4
+			
+			# Change visibility and maki roll graphic
+			$Meat.hide()
+			$Rice.hide()
+			$Roll.show()
 
 
 func _on_Drag_Plate_on_dragging():
 	$AnimationPlayer.play("pick_up")
+	$Grab_Sound.play()
 
 
 func _on_Drag_Plate_on_released():
