@@ -45,13 +45,13 @@ func _process(_delta):
 		# Change Size
 		set_scale(Vector2(1, (new_pos + 455) / 455))
 		
-		# Change roll size
-		#$"../Actual_Roll".set_scale(Vector2(1, new_pos / -455))
-		
 		# When finished unrolling
-		if get_scale().y <= 0.02:
-			get_parent().finished_unroll()
-			queue_free()
+		if get_scale().y <= 0.2:
+			is_dragging = false
+			is_draggable = false
+			$AnimationPlayer.play("auto_roll")
+		
+		
 
 
 # Check if mouse is hovering
@@ -68,7 +68,12 @@ func _on_Top_Seaweed_mouse_exited():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	$Roll.hide()
-	$Roll2.hide()
-	$Roll3.hide()
-	is_draggable = true
+	if "spawn" in anim_name:
+		$Roll.hide()
+		$Roll2.hide()
+		$Roll3.hide()
+		is_draggable = true
+	
+	if "auto_roll" in anim_name:
+		get_parent().finished_unroll()
+		queue_free()

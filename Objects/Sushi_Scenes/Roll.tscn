@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/Sushi_Scenes/Roll.gd" type="Script" id=1]
-[ext_resource path="res://Arts/Sushi/PHseaweed.jpg" type="Texture" id=2]
+[ext_resource path="res://Arts/Sushi/seaweed_sheet.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Sushi/Sushi_Piece.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Ingredients/Rice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Ingredients/Top_Seaweed.gd" type="Script" id=5]
@@ -16,6 +16,34 @@ radius = 71.6119
 height = 450.097
 
 [sub_resource type="Animation" id=7]
+resource_name = "auto_roll"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -364 ), Vector2( 0, -455 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.2 ), Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
 resource_name = "spawn"
 length = 0.5
 step = 0.02
@@ -152,13 +180,13 @@ tracks/10/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.99202, 3.84776 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=8]
+[sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 234.521, 272.144 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -226,19 +254,20 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="Top_Seaweed"]
-position = Vector2( -7.62939e-06, -266.922 )
-scale = Vector2( 2.61187, 3.11228 )
+position = Vector2( 8.58307e-06, -266.922 )
+scale = Vector2( 2.7, 3.11228 )
 z_index = 14
 texture = ExtResource( 8 )
 mode = 2
 range_item_cull_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Top_Seaweed"]
-anims/spawn = SubResource( 7 )
+anims/auto_roll = SubResource( 7 )
+anims/spawn = SubResource( 2 )
 
 [node name="Fake_Cuttingboard" type="Sprite" parent="."]
 light_mask = 2
-material = SubResource( 8 )
+material = SubResource( 3 )
 position = Vector2( 0, -212 )
 z_index = 11
 texture = ExtResource( 7 )
@@ -395,15 +424,14 @@ is_draggable = false
 ingredient = 5
 
 [node name="Sprite" type="Sprite" parent="Actual_Roll/Bottom_Seaweed"]
-scale = Vector2( 0.401826, 0.519536 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actual_Roll/Bottom_Seaweed"]
 rotation = 1.57079
-shape = SubResource( 9 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actual_Roll/Bottom_Seaweed"]
-anims/drop = SubResource( 10 )
+anims/drop = SubResource( 5 )
 anims/pick_up = SubResource( 6 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
