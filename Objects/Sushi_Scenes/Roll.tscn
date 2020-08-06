@@ -11,7 +11,7 @@
 [ext_resource path="res://Arts/Sushi/whole_sushi_roll.png" type="Texture" id=9]
 [ext_resource path="res://Arts/Sushi/sushi_roll_piece.png" type="Texture" id=10]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 71.6119
 height = 450.097
 
@@ -152,13 +152,13 @@ tracks/10/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.99202, 3.84776 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=8]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 234.521, 272.144 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -173,7 +173,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.468, 0.173 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -190,10 +190,12 @@ tracks/0/keys = {
 }
 
 [node name="Roll" type="Node2D"]
+z_index = -3
+z_as_relative = false
 script = ExtResource( 1 )
 
 [node name="Top_Seaweed" type="Area2D" parent="."]
-z_index = 15
+z_index = 12
 collision_mask = 0
 script = ExtResource( 5 )
 
@@ -220,9 +222,8 @@ scale = Vector2( 1.987, 3.101 )
 texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Seaweed"]
-visible = false
 rotation = 1.57079
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="Top_Seaweed"]
 position = Vector2( -7.62939e-06, -266.922 )
@@ -237,9 +238,9 @@ anims/spawn = SubResource( 7 )
 
 [node name="Fake_Cuttingboard" type="Sprite" parent="."]
 light_mask = 2
-material = SubResource( 2 )
+material = SubResource( 8 )
 position = Vector2( 0, -212 )
-z_index = 14
+z_index = 11
 texture = ExtResource( 7 )
 region_filter_clip = true
 
@@ -249,40 +250,46 @@ light_mask = 2
 [node name="Sushi_Piece1" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( -116.151, -72.9184 )
+position = Vector2( -117.262, -193.85 )
+z_as_relative = true
 is_draggable = false
 ingredient = 1
 
 [node name="Sushi_Piece2" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( 124.266, -72.9184 )
+position = Vector2( 123.155, -193.85 )
+z_as_relative = true
 is_draggable = false
 ingredient = 1
 
 [node name="Sushi_Piece3" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( -118.82, -151.598 )
+position = Vector2( -119.931, -272.53 )
+z_as_relative = true
 is_draggable = false
 
 [node name="Sushi_Piece4" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( 121.596, -151.598 )
+position = Vector2( 120.485, -272.53 )
+z_as_relative = true
 is_draggable = false
 
 [node name="Sushi_Piece5" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( -118.82, -227.324 )
+position = Vector2( -119.931, -348.256 )
+z_as_relative = true
 is_draggable = false
 ingredient = 2
 
 [node name="Sushi_Piece6" parent="Actual_Roll" groups=[
 "roll_ingredients",
 ] instance=ExtResource( 3 )]
-position = Vector2( 121.596, -227.324 )
+position = Vector2( 120.485, -348.256 )
+z_as_relative = true
 is_draggable = false
 ingredient = 3
 
@@ -393,11 +400,11 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actual_Roll/Bottom_Seaweed"]
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actual_Roll/Bottom_Seaweed"]
-anims/drop = SubResource( 4 )
-anims/pick_up = SubResource( 5 )
+anims/drop = SubResource( 10 )
+anims/pick_up = SubResource( 6 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
 [connection signal="animation_finished" from="Top_Seaweed/AnimationPlayer" to="Top_Seaweed" method="_on_AnimationPlayer_animation_finished"]
