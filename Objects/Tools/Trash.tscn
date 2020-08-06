@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Tools/Trash.gd" type="Script" id=1]
-[ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
-[ext_resource path="res://Arts/Objects/back_of_box.png" type="Texture" id=3]
+[ext_resource path="res://Arts/Objects/trash_bin_base.png" type="Texture" id=2]
+[ext_resource path="res://Arts/Objects/trash_bin_border.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 200, 64 )
@@ -13,12 +13,14 @@ collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="back_of_box" type="Sprite" parent="."]
-scale = Vector2( 0.499035, 0.146079 )
-texture = ExtResource( 3 )
+position = Vector2( -0.314982, -0.314988 )
+scale = Vector2( 1, 0.836 )
+texture = ExtResource( 2 )
 
 [node name="front_of_box" type="Sprite" parent="."]
-scale = Vector2( 0.502129, 0.156865 )
-texture = ExtResource( 2 )
+position = Vector2( 0, 0.314976 )
+scale = Vector2( 1, 0.83621 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
