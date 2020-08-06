@@ -12,13 +12,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60.9922, 272.145 )
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=2]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 234.521, 272.144 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -66,8 +66,8 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="Top_Seaweed"]
-position = Vector2( 1.71661e-05, -266.922 )
-scale = Vector2( 4.8282, 3.11228 )
+position = Vector2( -7.62939e-06, -266.922 )
+scale = Vector2( 2.61187, 3.11228 )
 z_index = 14
 texture = ExtResource( 8 )
 mode = 2
@@ -75,7 +75,7 @@ range_item_cull_mask = 2
 
 [node name="Fake_Cuttingboard" type="Sprite" parent="."]
 light_mask = 2
-material = SubResource( 6 )
+material = SubResource( 2 )
 position = Vector2( 0, -212 )
 z_index = 14
 texture = ExtResource( 7 )
@@ -231,10 +231,10 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actual_Roll/Bottom_Seaweed"]
 rotation = 1.57079
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actual_Roll/Bottom_Seaweed"]
-anims/drop = SubResource( 8 )
+anims/drop = SubResource( 4 )
 anims/pick_up = SubResource( 5 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]

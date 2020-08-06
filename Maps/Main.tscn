@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
 [ext_resource path="res://Arts/Scene/background.png" type="Texture" id=9]
 [ext_resource path="res://Objects/Tools/Trash.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/SushiLove.ogg" type="AudioStream" id=11]
 
 [node name="Main" type="Node"]
 
@@ -50,3 +51,8 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
+autoplay = true
