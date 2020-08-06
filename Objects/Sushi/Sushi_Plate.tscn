@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -700 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -800 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Plate:rotation_degrees")
@@ -112,8 +112,8 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Plate" type="Sprite" parent="."]
-modulate = Color( 0.87451, 0.87451, 0.87451, 1 )
-position = Vector2( 0, 44.5 )
+position = Vector2( 0, -700 )
+rotation = 2.80649
 scale = Vector2( 1, 0.458763 )
 z_index = 10
 texture = ExtResource( 3 )
@@ -121,10 +121,10 @@ texture = ExtResource( 3 )
 [node name="Particle" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 35.0816 )
-scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="Drag_Plate" type="Area2D" parent="."]
+position = Vector2( 0, -800 )
 z_index = 12
 collision_layer = 64
 collision_mask = 32

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const COLORS_LIST = ["e23d3d", "e29e3d", "e23dd4", "5ce04a", "4ac0e0", "e2e2e2"]
+const COLORS_LIST = ["22b2ea", "f2786d", "f2a341", "d9b607", "888c07", "cecece"]
 
 const SPEED = -300
 
