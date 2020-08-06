@@ -30,7 +30,12 @@ func _ready():
 			# Change visibility and maki roll graphic
 			$Meat.hide()
 			$Rice.hide()
-			$Roll.show()
+			$Rolls.show()
+			
+			# Set roll top color to match the recipe
+			$Rolls/Top1.set_modulate(Global.ingredient_to_colors(recipe[0]))
+			$Rolls/Top2.set_modulate(Global.ingredient_to_colors(recipe[1]))
+			$Rolls/Top3.set_modulate(Global.ingredient_to_colors(recipe[2]))
 
 
 func _on_Drag_Plate_on_dragging():

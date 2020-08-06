@@ -33,6 +33,18 @@ func ingredient_to_address(i):
 			return "res://Arts/Sushi/PHseaweed.jpg"
 
 
+func ingredient_to_colors(i):
+	match i:
+		INGREDIENT.SALMON:
+			return Color("f25738")
+		INGREDIENT.SHRIMP:
+			return Color("f28b38")
+		INGREDIENT.CUCUMBER:
+			return Color("93a603")
+		INGREDIENT.RADISH:
+			return Color("f2c744")
+
+
 # Used for reparenting nodes
 func reparent(child: Node, new_parent: Node):
 	var old_parent = child.get_parent()
