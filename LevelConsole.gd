@@ -3,11 +3,9 @@ extends Node2D
 #export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
 #Only level related stuff
 
-var testI = [0,1,5,0,1]
+var testI = [0,1,2,3,5]
 var money = 0
 
-func _ready():
-	Global.Console = self
 
 
 func _ready():
@@ -30,10 +28,12 @@ func minusPoint(type):
 	if type == 1:
 		point = 2
 	money -= point
-#	$Money.set_text(money)
+	$Money.set_text(str(money))
 	
 func addPoint(_point):
 	if _point != null:
 		money += _point
-#	$Money.set_text(money)
+	else:
+		money += 1
+	$Money.set_text(str(money))
 

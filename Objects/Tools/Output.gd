@@ -26,9 +26,9 @@ func checkOutput(statu):
 	if statu == 1:
 		combo += 1
 
-func countOutput(type,statu):
+func countOutput(_type,statu):
 	if statu == 1:
-		Global.Console.addPoint()
+		Global.Console.addPoint(2)
 
 
 
