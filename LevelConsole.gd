@@ -9,10 +9,13 @@ var money = 0
 func _ready():
 	Global.Console = self
 
+#func _process(delta):
+#	pass
 
 func getIng():
-	randomize()
-	var Ingredient = testI[randi() % 5]
+	randomize ( )
+	var Ingredient = testI[randi()%5]
+  
 	return Ingredient
 
 
@@ -21,12 +24,18 @@ func minusPoint(type):
 	if type == 0:
 		point = 1
 	if type == 1:
-		point = 2
+
+		point = 3
 	money -= point
-#	$Money.set_text(money)
+	$Money.changePoint(point,0)
+
 	
 func addPoint(_point):
 	if _point != null:
 		money += _point
-#	$Money.set_text(money)
+
+	else:
+		money += 5
+	$Money.changePoint(_point,1)
+
 

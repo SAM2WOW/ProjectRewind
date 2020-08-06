@@ -149,7 +149,9 @@ z_index = 11
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drag_Plate"]
+
 position = Vector2( -0.002165, 0 )
+
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Drag_Plate"]
@@ -169,6 +171,7 @@ anims/flip = SubResource( 4 )
 stream = ExtResource( 6 )
 bus = "SFX"
 script = ExtResource( 7 )
+
 
 [connection signal="area_entered" from="Base_Plate" to="." method="_on_Base_Plate_area_entered"]
 [connection signal="area_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_entered"]

@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=12 format=2]
+
 
 [ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Tools/Output.gd" type="Script" id=2]
@@ -7,94 +9,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 184.885, 403.333 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "MoveIn"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -300, 379.215 ), Vector2( 148.245, 379.215 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 148.245, 379.215 ), Vector2( 98.4403, 379.215 ), Vector2( -1.16977, 379.215 ), Vector2( -100.78, 379.215 ), Vector2( -200.39, 379.215 ), Vector2( -300, 379.215 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -300, 658.598 ), Vector2( 147.647, 661.772 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.45 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 148.245, 658.598 ), Vector2( -300, 658.598 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -363.496, 944.33 ), Vector2( 157.172, 937.98 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 148.245, 937.98 ), Vector2( 98.44, 937.98 ), Vector2( -1.17, 937.98 ), Vector2( -100.78, 937.98 ), Vector2( -200.39, 937.98 ), Vector2( -300, 937.98 ) ]
-}
 
 [node name="Output" type="Node2D"]
 script = ExtResource( 2 )
@@ -107,11 +21,7 @@ position = Vector2( 187.036, 658.598 )
 shape = SubResource( 1 )
 
 [node name="Box1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 148.245, 379.215 )
-
-[node name="Ani" type="AnimationPlayer" parent="Box1"]
-anims/MoveIn = SubResource( 2 )
-"anims/New Anim" = SubResource( 3 )
+position = Vector2( 169.666, 380.142 )
 
 [node name="Label" type="RichTextLabel" parent="Box1"]
 margin_left = -101.0
@@ -128,7 +38,9 @@ __meta__ = {
 }
 
 [node name="Box2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 147.647, 661.772 )
+
+position = Vector2( 172.533, 653.259 )
+
 ingredient = 5
 
 [node name="Label" type="RichTextLabel" parent="Box2"]
@@ -144,12 +56,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Ani" type="AnimationPlayer" parent="Box2"]
-anims/MoveIn = SubResource( 4 )
-"anims/New Anim" = SubResource( 5 )
-
 [node name="Box3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 148.245, 937.98 )
+position = Vector2( 170.44, 933.651 )
 ingredient = 5
 
 [node name="Label" type="RichTextLabel" parent="Box3"]
@@ -164,12 +72,5 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Ani" type="AnimationPlayer" parent="Box3"]
-anims/MoveIn = SubResource( 6 )
-"anims/New Anim" = SubResource( 7 )
 [connection signal="mouse_entered" from="AreaBox" to="." method="_on_AreaBox_mouse_entered"]
 [connection signal="mouse_exited" from="AreaBox" to="." method="_on_AreaBox_mouse_exited"]
-[connection signal="animation_finished" from="Box1/Ani" to="Box1" method="_on_Ani_animation_finished"]
-[connection signal="animation_finished" from="Box2/Ani" to="Box2" method="_on_Ani_animation_finished"]
-[connection signal="animation_finished" from="Box3/Ani" to="Box3" method="_on_Ani_animation_finished"]

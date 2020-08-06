@@ -20,6 +20,8 @@ func _on_Rice_area_entered(area):
 		$Tween.start()
 		
 		$AudioStreamPlayer2D.play()
+		
+		Global.Console.addPoint(0.01)
 	
 	# Else Check if anything on top of the rice
 	elif "Sushi" in area.name:

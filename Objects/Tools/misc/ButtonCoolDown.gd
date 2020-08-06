@@ -1,10 +1,10 @@
-extends Area2D
+extends TextureButton
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,5 +14,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func dropped():
-	Global.Console.addPoint(0.3)
+
+
+func _on_TextureButton_pressed():
+	$Timer.start() # Replace with function body.
+	
+	disabled = true
+
+
+func _on_Timer_timeout():
+	disabled = false # Replace with function body.

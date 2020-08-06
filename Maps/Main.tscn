@@ -1,16 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Console.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Tools/Spoon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tools/Output.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Arts/Objects/back_of_box.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
 [ext_resource path="res://Arts/Scene/background.png" type="Texture" id=9]
 [ext_resource path="res://Objects/Tools/Trash.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sounds/SushiLove.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 104, 96 )
 
 [node name="Main" type="Node"]
 
@@ -32,10 +36,26 @@ position = Vector2( 960, 637.012 )
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 1726.85, 729.815 )
 
-[node name="RiceBox" parent="Node2D" instance=ExtResource( 6 )]
+[node name="RiceBox" type="Area2D" parent="Node2D"]
 position = Vector2( 1649.43, 505.866 )
+collision_layer = 16
+collision_mask = 0
 script = ExtResource( 8 )
 ingredient = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RiceBox"]
+shape = SubResource( 1 )
+
+[node name="boxarea" type="Node2D" parent="Node2D/RiceBox"]
+position = Vector2( 0.794678, -3.5636 )
+
+[node name="back_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
+scale = Vector2( 0.259917, 0.239654 )
+texture = ExtResource( 6 )
+
+[node name="front_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
+scale = Vector2( 0.259917, 0.239654 )
+texture = ExtResource( 12 )
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 143.489, 55.75 )
