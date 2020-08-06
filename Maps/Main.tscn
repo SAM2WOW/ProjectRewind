@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -12,19 +12,54 @@
 [ext_resource path="res://Objects/Tools/Trash.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sounds/SushiLove.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=12]
+[ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Objects/MainMenu.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1, 1.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 0.5, 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -753 ), Vector2( 0, -753 ), Vector2( 0, -798.255 ), Vector2( 0, -767.142 ), Vector2( 0, -781.284 ), Vector2( 0, -753 ), Vector2( 0, -753 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Node2D/ConveyorBelt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -0.156 ],
+"method": "change_conveyor_speed"
+} ]
+}
+
 [node name="Main" type="Node"]
+script = ExtResource( 14 )
 
 [node name="Console" parent="." instance=ExtResource( 3 )]
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="Node2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( 0, -753 )
 offset = Vector2( 960, 540 )
 current = true
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="Hand" parent="Node2D" instance=ExtResource( 2 )]
 
@@ -68,15 +103,67 @@ offset = Vector2( 960, 540 )
 [node name="Trash" parent="Node2D" instance=ExtResource( 10 )]
 position = Vector2( 1649.43, 993.73 )
 
-[node name="Control" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
+margin_top = -0.533
 margin_right = 1920.0
-margin_bottom = 1080.0
+margin_bottom = 1079.47
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Menu" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -753.0
+margin_bottom = -753.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
+margin_left = 923.0
+margin_top = 486.0
+margin_right = 996.0
+margin_bottom = 593.0
+
+[node name="Play" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
+margin_right = 73.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 13 )
+text = "Play"
+
+[node name="Options" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 73.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 13 )
+text = "Options"
+
+[node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 73.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 13 )
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/intro = SubResource( 2 )
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -10.0
 autoplay = true
+[connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
