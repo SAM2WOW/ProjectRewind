@@ -26,9 +26,14 @@ func checkOutput(statu):
 	if statu == 1:
 		combo += 1
 
+func forceOutput():
+	$Box1.checkOutput(1)
+	$Box2.checkOutput(1)
+	$Box3.checkOutput(1)
+
 func countOutput(_type,statu):
 	if statu == 1:
-		Global.Console.addPoint(2)
+		Global.Console.addPoint(5)
 
 
 

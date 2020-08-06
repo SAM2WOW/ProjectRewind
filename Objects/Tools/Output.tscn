@@ -32,7 +32,7 @@ __meta__ = {
 }
 
 [node name="Box2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 180.542, 677.286 )
+position = Vector2( 172.533, 653.259 )
 ingredient = 5
 
 [node name="Label" type="RichTextLabel" parent="Box2"]

@@ -1,18 +1,21 @@
-extends Area2D
+extends Node2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
+var value = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Label.set_text(str(value*100))
+	$Anim.play("out") # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func dropped():
-	Global.Console.addPoint(0.3)
+
+
+func _on_Anim_animation_finished(anim_name):
+	queue_free() # Replace with function body.

@@ -26,14 +26,14 @@ func minusPoint(type):
 	if type == 0:
 		point = 1
 	if type == 1:
-		point = 2
+		point = 3
 	money -= point
-	$Money.set_text(str(money))
+	$Money.changePoint(point,0)
 	
 func addPoint(_point):
 	if _point != null:
 		money += _point
 	else:
-		money += 1
-	$Money.set_text(str(money))
+		money += 5
+	$Money.changePoint(_point,1)
 

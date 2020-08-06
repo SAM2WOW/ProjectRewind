@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
 [ext_resource path="res://Arts/Objects/back_of_box.png" type="Texture" id=3]
+[ext_resource path="res://Arts/Scene/conveyer_belt.png" type="Texture" id=4]
+[ext_resource path="res://Objects/Tools/misc/ButtonCoolDown.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
@@ -47,6 +49,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="boxarea" type="Node2D" parent="."]
+position = Vector2( -450, 0 )
 
 [node name="back_of_box" type="Sprite" parent="boxarea"]
 scale = Vector2( 0.259917, 0.239654 )
@@ -59,4 +62,44 @@ texture = ExtResource( 2 )
 [node name="Ani" type="AnimationPlayer" parent="."]
 anims/MoveIn = SubResource( 2 )
 "anims/New Anim" = SubResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = -379.01
+margin_top = -45.2549
+margin_right = 388.99
+margin_bottom = 722.745
+rect_scale = Vector2( 0.262953, 0.104572 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_disabled = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="TextureButton"]
+wait_time = 3.0
+one_shot = true
+
+[node name="conveyer_belt" type="Sprite" parent="."]
+modulate = Color( 0.921569, 0.890196, 0.737255, 1 )
+position = Vector2( -656.574, 41.0042 )
+scale = Vector2( 0.589582, 0.915363 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Number" type="Label" parent="."]
+margin_left = -275.923
+margin_top = -6.29959
+margin_right = -235.923
+margin_bottom = 7.70041
+rect_scale = Vector2( 7.17484, 7.17484 )
+text = "x0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
+[connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="TextureButton/Timer" to="TextureButton" method="_on_Timer_timeout"]

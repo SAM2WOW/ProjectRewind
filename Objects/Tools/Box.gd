@@ -12,22 +12,27 @@ func _ready():
 	ingredient = Global.Console.getIng()
 	$Label.set_text(Global.INGREDIENT.keys()[ingredient])
 	getNumber()
+	$Number.set_text("x"+str(space))
 
 func getNumber():
-	if ingredient == 0 or ingredient == 1 or ingredient == 2 or ingredient == 3:
-		space = 3
-	else:
+	if ingredient == 5:
 		space = 2
+	else:
+		space = 3
 
 func dropped():
 	print("Hey you dropped the ingredient! Nice")
 	filled += 1
-	checkOutput()
+	checkOutput(0)
 
-func checkOutput():
+
+func checkOutput(_forced):
+	$Number.set_text("x"+str(space-filled))
 	if filled >= space:
 		statu = 1
+	if statu == 1 and _forced == 1:
 		output()
+
 
 func output():
 	get_node("CollisionShape2D").disabled = true
@@ -38,6 +43,7 @@ func output():
 
 
 func swipe():
+	$Number.set_text("x"+str(space))
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	self.ingredient = Global.Console.getIng()
@@ -49,3 +55,16 @@ func _on_Ani_animation_finished(anim_name):
 	if anim_name == "New Anim":
 		#output()
 		$Ani.play("MoveIn")
+
+
+func _on_TextureButton_pressed():
+	if statu == 1:
+		get_parent().forceOutput()
+	else:
+		output()
+ # Replace with function body.
+
+
+func _on_TextureButton_button_down():
+		get_parent().checkOutput(statu)
+ # Replace with function body.
