@@ -11,14 +11,17 @@ var is_dragging: bool = false
 # The position to return to when dropping failed
 var original_position: Vector2
 
+var is_draggable = true
+
 
 func _ready():
 	original_position = get_position()
+	$AnimationPlayer.play("spawn")
 
 
 func _input(_event):
 	# Turn on dragging when mouse clicked on the area
-	if is_mouse_hover and Input.is_action_just_pressed("touch"):
+	if is_mouse_hover and Input.is_action_just_pressed("touch") and is_draggable:
 		is_dragging = true
 		
 		Global.mouse_selected = true
@@ -54,9 +57,18 @@ func _process(_delta):
 # Check if mouse is hovering
 func _on_Top_Seaweed_mouse_entered():
 	is_mouse_hover = true
-	$Sprite.set_scale(Vector2(0.402, 0.12) * 1.1)
+	
+	if is_draggable:
+		$Sprite.set_scale(Vector2(1.1, 1.1))
 
 
 func _on_Top_Seaweed_mouse_exited():
 	is_mouse_hover = false
-	$Sprite.set_scale(Vector2(0.402, 0.12))
+	$Sprite.set_scale(Vector2(1, 1))
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$Roll.hide()
+	$Roll2.hide()
+	$Roll3.hide()
+	is_draggable = true

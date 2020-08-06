@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/Sushi_Scenes/Roll.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/PHseaweed.jpg" type="Texture" id=2]
@@ -8,9 +8,149 @@
 [ext_resource path="res://Objects/Ingredients/Bottom_Seaweed.gd" type="Script" id=6]
 [ext_resource path="res://Arts/Scene/cutting_board.png" type="Texture" id=7]
 [ext_resource path="res://Arts/Lightmask.png" type="Texture" id=8]
+[ext_resource path="res://Arts/Sushi/whole_sushi_roll.png" type="Texture" id=9]
+[ext_resource path="res://Arts/Sushi/sushi_roll_piece.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60.9922, 272.145 )
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 71.6119
+height = 450.097
+
+[sub_resource type="Animation" id=7]
+resource_name = "spawn"
+length = 0.5
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Roll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.04, 0.16, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.0486, -19.2708 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 18.4327, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Roll:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 89.9999, 89.9999 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Roll2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.08, 0.22, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -22.6786, 0 ), Vector2( -22.6786, 0 ), Vector2( -80.247, 0 ), Vector2( -80.247, 0 ), Vector2( -42.9669, 0 ), Vector2( -143.455, -7.27596e-12 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Roll2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.08, 0.22, 0.24 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 89.9999, 89.9999 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Roll3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.5, 13.2292 ), Vector2( 92.5403, 0 ), Vector2( 92.5403, 0 ), Vector2( 42.9199, 0 ), Vector2( 158.346, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Roll3:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.24 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 89.9999, 89.9999 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.296498, 0.518513 ), Vector2( 0.296498, 0.518513 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Roll3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.987, 3.101 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Roll:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.98839, 3.74193 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Roll2:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.24, 0.36, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.99202, 3.84776 ) ]
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 light_mode = 2
@@ -58,12 +198,31 @@ collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Top_Seaweed"]
-scale = Vector2( 0.401826, 0.119536 )
-texture = ExtResource( 2 )
+z_index = 1
+texture = ExtResource( 9 )
+
+[node name="Roll2" type="Sprite" parent="Top_Seaweed"]
+position = Vector2( -143.455, -7.27596e-12 )
+rotation = 1.57079
+scale = Vector2( 1.99202, 3.84776 )
+texture = ExtResource( 10 )
+
+[node name="Roll" type="Sprite" parent="Top_Seaweed"]
+position = Vector2( 18.4327, 0 )
+rotation = 1.57079
+scale = Vector2( 1.98839, 3.74193 )
+texture = ExtResource( 10 )
+
+[node name="Roll3" type="Sprite" parent="Top_Seaweed"]
+position = Vector2( 158.346, 0 )
+rotation = 1.57079
+scale = Vector2( 1.987, 3.101 )
+texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Seaweed"]
+visible = false
 rotation = 1.57079
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="Light2D" type="Light2D" parent="Top_Seaweed"]
 position = Vector2( -7.62939e-06, -266.922 )
@@ -72,6 +231,9 @@ z_index = 14
 texture = ExtResource( 8 )
 mode = 2
 range_item_cull_mask = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Top_Seaweed"]
+anims/spawn = SubResource( 7 )
 
 [node name="Fake_Cuttingboard" type="Sprite" parent="."]
 light_mask = 2
@@ -238,6 +400,7 @@ anims/drop = SubResource( 4 )
 anims/pick_up = SubResource( 5 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
+[connection signal="animation_finished" from="Top_Seaweed/AnimationPlayer" to="Top_Seaweed" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_area_exited"]
 [connection signal="mouse_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_mouse_entered"]
