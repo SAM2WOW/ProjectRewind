@@ -22,6 +22,10 @@ extents = Vector2( 104, 96 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+offset = Vector2( 960, 540 )
+current = true
+
 [node name="Hand" parent="Node2D" instance=ExtResource( 2 )]
 
 [node name="Cutting_Board" parent="Node2D" instance=ExtResource( 7 )]

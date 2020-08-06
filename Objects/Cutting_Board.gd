@@ -9,16 +9,16 @@ var roll = preload("res://Objects/Sushi_Scenes/Roll.tscn")
 # Spawn sushi based on type
 func spawn_sushi(type, recipe):
 
-	occupied = true
 
 	match type:
 		Global.S_TYPE.NIGIRI:
 			var n = nigiri.instance()
 			n.ingredient = recipe[0]
 
-			n.set_position(get_local_mouse_position())
 
 			Global.Console.minusPoint(type)
+			n.set_position(get_local_mouse_position())
+
 
 			add_child(n)
 			

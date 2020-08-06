@@ -6,8 +6,6 @@ extends Node2D
 var testI = [0,1,2,3,5]
 var money = 0
 
-
-
 func _ready():
 	Global.Console = self
 
@@ -26,14 +24,18 @@ func minusPoint(type):
 	if type == 0:
 		point = 1
 	if type == 1:
+
 		point = 3
 	money -= point
 	$Money.changePoint(point,0)
+
 	
 func addPoint(_point):
 	if _point != null:
 		money += _point
+
 	else:
 		money += 5
 	$Money.changePoint(_point,1)
+
 
