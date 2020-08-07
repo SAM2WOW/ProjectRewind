@@ -13,6 +13,8 @@ func _ready():
 		var sushi = get_node("Actual_Roll/Sushi_Piece" + str(i + 1))
 		sushi.ingredient = ingredient[order[i]]
 		sushi.change_ingredient()
+	
+	$Spawn.play()
 
 
 func finished_unroll():

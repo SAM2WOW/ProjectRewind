@@ -6,11 +6,3 @@ func _process(_delta):
 	
 	if rice_num <= 0:
 		is_draggable = true
-
-
-func _on_Bottom_Seaweed_on_dragging():
-	$Seaweed.play()
-
-
-func _on_Bottom_Seaweed_on_released():
-	$B_Released.play()

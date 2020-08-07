@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Objects/Sushi_Scenes/Roll.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/seaweed_sheet.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Sounds/seaweed.wav" type="AudioStream" id=13]
 [ext_resource path="res://Sounds/seaweed_grab.wav" type="AudioStream" id=14]
 [ext_resource path="res://Sounds/seaweed_released.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=16]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 71.6119
@@ -504,15 +505,20 @@ shape = SubResource( 5 )
 anims/drop = SubResource( 6 )
 anims/pick_up = SubResource( 7 )
 
-[node name="Seaweed" type="AudioStreamPlayer2D" parent="Actual_Roll/Bottom_Seaweed"]
+[node name="Grab" type="AudioStreamPlayer2D" parent="Actual_Roll/Bottom_Seaweed"]
 stream = ExtResource( 13 )
 bus = "SFX"
 script = ExtResource( 12 )
 base_volume = -5.0
 
-[node name="B_Released" type="AudioStreamPlayer2D" parent="Actual_Roll/Bottom_Seaweed"]
+[node name="Drop" type="AudioStreamPlayer2D" parent="Actual_Roll/Bottom_Seaweed"]
 position = Vector2( 0, 229.713 )
 stream = ExtResource( 15 )
+bus = "SFX"
+script = ExtResource( 12 )
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
 bus = "SFX"
 script = ExtResource( 12 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
@@ -525,7 +531,5 @@ script = ExtResource( 12 )
 [connection signal="mouse_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_mouse_exited"]
 [connection signal="on_dragging" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_on_dragging"]
-[connection signal="on_dragging" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_on_dragging"]
 [connection signal="on_dropped" from="Actual_Roll/Bottom_Seaweed" to="." method="_on_Bottom_Seaweed_on_dropped"]
 [connection signal="on_released" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_on_released"]
-[connection signal="on_released" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_on_released"]

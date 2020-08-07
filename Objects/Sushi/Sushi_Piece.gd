@@ -26,6 +26,8 @@ func _on_Sushi_Piece_on_dragging():
 	set_rotation_degrees(rand_range(-20, 20))
 	
 	$AnimationPlayer.play("pick_up")
+	
+	$Grab.play()
 
 
 # Drop and kill the ingredient 
@@ -40,6 +42,8 @@ func _on_Sushi_Piece_on_released():
 	if on_cutting_board:
 		set_original_position(get_position())
 		$AnimationPlayer.play("drop")
+	
+	$Drop.play()
 
 
 # Check if the box is the right box
