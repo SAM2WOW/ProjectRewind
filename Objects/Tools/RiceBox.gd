@@ -2,7 +2,7 @@ extends Area2D
 
 
 var ingredient = Global.INGREDIENT.RICE
-var statu = 1
+var statu = 0
 
 func dropped():
 	Global.Console.addPoint(0.1)
