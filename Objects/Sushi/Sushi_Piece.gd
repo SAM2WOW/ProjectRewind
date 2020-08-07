@@ -34,7 +34,7 @@ func _on_Sushi_Piece_on_dragging():
 func _on_Sushi_Piece_on_released():
 	# If drop on the box
 	if droppable and "Trash" in box_ref.name:
-		box_ref.dropped()
+		box_ref.dropped(ingredient)
 		emit_signal("on_dropped")
 		queue_free()
 	elif droppable and box_ref.ingredient == ingredient:

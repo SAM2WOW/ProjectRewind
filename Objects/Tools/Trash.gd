@@ -5,6 +5,8 @@ func _ready():
 	pass
 
 
-func dropped():
-	print("!!!TRASHED INGREDIENTS!!!!")
+func dropped(ingredient):
+	$Fake_Sushi.set_texture(load(Global.ingredient_to_address(ingredient)))
+	
+	$AnimationPlayer.play("trashed")
 	
