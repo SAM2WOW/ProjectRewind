@@ -1,5 +1,7 @@
 extends Area2D
 
+# For manually setting scrappable
+export var forced_scrappable = false
 
 var scrappable = true
 
@@ -11,7 +13,7 @@ func _ready():
 
 func _on_Rice_area_entered(area):
 	# Scrap the rice if scrappable
-	if scrappable and "Scrap" in area.name:
+	if "Scrap" in area.name and scrappable and forced_scrappable:
 		
 		#$AnimationPlayer.play("Scrapped")
 		$Tween.interpolate_property(self, "global_position",

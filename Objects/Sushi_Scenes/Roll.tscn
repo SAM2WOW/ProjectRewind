@@ -16,7 +16,7 @@
 radius = 71.6119
 height = 450.097
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "auto_roll"
 length = 0.2
 tracks/0/type = "value"
@@ -44,8 +44,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 0.2 ), Vector2( 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "spawn"
+[sub_resource type="Animation" id=3]
 length = 0.5
 step = 0.02
 tracks/0/type = "value"
@@ -181,13 +180,13 @@ tracks/10/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0.9, 1 ), Vector2( 1.99202, 3.84776 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=4]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 234.521, 272.144 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -227,7 +226,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.3
 step = 0.02
 tracks/0/type = "value"
@@ -312,12 +311,12 @@ mode = 2
 range_item_cull_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Top_Seaweed"]
-anims/auto_roll = SubResource( 7 )
-anims/spawn = SubResource( 2 )
+anims/auto_roll = SubResource( 2 )
+anims/spawn = SubResource( 3 )
 
 [node name="Fake_Cuttingboard" type="Sprite" parent="."]
 light_mask = 2
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 0, -212 )
 z_index = 11
 texture = ExtResource( 7 )
@@ -484,11 +483,11 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Actual_Roll/Bottom_Seaweed"]
 rotation = 1.57079
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actual_Roll/Bottom_Seaweed"]
-anims/drop = SubResource( 5 )
-anims/pick_up = SubResource( 6 )
+anims/drop = SubResource( 6 )
+anims/pick_up = SubResource( 7 )
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
 [connection signal="animation_finished" from="Top_Seaweed/AnimationPlayer" to="Top_Seaweed" method="_on_AnimationPlayer_animation_finished"]
