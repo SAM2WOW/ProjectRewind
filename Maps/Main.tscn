@@ -1,19 +1,20 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Console.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Tools/Spoon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tools/Output.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Arts/Objects/back_of_box.png" type="Texture" id=6]
+[ext_resource path="res://Arts/Objects/short_rice_basket_front.png" type="Texture" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
 [ext_resource path="res://Arts/Scene/background.png" type="Texture" id=9]
 [ext_resource path="res://Objects/Tools/Trash.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sounds/SushiLove.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=12]
+[ext_resource path="res://Arts/Objects/short_rice_basket_back.png" type="Texture" id=12]
 [ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Objects/MainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Arts/Objects/short_rice_basket_rice.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
@@ -84,13 +85,14 @@ shape = SubResource( 1 )
 [node name="boxarea" type="Node2D" parent="Node2D/RiceBox"]
 position = Vector2( 0.794678, -3.5636 )
 
-[node name="back_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
-scale = Vector2( 0.259917, 0.239654 )
-texture = ExtResource( 6 )
-
-[node name="front_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
-scale = Vector2( 0.259917, 0.239654 )
+[node name="back_of_basket" type="Sprite" parent="Node2D/RiceBox/boxarea"]
 texture = ExtResource( 12 )
+
+[node name="rice_for_basket" type="Sprite" parent="Node2D/RiceBox/boxarea"]
+texture = ExtResource( 15 )
+
+[node name="front_of_basket" type="Sprite" parent="Node2D/RiceBox/boxarea"]
+texture = ExtResource( 6 )
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 143.489, 55.75 )
