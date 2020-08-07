@@ -22,5 +22,5 @@ func _on_Timer_timeout():
 	var noter = note.instance()
 	noter.value = charge
 	add_child(noter)
-	self.set_text(str($"../../..".money * 100))
+	self.set_text(str($"../../..".money * 100) + "¥")
 	charge = 0 
