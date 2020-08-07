@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sushi_plate_2.png-23565f415df42bf6b5b6d165f3b2717d.stex"
+path="res://.import/sushi_plate.png-b3e71ae25caa568f455698318b6cbb0b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Scene/sushi_plate_2.png"
-dest_files=[ "res://.import/sushi_plate_2.png-23565f415df42bf6b5b6d165f3b2717d.stex" ]
+source_file="res://Arts/Scene/sushi_plate.png"
+dest_files=[ "res://.import/sushi_plate.png-b3e71ae25caa568f455698318b6cbb0b.stex" ]
 
 [params]
 

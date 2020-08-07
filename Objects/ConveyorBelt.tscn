@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Arts/ConveyorBelt.shader" type="Shader" id=1]
 [ext_resource path="res://Objects/ConveyorBelt.gd" type="Script" id=2]
 [ext_resource path="res://Arts/Scene/conveyer_belt.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Sushi/Sushi_Plate.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -24,5 +25,8 @@ wait_time = 1.5
 autostart = true
 
 [node name="SpawnPosition" type="Position2D" parent="."]
-position = Vector2( 2118.49, 123.078 )
+position = Vector2( 2118.49, 146.078 )
+
+[node name="Sushi_Plate" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2118.49, 146.078 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

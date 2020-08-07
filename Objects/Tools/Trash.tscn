@@ -20,7 +20,9 @@ texture = ExtResource( 2 )
 [node name="front_of_box" type="Sprite" parent="."]
 position = Vector2( 0, 0.314976 )
 scale = Vector2( 1, 0.83621 )
+z_index = 10
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )

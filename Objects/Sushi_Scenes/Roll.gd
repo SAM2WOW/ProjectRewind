@@ -38,6 +38,10 @@ func finished_unroll():
 		i.set_original_position(new_pos)
 		
 		i.remove_from_group("roll_ingredients")
+	
+	# Set all the rice to forced scrappable
+	for r in $Actual_Roll/Rices.get_children():
+		r.forced_scrappable = true
 
 
 
