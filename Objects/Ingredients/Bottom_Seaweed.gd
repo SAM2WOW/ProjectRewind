@@ -15,14 +15,15 @@ func _process(_delta):
 
 
 func _input(_event):
-	if is_mouse_hover and Input.is_action_just_pressed("touch"):
+	if is_mouse_hover and ready and Input.is_action_just_pressed("touch"):
 		$Grab.play()
 		$AnimationPlayer.play("pick_up")
 
 
 func _on_Bottom_Seaweed_mouse_entered():
+	is_mouse_hover = true
+	
 	if ready:
-		is_mouse_hover = true
 		set_scale(Vector2(1.1, 1.1))
 
 
