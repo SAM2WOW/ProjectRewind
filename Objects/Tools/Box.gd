@@ -1,7 +1,7 @@
 extends Area2D
 
-
 export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
+
 var statu = 0
 var space = 0
 var filled = 0
@@ -10,6 +10,11 @@ var filled = 0
 var outTime = 300
 var curTime = 0 #current time, count every 0.2 sec
 
+# For Spawning Graphics
+var original_sprite_position = Vector2(-60, -8)
+var temp_sprite_location = Vector2(-60, -8)
+
+
 func _ready():
 	$Ani.play("MoveIn")
 	ingredient = Global.Console.getIng()
@@ -17,16 +22,37 @@ func _ready():
 	getNumber()
 	$Number.set_text("x"+str(space))
 
+
 func getNumber():
-	if ingredient == 5:
+	if ingredient == Global.INGREDIENT.SEAWEED:
 		space = 2
 	else:
 		space = 3
 
+
 func dropped():
-	print("Hey you dropped the ingredient! Nice")
+	spawn_graphic()
 	filled += 1
 	checkOutput(0)
+
+
+func spawn_graphic():
+	var s = Sprite.new()
+	s.set_texture(load(Global.ingredient_to_address(ingredient)))
+	s.set_scale(Vector2(0.7, 0.7))
+	s.set_position(temp_sprite_location)
+	s.set_rotation_degrees(rand_range(80.0, 100.0))
+	
+	temp_sprite_location.x += 30
+	
+	$boxarea/Sushi_Sprites.add_child(s)
+
+
+func delete_graphic():
+	for i in $boxarea/Sushi_Sprites.get_children():
+		i.queue_free()
+	
+	temp_sprite_location = original_sprite_position
 
 
 func checkOutput(_forced):
@@ -41,7 +67,7 @@ func output():
 	curTime = 0
 	get_node("CollisionShape2D").disabled = true
 	get_parent().countOutput(ingredient,statu)
-	$Ani.play("New Anim")
+	$Ani.play("Output")
 	statu = 0
 	swipe()
 
@@ -56,8 +82,9 @@ func swipe():
 
 
 func _on_Ani_animation_finished(anim_name):
-	if anim_name == "New Anim":
+	if anim_name == "Output":
 		#output()
+		delete_graphic()
 		$Ani.play("MoveIn")
 	if anim_name == "MoveIn":
 		$Timeout.start()
@@ -68,12 +95,10 @@ func _on_TextureButton_pressed():
 		get_parent().forceOutput()
 	else:
 		output()
- # Replace with function body.
 
 
 func _on_TextureButton_button_down():
 		get_parent().checkOutput(statu)
- # Replace with function body.
 
 
 func _on_Timeout_timeout():
@@ -84,14 +109,14 @@ func _on_Timeout_timeout():
 		curTime = 0
 	elif curTime >= 240:
 		if curTime%10 <=7:
-			var dx = rand_range(15,-12)
-			var dy = rand_range(15,-12)
+			var dx = rand_range(20,-20)
+			var dy = rand_range(20,-20)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 	elif curTime >= 160:
 		if curTime%18 <= 8 and curTime%2 == 0:
-			var dx = rand_range(12,-10)
-			var dy = rand_range(12,-10)
+			var dx = rand_range(12,-12)
+			var dy = rand_range(12,-12)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 		pass

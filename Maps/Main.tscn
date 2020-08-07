@@ -31,12 +31,11 @@
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 
-
 [sub_resource type="DynamicFont" id=2]
 size = 350
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -50,7 +49,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
 }
-
 
 [sub_resource type="Animation" id=4]
 length = 5.0
@@ -257,7 +255,7 @@ script = ExtResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 0, -2000 )
+position = Vector2( 0, -753 )
 offset = Vector2( 960, 540 )
 current = true
 
@@ -274,9 +272,10 @@ position = Vector2( 960, 637.012 )
 position = Vector2( 1726.85, 729.815 )
 
 [node name="RiceBox" parent="Node2D" instance=ExtResource( 6 )]
+scale = Vector2( 1.4, 1.4 )
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
-position = Vector2( 172.239, 49.9697 )
+position = Vector2( 165.177, 63.1839 )
 
 [node name="Trash" parent="Node2D" instance=ExtResource( 10 )]
 position = Vector2( 1649.43, 993.73 )
@@ -317,7 +316,6 @@ margin_bottom = 759.0
 rect_pivot_offset = Vector2( 159, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
-
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 4
@@ -357,17 +355,18 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -2.66968
-margin_bottom = -2.66968
+margin_left = 960.0
+margin_top = -3.0
+margin_bottom = -3.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
-margin_left = 869.0
+margin_left = 389.0
 margin_top = 474.0
-margin_right = 1050.0
+margin_right = 570.0
 margin_bottom = 605.0
 
 [node name="Play" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
@@ -422,8 +421,8 @@ bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/menu_intro = SubResource( 4 )
-anims/scene_intro = SubResource( 5 )
+anims/menu_intro = SubResource( 3 )
+anims/scene_intro = SubResource( 4 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
