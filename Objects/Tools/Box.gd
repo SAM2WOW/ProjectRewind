@@ -38,6 +38,7 @@ func checkOutput(_forced):
 
 
 func output():
+	curTime = 0
 	get_node("CollisionShape2D").disabled = true
 	get_parent().countOutput(ingredient,statu)
 	$Ani.play("New Anim")
