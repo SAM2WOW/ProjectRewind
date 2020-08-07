@@ -42,3 +42,4 @@ script = ExtResource( 3 )
 [connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Sushi_Piece_mouse_exited"]
 [connection signal="on_dragging" from="." to="." method="_on_Spoon_on_dragging"]
+[connection signal="on_released" from="." to="." method="_on_Spoon_on_released"]

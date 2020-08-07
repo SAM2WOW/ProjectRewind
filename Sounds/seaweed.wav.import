@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/seaweed.wav-a97d434ba203fda1e16f7809cb6b35d2.sample"
+
+[deps]
+
+source_file="res://Sounds/seaweed.wav"
+dest_files=[ "res://.import/seaweed.wav-a97d434ba203fda1e16f7809cb6b35d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

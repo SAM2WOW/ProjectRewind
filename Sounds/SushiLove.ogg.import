@@ -11,5 +11,5 @@ dest_files=[ "res://.import/SushiLove.ogg-7bdb5a3daf458a15b89bd9444ab124c4.oggst
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

@@ -13,6 +13,8 @@ func _ready():
 		var sushi = get_node("Actual_Roll/Sushi_Piece" + str(i + 1))
 		sushi.ingredient = ingredient[order[i]]
 		sushi.change_ingredient()
+	
+	$Spawn.play()
 
 
 func finished_unroll():
@@ -47,6 +49,6 @@ func finished_unroll():
 
 # Clean parent's occupied bool
 # Parent is cutting board
-func _on_Bottom_Seaweed_on_dropped():
+func bottom_seaweed_rolled():
 	get_parent().occupied = false
 	queue_free()

@@ -1,17 +1,17 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Console.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Tools/Spoon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tools/Output.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Arts/Objects/back_of_box.png" type="Texture" id=6]
+[ext_resource path="res://Objects/Tools/RiceBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Cutting_Board.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Objects/Tools/RiceBox.gd" type="Script" id=8]
+[ext_resource path="res://Sounds/SushiLove_menu.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Arts/Scene/background.png" type="Texture" id=9]
 [ext_resource path="res://Objects/Tools/Trash.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Sounds/SushiLove.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=12]
+[ext_resource path="res://Sounds/SushiHint.wav" type="AudioStream" id=12]
 [ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Objects/MainMenu.gd" type="Script" id=14]
 [ext_resource path="res://Arts/Menu/Logo@2x.png" type="Texture" id=15]
@@ -19,15 +19,20 @@
 [ext_resource path="res://Arts/Menu/Credits.png" type="Texture" id=17]
 [ext_resource path="res://Arts/ConveyorBelt.shader" type="Shader" id=18]
 [ext_resource path="res://Arts/Font/Staatliches-Regular.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Arts/Menu/Music.png" type="Texture" id=20]
+[ext_resource path="res://Arts/Menu/Music_Mute.png" type="Texture" id=21]
+[ext_resource path="res://Arts/Menu/Sound_Mute.png" type="Texture" id=22]
+[ext_resource path="res://Arts/Menu/Sound.png" type="Texture" id=23]
+[ext_resource path="res://Sounds/tap.wav" type="AudioStream" id=24]
+[ext_resource path="res://Sounds/clock.wav" type="AudioStream" id=25]
+[ext_resource path="res://Sounds/SushiOver.wav" type="AudioStream" id=26]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 104, 96 )
-
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 
-[sub_resource type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=2]
 size = 350
 font_data = ExtResource( 19 )
 
@@ -46,7 +51,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+
+[sub_resource type="Animation" id=4]
 length = 5.0
 step = 0.01
 tracks/0/type = "value"
@@ -106,7 +112,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -0.156, -0.156, 0.0 ]
@@ -183,6 +189,66 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Vector2( 315, 219 ), Vector2( 315, 219 ), Vector2( 385, 219 ), Vector2( 385, 219 ), Vector2( 159, 219 ), Vector2( 159, 219 ) ]
 }
+tracks/11/type = "method"
+tracks/11/path = NodePath("HUD/Clock_Sound")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MenuBGM:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.01, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, -60.0 ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("MenuBGM")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("Hint")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 14 )
@@ -207,26 +273,7 @@ position = Vector2( 960, 637.012 )
 [node name="Spoon" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 1726.85, 729.815 )
 
-[node name="RiceBox" type="Area2D" parent="Node2D"]
-position = Vector2( 1649.43, 505.866 )
-collision_layer = 16
-collision_mask = 0
-script = ExtResource( 8 )
-ingredient = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RiceBox"]
-shape = SubResource( 1 )
-
-[node name="boxarea" type="Node2D" parent="Node2D/RiceBox"]
-position = Vector2( 0.794678, -3.5636 )
-
-[node name="back_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
-scale = Vector2( 0.259917, 0.239654 )
-texture = ExtResource( 6 )
-
-[node name="front_of_box" type="Sprite" parent="Node2D/RiceBox/boxarea"]
-scale = Vector2( 0.259917, 0.239654 )
-texture = ExtResource( 12 )
+[node name="RiceBox" parent="Node2D" instance=ExtResource( 6 )]
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
 position = Vector2( 172.239, 49.9697 )
@@ -240,7 +287,7 @@ texture = ExtResource( 9 )
 offset = Vector2( 960, 540 )
 
 [node name="Credit" type="Sprite" parent="Node2D"]
-material = SubResource( 2 )
+material = SubResource( 1 )
 position = Vector2( 0, 181.16 )
 texture = ExtResource( 17 )
 offset = Vector2( 960, 0 )
@@ -270,10 +317,20 @@ margin_bottom = 759.0
 rect_pivot_offset = Vector2( 159, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
-custom_fonts/font = SubResource( 3 )
+
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
 text = "GO"
 align = 1
 valign = 1
+
+[node name="Clock_Sound" type="AudioStreamPlayer" parent="HUD"]
+pause_mode = 2
+stream = ExtResource( 25 )
+volume_db = -5.0
+bus = "SFX"
 
 [node name="Menu" type="Control" parent="."]
 pause_mode = 2
@@ -308,30 +365,60 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
-margin_left = 809.0
-margin_top = 339.0
-margin_right = 1111.0
-margin_bottom = 740.0
+margin_left = 869.0
+margin_top = 474.0
+margin_right = 1050.0
+margin_bottom = 605.0
 
 [node name="Play" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_right = 302.0
+margin_right = 181.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 13 )
 text = "Play"
 
-[node name="Options" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
+visible = false
 margin_top = 135.0
-margin_right = 302.0
+margin_right = 181.0
 margin_bottom = 266.0
 custom_fonts/font = ExtResource( 13 )
-text = "Options"
-
-[node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_top = 270.0
-margin_right = 302.0
-margin_bottom = 401.0
-custom_fonts/font = ExtResource( 13 )
 text = "Quit"
+
+[node name="Options" type="HBoxContainer" parent="Menu"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -370.0
+margin_top = 51.0
+margin_right = -56.0
+margin_bottom = 212.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="CheckButton" parent="Menu/Options"]
+margin_left = 35.0
+margin_right = 177.0
+margin_bottom = 161.0
+focus_mode = 0
+custom_icons/off = ExtResource( 21 )
+custom_icons/on = ExtResource( 20 )
+pressed = true
+enabled_focus_mode = 0
+
+[node name="Sounds" type="CheckButton" parent="Menu/Options"]
+margin_left = 181.0
+margin_right = 314.0
+margin_bottom = 161.0
+focus_mode = 0
+custom_icons/off = ExtResource( 22 )
+custom_icons/on = ExtResource( 23 )
+pressed = true
+enabled_focus_mode = 0
+
+[node name="Tap_Sound" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource( 24 )
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
@@ -341,5 +428,25 @@ anims/scene_intro = SubResource( 5 )
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -10.0
+bus = "BGM"
+
+[node name="MenuBGM" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 8 )
+volume_db = -10.5025
+autoplay = true
+bus = "BGM"
+
+[node name="Hint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -8.0
+bus = "BGM"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = -8.0
+bus = "BGM"
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="toggled" from="Menu/Options/Music" to="." method="_on_Music_toggled"]
+[connection signal="toggled" from="Menu/Options/Sounds" to="." method="_on_Sounds_toggled"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
