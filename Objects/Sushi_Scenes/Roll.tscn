@@ -485,8 +485,6 @@ z_index = 2
 collision_layer = 8
 collision_mask = 176
 script = ExtResource( 6 )
-is_draggable = false
-ingredient = 5
 
 [node name="Sprite" type="Sprite" parent="Actual_Roll/Bottom_Seaweed"]
 texture = ExtResource( 2 )
@@ -511,12 +509,6 @@ bus = "SFX"
 script = ExtResource( 12 )
 base_volume = -5.0
 
-[node name="Drop" type="AudioStreamPlayer2D" parent="Actual_Roll/Bottom_Seaweed"]
-position = Vector2( 0, 229.713 )
-stream = ExtResource( 15 )
-bus = "SFX"
-script = ExtResource( 12 )
-
 [node name="Spawn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 16 )
 bus = "SFX"
@@ -526,10 +518,6 @@ script = ExtResource( 12 )
 [connection signal="on_dragging" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_on_dragging"]
 [connection signal="on_released" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_on_released"]
 [connection signal="animation_finished" from="Top_Seaweed/AnimationPlayer" to="Top_Seaweed" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="area_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_area_entered"]
-[connection signal="area_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_area_exited"]
-[connection signal="mouse_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_mouse_entered"]
-[connection signal="mouse_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_mouse_exited"]
-[connection signal="on_dragging" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_on_dragging"]
-[connection signal="on_dropped" from="Actual_Roll/Bottom_Seaweed" to="." method="_on_Bottom_Seaweed_on_dropped"]
-[connection signal="on_released" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Sushi_Piece_on_released"]
+[connection signal="mouse_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_mouse_entered"]
+[connection signal="mouse_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_mouse_exited"]
+[connection signal="animation_finished" from="Actual_Roll/Bottom_Seaweed/AnimationPlayer" to="Actual_Roll/Bottom_Seaweed" method="_on_AnimationPlayer_animation_finished"]
