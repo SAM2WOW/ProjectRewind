@@ -43,6 +43,8 @@ func ingredient_to_colors(i):
 			return Color("93a603")
 		INGREDIENT.RADISH:
 			return Color("f2c744")
+		INGREDIENT.SEAWEED:
+			return Color("4a4b31")
 
 
 # Used for reparenting nodes
