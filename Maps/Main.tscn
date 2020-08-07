@@ -275,7 +275,7 @@ position = Vector2( 1726.85, 729.815 )
 scale = Vector2( 1.4, 1.4 )
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
-position = Vector2( 165.177, 63.1839 )
+position = Vector2( 228.704, 64.9657 )
 
 [node name="Trash" parent="Node2D" instance=ExtResource( 10 )]
 position = Vector2( 1649.43, 993.73 )

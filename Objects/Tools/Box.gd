@@ -103,20 +103,24 @@ func _on_TextureButton_button_down():
 
 func _on_Timeout_timeout():
 	curTime += 1
+	
 	if curTime >= outTime:
 		output()
 		$Timeout.stop()
 		curTime = 0
+		
 	elif curTime >= 240:
 		if curTime%10 <=7:
 			var dx = rand_range(20,-20)
 			var dy = rand_range(20,-20)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
+			
 	elif curTime >= 160:
 		if curTime%18 <= 8 and curTime%2 == 0:
 			var dx = rand_range(12,-12)
 			var dy = rand_range(12,-12)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
-		pass
+	
+	$ProgressBar.set_value(curTime)
