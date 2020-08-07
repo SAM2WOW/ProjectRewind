@@ -11,15 +11,15 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _input(_event):
+#func _input(_event):
 	# Turn on dragging when mouse clicked on the area
-	if is_mouse_hover and Input.is_action_just_pressed("touch"):
-		$Box1.output()
-		$Box2.output()
-		$Box3.output()
+#	if is_mouse_hover and Input.is_action_just_pressed("touch"):
+#		$Box1.output()
+#		$Box2.output()
+#		$Box3.output()
+
 
 func checkOutput(statu):
 	var combo = 0
@@ -32,6 +32,7 @@ func forceOutput():
 	$Box2.checkOutput(1)
 	$Box3.checkOutput(1)
 
+
 func countOutput(_type,statu):
 	if statu == 1:
 		Global.Console.addPoint(5)
@@ -39,9 +40,9 @@ func countOutput(_type,statu):
 
 
 
-func _on_AreaBox_mouse_entered():
-	is_mouse_hover = true # Replace with function body.
+#func _on_AreaBox_mouse_entered():
+#	is_mouse_hover = true # Replace with function body.
 
 
-func _on_AreaBox_mouse_exited():
-	is_mouse_hover = false # Replace with function body.
+#func _on_AreaBox_mouse_exited():
+#	is_mouse_hover = false # Replace with function body.
