@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RollLogo@2x.png-7bd9078a96bc924ad36ccd25e1af2b9f.stex"
+path="res://.import/Sound_Mute.png-175086aac7a8e7756f5ec73ca76f8587.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/Menu/RollLogo@2x.png"
-dest_files=[ "res://.import/RollLogo@2x.png-7bd9078a96bc924ad36ccd25e1af2b9f.stex" ]
+source_file="res://Arts/Menu/Sound_Mute.png"
+dest_files=[ "res://.import/Sound_Mute.png-175086aac7a8e7756f5ec73ca76f8587.stex" ]
 
 [params]
 
