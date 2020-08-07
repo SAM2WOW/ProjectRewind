@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Objects/Sushi/Sushi_Plate.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/salmon.png" type="Texture" id=2]
-[ext_resource path="res://Arts/Scene/PHplate.png" type="Texture" id=3]
+[ext_resource path="res://Arts/Scene/sushi_plate_2.png" type="Texture" id=3]
 [ext_resource path="res://Objects/Sushi/Drag_Plate.gd" type="Script" id=4]
 [ext_resource path="res://Arts/Particles/explosion.png" type="Texture" id=5]
 [ext_resource path="res://Sounds/flip_the_plate.wav" type="AudioStream" id=6]
@@ -114,7 +114,6 @@ shape = SubResource( 1 )
 
 [node name="Plate" type="Sprite" parent="."]
 position = Vector2( 0, 52.5 )
-scale = Vector2( 1, 0.458763 )
 z_index = 10
 texture = ExtResource( 3 )
 
@@ -200,8 +199,8 @@ script = ExtResource( 7 )
 [connection signal="area_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_exited"]
 [connection signal="mouse_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_exited"]
-[connection signal="on_dragging" from="Drag_Plate" to="." method="_on_Sushi_on_dragging"]
 [connection signal="on_dragging" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_dragging"]
-[connection signal="on_released" from="Drag_Plate" to="." method="_on_Sushi_on_released"]
+[connection signal="on_dragging" from="Drag_Plate" to="." method="_on_Sushi_on_dragging"]
 [connection signal="on_released" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_released"]
+[connection signal="on_released" from="Drag_Plate" to="." method="_on_Sushi_on_released"]
 [connection signal="animation_finished" from="PlateAnimation" to="." method="_on_PlateAnimation_animation_finished"]
