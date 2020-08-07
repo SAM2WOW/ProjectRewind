@@ -9,7 +9,6 @@ var filled = 0
 #for timer
 var outTime = 300
 var curTime = 0 #current time, count every 0.2 sec
-var damp = 1
 
 func _ready():
 	$Ani.play("MoveIn")
@@ -84,14 +83,14 @@ func _on_Timeout_timeout():
 		curTime = 0
 	elif curTime >= 240:
 		if curTime%10 <=7:
-			var dx = rand_range(12,-12)*damp
-			var dy = rand_range(12,-12)*damp
+			var dx = rand_range(12,-12)
+			var dy = rand_range(12,-12)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 	elif curTime >= 160:
 		if curTime%18 <= 8 and curTime%2 == 0:
-			var dx = rand_range(10,-10)*damp
-			var dy = rand_range(10,-10)*damp
+			var dx = rand_range(10,-10)
+			var dy = rand_range(10,-10)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 		pass

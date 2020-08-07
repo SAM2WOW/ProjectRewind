@@ -10,10 +10,10 @@ onready var charge_node = get_node("../MarginContainer/Charge")
 func changePoint(point,_sign):
 	if _sign ==1:
 		charge += point
-		$change.set_text("+"+str(charge*100))
+		charge_node.set_text("-"+str(charge*100))
 	else:
 		charge -= point
-		$change.set_text("-"+str(charge*100))
+		charge_node.set_text("-"+str(charge*100))
 	$Timer.start()
 
 

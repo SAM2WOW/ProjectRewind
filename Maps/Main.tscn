@@ -22,12 +22,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 
-[sub_resource type="Animation" id=2]
-resource_name = "menu_intro"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -42,7 +41,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 2.0
 step = 0.02
 tracks/0/type = "value"
@@ -177,7 +176,7 @@ scale = Vector2( 0.259917, 0.239654 )
 texture = ExtResource( 12 )
 
 [node name="Output" parent="Node2D" instance=ExtResource( 5 )]
-position = Vector2( 0, 55.75 )
+position = Vector2( 172.239, 49.9697 )
 
 [node name="Trash" parent="Node2D" instance=ExtResource( 10 )]
 position = Vector2( 1649.43, 993.73 )
@@ -188,7 +187,7 @@ texture = ExtResource( 9 )
 offset = Vector2( 960, 540 )
 
 [node name="Credit" type="Sprite" parent="Node2D"]
-material = SubResource( 4 )
+material = SubResource( 2 )
 position = Vector2( 0, 181.16 )
 texture = ExtResource( 17 )
 offset = Vector2( 960, 0 )
@@ -263,8 +262,8 @@ text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/menu_intro = SubResource( 2 )
-anims/scene_intro = SubResource( 3 )
+anims/menu_intro = SubResource( 3 )
+anims/scene_intro = SubResource( 4 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

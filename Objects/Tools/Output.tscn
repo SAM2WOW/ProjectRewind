@@ -1,9 +1,7 @@
-
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Tools/Output.gd" type="Script" id=2]
-[ext_resource path="res://Objects/Tools/OutputControl.gd" type="Script" id=3]
 [ext_resource path="res://Arts/Font/UI_font_small.tres" type="DynamicFont" id=4]
 
 [node name="Output" type="Node2D"]
@@ -40,8 +38,4 @@ margin_left = -97.0
 margin_top = 4.0
 margin_right = -15.0
 margin_bottom = 32.0
-
 custom_fonts/font = ExtResource( 4 )
-[connection signal="mouse_entered" from="AreaBox" to="." method="_on_AreaBox_mouse_entered"]
-[connection signal="mouse_exited" from="AreaBox" to="." method="_on_AreaBox_mouse_exited"]
-
