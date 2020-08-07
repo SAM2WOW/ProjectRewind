@@ -27,11 +27,11 @@ extents = Vector2( 104, 96 )
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 size = 350
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -46,8 +46,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-
+[sub_resource type="Animation" id=5]
 length = 5.0
 step = 0.01
 tracks/0/type = "value"
@@ -107,7 +106,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ -0.156, -0.156, 0.0 ]
@@ -268,11 +267,10 @@ margin_left = 801.0
 margin_top = 321.0
 margin_right = 1119.0
 margin_bottom = 759.0
-rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 159, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "GO"
 align = 1
 valign = 1
@@ -337,11 +335,12 @@ text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/menu_intro = SubResource( 3 )
-anims/scene_intro = SubResource( 4 )
+anims/menu_intro = SubResource( 4 )
+anims/scene_intro = SubResource( 5 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -10.0
+bus = "BGM"
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
