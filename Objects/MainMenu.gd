@@ -8,6 +8,7 @@ func _ready():
 
 
 func _on_Play_pressed():
+	$Menu/Tap_Sound.play()
 	$AnimationPlayer.play("scene_intro")
 	$BGM.play()
 
@@ -16,3 +17,15 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if "scene" in anim_name:
 		get_tree().set_pause(false)
 		
+
+
+# Settings
+
+func _on_Music_toggled(button_pressed):
+	AudioServer.set_bus_mute(2, not button_pressed)
+	$Menu/Tap_Sound.play()
+
+
+func _on_Sounds_toggled(button_pressed):
+	AudioServer.set_bus_mute(1, not button_pressed)
+	$Menu/Tap_Sound.play()

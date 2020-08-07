@@ -11,6 +11,8 @@ func _ready():
 	$Sushi_Piece.change_ingredient()
 	
 	$AnimationPlayer.play("spawn")
+	
+	$Spawn.play()
 
 
 func _on_Sushi_Piece_on_dropped():

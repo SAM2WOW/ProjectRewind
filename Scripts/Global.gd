@@ -30,7 +30,7 @@ func ingredient_to_address(i):
 		INGREDIENT.RICE:
 			return "res://Arts/Sushi/nigiri_rice.png"
 		INGREDIENT.SEAWEED:
-			return "res://Arts/Sushi/seaweed_sheet.png"
+			return "res://Arts/Sushi/whole_sushi_roll_held.png"
 
 
 func ingredient_to_colors(i):

@@ -77,3 +77,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if "auto_roll" in anim_name:
 		get_parent().finished_unroll()
 		queue_free()
+
+
+func _on_Top_Seaweed_on_dragging():
+	$Grab.play()
+
+
+func _on_Top_Seaweed_on_released():
+	$Released.play()
