@@ -19,7 +19,6 @@ func _ready():
 	$Ani.play("MoveIn")
 	ingredient = Global.Console.getIng(9)
 	change_button_graphic()
-
 	getNumber()
 	$Button/Number.set_text("x"+str(space))
 

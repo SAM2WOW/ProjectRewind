@@ -5,7 +5,7 @@ var ingredient = Global.INGREDIENT.RICE
 var statu = 1
 
 func dropped():
-	Global.Console.addPoint(0.3)
+	Global.Console.addPoint(0.1)
 	
 	$AnimationPlayer.play("drop")
 
