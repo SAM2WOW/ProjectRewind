@@ -48,9 +48,9 @@ wait_time = 0.3
 one_shot = true
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/CenterContainer"]
-margin_left = 659.0
+margin_left = 710.0
 margin_top = 32.0
-margin_right = 1261.0
+margin_right = 1210.0
 margin_bottom = 102.0
 custom_constants/margin_left = 500
 __meta__ = {
@@ -59,11 +59,10 @@ __meta__ = {
 
 [node name="Charge" type="Label" parent="HUD/CenterContainer/MarginContainer"]
 margin_left = 500.0
-margin_right = 602.0
+margin_right = 500.0
 margin_bottom = 70.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "+300"
 [connection signal="timeout" from="HUD/CenterContainer/Money/Timer" to="HUD/CenterContainer/Money" method="_on_Timer_timeout"]

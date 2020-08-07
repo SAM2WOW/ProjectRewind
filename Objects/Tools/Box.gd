@@ -6,6 +6,9 @@ var statu = 0
 var space = 0
 var filled = 0
 
+#for timer
+var outTime = 300
+var curTime = 0 #current time, count every 0.2 sec
 
 func _ready():
 	$Ani.play("MoveIn")
@@ -55,6 +58,8 @@ func _on_Ani_animation_finished(anim_name):
 	if anim_name == "New Anim":
 		#output()
 		$Ani.play("MoveIn")
+	if anim_name == "MoveIn":
+		$Timeout.start()
 
 
 func _on_TextureButton_pressed():
@@ -68,3 +73,24 @@ func _on_TextureButton_pressed():
 func _on_TextureButton_button_down():
 		get_parent().checkOutput(statu)
  # Replace with function body.
+
+
+func _on_Timeout_timeout():
+	curTime += 1
+	if curTime >= outTime:
+		output()
+		$Timeout.stop()
+		curTime = 0
+	elif curTime >= 240:
+		if curTime%10 <=7:
+			var dx = rand_range(12,-12)
+			var dy = rand_range(12,-12)
+			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
+			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
+	elif curTime >= 160:
+		if curTime%18 <= 8 and curTime%2 == 0:
+			var dx = rand_range(10,-10)
+			var dy = rand_range(10,-10)
+			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
+			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
+		pass
