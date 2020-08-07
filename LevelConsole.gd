@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 #export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
 #Only level related stuff
@@ -6,11 +6,12 @@ extends Node2D
 var testI = [0,1,2,3,5]
 var money = 0
 
+onready var money_node = get_node("HUD/CenterContainer/Money")
+
+
 func _ready():
 	Global.Console = self
 
-#func _process(delta):
-#	pass
 
 func getIng():
 	randomize ( )
@@ -21,21 +22,21 @@ func getIng():
 
 func minusPoint(type):
 	var point = 0
+	
 	if type == 0:
 		point = 1
 	if type == 1:
-
 		point = 3
-	money -= point
-	$Money.changePoint(point,0)
-
 	
+	money -= point
+
+	money_node.changePoint(point,0)
+
+
 func addPoint(_point):
 	if _point != null:
 		money += _point
-
 	else:
 		money += 5
-	$Money.changePoint(_point,1)
-
-
+	
+	money_node.changePoint(_point,1)
