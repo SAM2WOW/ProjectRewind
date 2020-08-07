@@ -10,7 +10,7 @@ enum INGREDIENT {SALMON, SHRIMP, CUCUMBER, RADISH, RICE, SEAWEED}
 var mouse_selected = false
 
 # Rice box position for rice doing the animation
-var rice_box_pos = Vector2(1649.43, 505.866)
+var rice_box_pos = Vector2(1649.43, 427.442)
 
 # Console Reference
 var Console = null

@@ -1,12 +1,54 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Tools/Trash.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/trash_bin_base.png" type="Texture" id=2]
 [ext_resource path="res://Arts/Objects/trash_bin_border.png" type="Texture" id=3]
 [ext_resource path="res://Arts/Lightmask.png" type="Texture" id=4]
+[ext_resource path="res://Arts/Sushi/shrimp.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 200, 64 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 27.0069
+height = 179.37
+
+[sub_resource type="Animation" id=2]
+resource_name = "trashed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fake_Sushi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -0.314982, -0.314988 ), Vector2( 0, -30.519 ), Vector2( -4.32698e-07, 247.924 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fake_Sushi:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.09107, 1.13294 ), Vector2( 0.749088, 0.678366 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fake_Sushi:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, -44.9999, -165.0 ]
+}
 
 [node name="Trash" type="Area2D"]
 collision_layer = 128
@@ -18,19 +60,29 @@ position = Vector2( -0.314982, -0.314988 )
 scale = Vector2( 1, 0.836 )
 texture = ExtResource( 2 )
 
+[node name="Fake_Sushi" type="Sprite" parent="."]
+position = Vector2( -4.32698e-07, 247.924 )
+rotation = -2.87979
+scale = Vector2( 0.749088, 0.678366 )
+z_index = 1
+texture = ExtResource( 5 )
+
 [node name="front_of_box" type="Sprite" parent="."]
 position = Vector2( 0, 0.314976 )
 scale = Vector2( 1, 0.83621 )
-z_index = 1
+z_index = 2
 texture = ExtResource( 3 )
 
 [node name="front_of_box2" type="Sprite" parent="."]
 modulate = Color( 0.388235, 0.443137, 0.447059, 1 )
 position = Vector2( -0.157498, 176 )
 scale = Vector2( 1.89843, 1.2 )
-z_index = 1
+z_index = 2
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+rotation = 1.57079
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/trashed = SubResource( 2 )
