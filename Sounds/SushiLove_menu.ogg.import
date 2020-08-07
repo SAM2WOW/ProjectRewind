@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SushiLove_menu.ogg-b272ab4c142219e0d077089c5baa9b66.oggstr"
+
+[deps]
+
+source_file="res://Sounds/SushiLove_menu.ogg"
+dest_files=[ "res://.import/SushiLove_menu.ogg-b272ab4c142219e0d077089c5baa9b66.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
