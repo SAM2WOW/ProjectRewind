@@ -41,6 +41,8 @@ func _on_Base_Plate_area_entered(area):
 		$PlateAnimation.play("flip")
 		$Flip_Sound.play()
 		
+		Global.Console.minusPoint($Drag_Plate.type)
+		
 		# Do once
 		$Base_Plate.queue_free()
 
