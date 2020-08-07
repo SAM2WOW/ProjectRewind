@@ -308,8 +308,8 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="Top_Seaweed"]
-position = Vector2( 8.58307e-06, -266.922 )
-scale = Vector2( 2.7, 3.11228 )
+position = Vector2( -3.33705, -266.922 )
+scale = Vector2( 3.27613, 3.11228 )
 z_index = 14
 texture = ExtResource( 8 )
 mode = 2
