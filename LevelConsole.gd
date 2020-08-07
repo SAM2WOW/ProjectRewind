@@ -13,9 +13,11 @@ func _ready():
 	Global.Console = self
 
 
-func getIng():
+func getIng(_prevIng):
 	randomize()
-	var Ingredient = testI[randi()%5]
+	var Ingredient = testI[randi()%9]
+	while Ingredient == _prevIng:
+		Ingredient = testI[randi()%9]
 	return Ingredient
 
 

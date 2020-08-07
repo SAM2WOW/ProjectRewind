@@ -37,7 +37,7 @@ func _on_Sushi_Piece_on_released():
 		box_ref.dropped(ingredient)
 		emit_signal("on_dropped")
 		queue_free()
-	elif droppable and box_ref.ingredient == ingredient:
+	elif droppable and box_ref.ingredient == ingredient and box_ref.statu != 0:
 		box_ref.dropped()
 		emit_signal("on_dropped")
 		queue_free()

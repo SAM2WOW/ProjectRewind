@@ -17,10 +17,9 @@ var temp_sprite_location = Vector2(-60, -8)
 
 func _ready():
 	$Ani.play("MoveIn")
-	
-	ingredient = Global.Console.getIng()
+	ingredient = Global.Console.getIng(9)
 	change_button_graphic()
-	
+
 	getNumber()
 	$Button/Number.set_text("x"+str(space))
 
@@ -83,11 +82,13 @@ func output():
 
 
 func swipe():
-	$Button/Number.set_text("x"+str(space))
+
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
-	self.ingredient = Global.Console.getIng()
+	ingredient = Global.Console.getIng(ingredient)
 	getNumber()
+	$Button/Number.set_text("x"+str(space))
+
 
 
 func _on_Ani_animation_finished(anim_name):
