@@ -73,6 +73,9 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1000, 0 ), Vector2( -1000, 0 ) ]
 }
 
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 6 )
 shader_param/speed = 0.0
@@ -131,7 +134,8 @@ margin_bottom = 62.0
 rect_min_size = Vector2( 200, 110 )
 mouse_filter = 2
 custom_styles/fg = ExtResource( 12 )
-custom_styles/bg = SubResource( 2 )
+
+custom_styles/bg = SubResource( 4 )
 max_value = 300.0
 percent_visible = false
 __meta__ = {
@@ -147,7 +151,9 @@ margin_bottom = 62.0
 rect_min_size = Vector2( 200, 110 )
 mouse_filter = 2
 custom_styles/fg = ExtResource( 11 )
-custom_styles/bg = SubResource( 2 )
+
+
+custom_styles/bg = SubResource( 4 )
 max_value = 300.0
 percent_visible = false
 __meta__ = {
