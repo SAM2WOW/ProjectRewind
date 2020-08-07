@@ -21,6 +21,8 @@ func _on_Rice_area_entered(area):
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 		
+		$AnimationPlayer.play("Scrapped")
+		
 		$AudioStreamPlayer2D.play()
 		
 		Global.Console.addPoint(0.01)
