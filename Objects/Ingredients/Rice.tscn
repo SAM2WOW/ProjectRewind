@@ -56,6 +56,7 @@ anims/Scrapped = SubResource( 2 )
 stream = ExtResource( 4 )
 bus = "SFX"
 script = ExtResource( 3 )
+base_volume = -5.0
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="area_entered" from="." to="." method="_on_Rice_area_entered"]
