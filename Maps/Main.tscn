@@ -31,11 +31,12 @@
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 
+
 [sub_resource type="DynamicFont" id=2]
 size = 350
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -49,6 +50,7 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
 }
+
 
 [sub_resource type="Animation" id=4]
 length = 5.0
@@ -255,7 +257,7 @@ script = ExtResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 0, -753 )
+position = Vector2( 0, -2000 )
 offset = Vector2( 960, 540 )
 current = true
 
@@ -312,10 +314,10 @@ margin_left = 801.0
 margin_top = 321.0
 margin_right = 1119.0
 margin_bottom = 759.0
-rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 159, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
+
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 4
@@ -420,8 +422,8 @@ bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/menu_intro = SubResource( 3 )
-anims/scene_intro = SubResource( 4 )
+anims/menu_intro = SubResource( 4 )
+anims/scene_intro = SubResource( 5 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

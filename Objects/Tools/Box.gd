@@ -51,7 +51,7 @@ func swipe():
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	self.ingredient = Global.Console.getIng()
-	print(Global.INGREDIENT.keys()[ingredient])
+	getNumber()
 	$Label.set_text(Global.INGREDIENT.keys()[ingredient])
 
 
@@ -84,14 +84,14 @@ func _on_Timeout_timeout():
 		curTime = 0
 	elif curTime >= 240:
 		if curTime%10 <=7:
-			var dx = rand_range(12,-12)
-			var dy = rand_range(12,-12)
+			var dx = rand_range(15,-12)
+			var dy = rand_range(15,-12)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 	elif curTime >= 160:
 		if curTime%18 <= 8 and curTime%2 == 0:
-			var dx = rand_range(10,-10)
-			var dy = rand_range(10,-10)
+			var dx = rand_range(12,-10)
+			var dy = rand_range(12,-10)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 		pass
