@@ -18,9 +18,10 @@ var temp_sprite_location = Vector2(-60, -8)
 func _ready():
 	$Ani.play("MoveIn")
 	ingredient = Global.Console.getIng(9)
-	$Label.set_text(Global.INGREDIENT.keys()[ingredient])
+	change_button_graphic()
+
 	getNumber()
-	$Number.set_text("x"+str(space))
+	$Button/Number.set_text("x"+str(space))
 
 
 func getNumber():
@@ -55,8 +56,16 @@ func delete_graphic():
 	temp_sprite_location = original_sprite_position
 
 
+func change_button_graphic():
+	# Change button graphics
+	var color = Global.ingredient_to_colors(ingredient)
+	$Button/TextureButton.set_self_modulate(color)
+	$Button/ProgressBarDown.set_modulate(color)
+	$Button/ProgressBarUp.set_modulate(color)
+
+
 func checkOutput(_forced):
-	$Number.set_text("x"+str(space-filled))
+	$Button/Number.set_text("x"+str(space-filled))
 	if filled >= space:
 		statu = 1
 	if statu == 1 and _forced == 1:
@@ -73,18 +82,20 @@ func output():
 
 
 func swipe():
+
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)
 	getNumber()
-	$Label.set_text(Global.INGREDIENT.keys()[ingredient])
-	$Number.set_text("x"+str(space))
+	$Button/Number.set_text("x"+str(space))
+
 
 
 func _on_Ani_animation_finished(anim_name):
 	if anim_name == "Output":
 		#output()
 		delete_graphic()
+		change_button_graphic()
 		$Ani.play("MoveIn")
 	if anim_name == "MoveIn":
 		$Timeout.start()
@@ -123,4 +134,5 @@ func _on_Timeout_timeout():
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 	
-	$ProgressBar.set_value(curTime)
+	$Button/ProgressBarDown.set_value(curTime)
+	$Button/ProgressBarUp.set_value(curTime)
