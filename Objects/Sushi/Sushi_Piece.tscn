@@ -7,8 +7,8 @@
 [ext_resource path="res://Sounds/grab.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 56.0006
-height = 149.118
+radius = 46.9889
+height = 139.577
 
 [sub_resource type="Animation" id=2]
 resource_name = "drop"
