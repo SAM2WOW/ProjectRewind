@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -14,13 +14,32 @@
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=12]
 [ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Objects/MainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Arts/Menu/Logo@2x.png" type="Texture" id=15]
+[ext_resource path="res://Arts/Menu/RollLogo@2x.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "menu_intro"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2000 ), Vector2( 0, -753 ) ]
+}
+
 [sub_resource type="Animation" id=2]
-resource_name = "intro"
+resource_name = "scene_intro"
 length = 2.0
+step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
@@ -47,6 +66,30 @@ tracks/1/keys = {
 "method": "change_conveyor_speed"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Menu/Logo:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.02 ),
+"transitions": PoolRealArray( 1, 0.203063 ),
+"update": 1,
+"values": [ ExtResource( 16 ), ExtResource( 15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Menu/Logo:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.12, 0.24, 0.4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.85, 0.85 ), Vector2( 0.9, 0.9 ), Vector2( 0.8, 0.8 ) ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 14 )
@@ -55,7 +98,7 @@ script = ExtResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 0, -753 )
+position = Vector2( 0, -2000 )
 offset = Vector2( 960, 540 )
 current = true
 
@@ -124,6 +167,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_left = 140.0
+margin_top = 80.0
+margin_right = 980.0
+margin_bottom = 694.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CenterContainer" type="CenterContainer" parent="Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -135,34 +189,35 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
-margin_left = 923.0
-margin_top = 486.0
-margin_right = 996.0
-margin_bottom = 593.0
+margin_left = 809.0
+margin_top = 339.0
+margin_right = 1111.0
+margin_bottom = 740.0
 
 [node name="Play" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_right = 73.0
-margin_bottom = 33.0
+margin_right = 302.0
+margin_bottom = 131.0
 custom_fonts/font = ExtResource( 13 )
 text = "Play"
 
 [node name="Options" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_top = 37.0
-margin_right = 73.0
-margin_bottom = 70.0
+margin_top = 135.0
+margin_right = 302.0
+margin_bottom = 266.0
 custom_fonts/font = ExtResource( 13 )
 text = "Options"
 
 [node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_top = 74.0
-margin_right = 73.0
-margin_bottom = 107.0
+margin_top = 270.0
+margin_right = 302.0
+margin_bottom = 401.0
 custom_fonts/font = ExtResource( 13 )
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/intro = SubResource( 2 )
+anims/menu_intro = SubResource( 3 )
+anims/scene_intro = SubResource( 2 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
