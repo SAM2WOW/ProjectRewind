@@ -67,9 +67,8 @@ func checkOutput(_forced):
 	$Button/Number.set_text("x"+str(space-filled))
 	if filled >= space:
 		statu = 1
-		$Button/Number.set_text("READY")
 	if statu == 1 and _forced == 1:
-		output()  
+		output()
 
 
 func output():
@@ -87,7 +86,7 @@ func swipe():
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)
 	getNumber()
-	$Button/Number.set_text("")
+	$Button/Number.set_text("x"+str(space))
 
 
 
@@ -96,7 +95,6 @@ func _on_Ani_animation_finished(anim_name):
 		#output()
 		delete_graphic()
 		change_button_graphic()
-		$Button/Number.set_text("x"+str(space-filled))
 		$Ani.play("MoveIn")
 	if anim_name == "MoveIn":
 		$Timeout.start()
