@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
@@ -22,10 +22,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="Animation" id=2]
-resource_name = "MoveIn"
+[sub_resource type="Animation" id=3]
 length = 0.8
 step = 0.01
 tracks/0/type = "value"
@@ -79,8 +78,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Output"
+[sub_resource type="Animation" id=4]
 length = 1.5
 step = 0.01
 tracks/0/type = "value"
@@ -138,7 +136,7 @@ tracks/3/keys = {
 shader = ExtResource( 6 )
 shader_param/speed = 0.0
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "in"
 length = 0.3
 tracks/0/type = "value"
@@ -155,7 +153,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "NotReady"
+resource_name = "out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("rec:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -130, 2.29 ), Vector2( -230, 2.29 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("rec:offset")
@@ -182,7 +195,7 @@ tracks/1/keys = {
 "values": [ Color( 0.811765, 0.282353, 0.27451, 0.698039 ), Color( 0.811765, 0.282353, 0.27451, 0.501961 ), Color( 0.811765, 0.282353, 0.27451, 0.486275 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -272,7 +285,7 @@ margin_bottom = 62.0
 rect_min_size = Vector2( 200, 110 )
 mouse_filter = 2
 custom_styles/fg = ExtResource( 12 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/bg = SubResource( 2 )
 max_value = 300.0
 percent_visible = false
 __meta__ = {
@@ -288,7 +301,7 @@ margin_bottom = 62.0
 rect_min_size = Vector2( 200, 110 )
 mouse_filter = 2
 custom_styles/fg = ExtResource( 11 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/bg = SubResource( 2 )
 max_value = 300.0
 percent_visible = false
 __meta__ = {
@@ -334,8 +347,8 @@ z_index = 1
 texture = ExtResource( 2 )
 
 [node name="Ani" type="AnimationPlayer" parent="."]
-anims/MoveIn = SubResource( 2 )
-anims/Output = SubResource( 3 )
+anims/MoveIn = SubResource( 3 )
+anims/Output = SubResource( 4 )
 
 [node name="conveyer_belt" type="Sprite" parent="."]
 visible = false
@@ -349,22 +362,23 @@ texture = ExtResource( 4 )
 wait_time = 0.1
 
 [node name="Pop" type="AnimationPlayer" parent="."]
-anims/in = SubResource( 9 )
+anims/in = SubResource( 6 )
+anims/out = SubResource( 7 )
 
 [node name="Counter" type="AnimationPlayer" parent="."]
-anims/NotReady = SubResource( 7 )
-anims/ready = SubResource( 8 )
-"anims/ready 2" = SubResource( 8 )
+anims/NotReady = SubResource( 8 )
+anims/ready = SubResource( 9 )
+"anims/ready 2" = SubResource( 9 )
 
 [node name="rec" type="Sprite" parent="."]
 visible = false
-modulate = Color( 0.517647, 0.811765, 0.27451, 0.698039 )
-position = Vector2( -300, 2.29 )
+modulate = Color( 0.811765, 0.282353, 0.27451, 0.698039 )
+position = Vector2( -130, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
 
 [node name="popTimer" type="Timer" parent="."]
-wait_time = 1.8
+wait_time = 1.2
 one_shot = true
 
 [node name="Drop" type="AudioStreamPlayer2D" parent="."]
@@ -381,9 +395,10 @@ base_volume = -10.0
 [connection signal="mouse_entered" from="." to="." method="_on_Box_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Box_mouse_exited"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
-[connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
 [connection signal="timeout" from="Timeout" to="." method="_on_Timeout_timeout"]
+[connection signal="animation_finished" from="Pop" to="." method="_on_Pop_animation_finished"]
 [connection signal="timeout" from="popTimer" to="." method="_on_popTimer_timeout"]
