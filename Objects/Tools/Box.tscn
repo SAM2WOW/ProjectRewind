@@ -192,7 +192,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.811765, 0.282353, 0.27451, 0.698039 ), Color( 0.811765, 0.282353, 0.27451, 0.501961 ), Color( 0.811765, 0.282353, 0.27451, 0.486275 ) ]
+"values": [ Color( 0.811765, 0.282353, 0.27451, 0.698039 ), Color( 0.811765, 0.282353, 0.27451, 0.501961 ), Color( 0.811765, 0.282353, 0.27451, 0 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -365,6 +365,7 @@ wait_time = 0.1
 anims/in = SubResource( 6 )
 anims/out = SubResource( 7 )
 
+
 [node name="Counter" type="AnimationPlayer" parent="."]
 anims/NotReady = SubResource( 8 )
 anims/ready = SubResource( 9 )
@@ -373,6 +374,7 @@ anims/ready = SubResource( 9 )
 [node name="rec" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.811765, 0.282353, 0.27451, 0.698039 )
+
 position = Vector2( -130, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )

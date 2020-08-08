@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ProjectRewind"
-config/description="(c) unSAME Studio 2020"
+config/name="SUSHI unROLL"
+config/description="(c) 2020 unSAME Studio"
 run/main_scene="res://Maps/Main.tscn"
 boot_splash/image="res://unSAME banner.png"
 boot_splash/fullsize=false
@@ -32,6 +32,7 @@ Global="*res://Scripts/Global.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
