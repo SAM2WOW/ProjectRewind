@@ -3,6 +3,8 @@ extends Node
 var rank_range = [-1000000, -1500, -1000, -500, 0, 1000, 2000, 3000, 4000, 8000, 10000, 20000, 30000, 1000000]
 var rank_name = ["Company Destoryer", "Going Bankrupt", "Big Oof", "What Happened?", "What Happened?", "Sushi Amature", "Sushi Unroller", "Sushi Chef", "Sushi Master", "Sushi Killer", "Sushi Senpai", "Sushi Kami", "How did u even get this high?"]
 
+var tutorial_count = 2
+
 
 func _ready():
 	get_tree().set_pause(true)
@@ -10,24 +12,37 @@ func _ready():
 	$AnimationPlayer.play("menu_intro")
 
 
-func enter_game():
-	$Tap_Sound.play()
-	$AnimationPlayer.play("scene_intro")
-
-
 func _on_Play_pressed():
+	$Tap_Sound.play()
+	
 	if Global.tutorial_seen:
-		enter_game()
+		$AnimationPlayer.play("scene_intro")
 	else:
 		$Tutorial.show()
 		$Menu.hide()
+		
+		$AnimationPlayer.play("to_tutorial")
 
 
 # Tutorial Changing
 func _on_Next_pressed():
-	Global.tutorial_seen = true
-	$Tutorial.hide()
-	enter_game()
+	$Tap_Sound.play()
+	
+	if tutorial_count == 2:
+		$"Tutorial/CenterContainer/VBoxContainer/MarginContainer/TextureRect".set_texture(load("res://Arts/Tutorial/main_tutorial.png"))
+	
+	if tutorial_count == 1:
+		$"Tutorial/CenterContainer/VBoxContainer/MarginContainer/TextureRect".set_texture(load("res://Arts/Tutorial/tutorial_part_3.png"))
+	
+	elif tutorial_count <= 0:
+		Global.tutorial_seen = true
+		
+		$Tutorial.hide()
+		$Menu.show()
+		
+		$AnimationPlayer.play("back_tutorial")
+	
+	tutorial_count -= 1
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -37,7 +52,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$BGM.play()
 	
 	elif "menu_outro" in anim_name:
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
+	
+	elif "back_tutorial" in anim_name:
+		$AnimationPlayer.play("scene_intro")
 
 
 # Game Over
@@ -111,4 +130,10 @@ func _on_Pause_toggled(button_pressed):
 
 # Reload
 func _on_Reload_pressed():
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
+
+# Quit game
+func _on_Quit_pressed():
+	get_tree().quit()
