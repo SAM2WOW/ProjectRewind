@@ -10,3 +10,4 @@ func dropped(ingredient):
 	
 	$AnimationPlayer.play("trashed")
 	
+	$AudioStreamPlayer2D.play()

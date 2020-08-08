@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/trashed.wav-939a4a4902ff01921dc07af4e833ff23.sample"
+
+[deps]
+
+source_file="res://Sounds/trashed.wav"
+dest_files=[ "res://.import/trashed.wav-939a4a4902ff01921dc07af4e833ff23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
