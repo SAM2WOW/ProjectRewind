@@ -120,16 +120,22 @@ func _on_Timeout_timeout():
 		$Timeout.stop()
 		curTime = 0
 		
-	elif curTime >= 240:
-		if curTime%10 <=7:
-			var dx = rand_range(20,-20)
-			var dy = rand_range(20,-20)
+	elif curTime >= 260:
+		var dx = rand_range(21,-21)
+		var dy = rand_range(18,-18)
+		$boxarea/back_of_box.set_offset(Vector2(dx,dy))
+		$boxarea/front_of_box.set_offset(Vector2(dx,dy))
+		
+	elif curTime >= 220:
+		if curTime%10 <=6:
+			var dx = rand_range(18,-18)
+			var dy = rand_range(14,-14)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
 			
-	elif curTime >= 160:
+	elif curTime >= 150:
 		if curTime%18 <= 8 and curTime%2 == 0:
-			var dx = rand_range(12,-12)
+			var dx = rand_range(14,-14)
 			var dy = rand_range(12,-12)
 			$boxarea/back_of_box.set_offset(Vector2(dx,dy))
 			$boxarea/front_of_box.set_offset(Vector2(dx,dy))
