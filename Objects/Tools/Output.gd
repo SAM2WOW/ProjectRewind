@@ -22,8 +22,12 @@ func _ready():
 
 
 func checkOutput(statu):
-	if statu == 1:
-		pass
+	if $Box1.statu == 1:
+		$Box1.popUp()
+	if $Box2.statu == 1:
+		$Box2.popUp()
+	if $Box3.statu == 1:
+		$Box3.popUp()
 
 
 func forceOutput():

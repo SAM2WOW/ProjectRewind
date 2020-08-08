@@ -6,12 +6,9 @@ var down_stylebox = preload("res://Arts/Objects/progress_down.tres")
 
 func _on_TextureButton_pressed():
 	$Timer.start()
-	
-	disabled = true
 
 
 func _on_Timer_timeout():
-	disabled = false
 	
 	$"../ProgressBarUp".show()
 	$"../ProgressBarDown".hide()
