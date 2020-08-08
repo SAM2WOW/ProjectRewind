@@ -82,7 +82,7 @@ func output():
 
 
 func swipe():
-
+	$Button/Number.set_text("")
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)
