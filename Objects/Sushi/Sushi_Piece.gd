@@ -60,7 +60,9 @@ func _on_Sushi_Piece_area_entered(area):
 		# Only allow dropping on correct ingredient box
 		if area.ingredient == ingredient:
 			droppable = true
-	
+	if "Drop" in area.name:
+		droppable = true
+		
 	elif "Trash" in area.name:
 		box_ref = area
 		droppable = true
@@ -70,9 +72,9 @@ func _on_Sushi_Piece_area_entered(area):
 
 
 func _on_Sushi_Piece_area_exited(area):
-	#if "Box" in area.name:
+	if "Drop" in area.name:
 		#if area.ingredient == ingredient:
-		#	droppable = false
+		droppable = false
 	
 	if "Trash" in area.name:
 		droppable = false
