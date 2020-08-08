@@ -13,13 +13,13 @@ func _ready():
 func _on_Play_pressed():
 	$Tap_Sound.play()
 	$AnimationPlayer.play("scene_intro")
-	$BGM.play()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if "scene_intro" in anim_name:
 		get_tree().set_pause(false)
 		$Timer.start()
+		$BGM.play()
 	
 	elif "menu_outro" in anim_name:
 		get_tree().reload_current_scene()
@@ -65,3 +65,35 @@ func _process(_delta):
 	var seconds = time_remain % 60
 	var minutes = time_remain / 60
 	$"CanvasLayer/HUD/CenterContainer2/Time".set_text("%02d:%02d" % [minutes, seconds])
+
+
+# Pause Game
+func _on_Pause_toggled(button_pressed):
+	if button_pressed:
+		get_tree().set_pause(true)
+		$"CanvasLayer/HUD/HBoxContainer/Reload".show()
+		
+		$Tap_Sound.play()
+		
+		var big_text = get_node("CanvasLayer/HUD/CenterContainer/Label")
+		big_text.set_text("PAUSED")
+		big_text.set_scale(Vector2(1, 1))
+		big_text.set_modulate(Color("ffffff"))
+		
+		$Node2D/ConveyorBelt.change_conveyor_speed(0)
+		
+	else:
+		get_tree().set_pause(false)
+		$"CanvasLayer/HUD/HBoxContainer/Reload".hide()
+		
+		$Tap_Sound.play()
+		
+		var big_text = get_node("CanvasLayer/HUD/CenterContainer/Label")
+		big_text.set_modulate(Color("00ffffff"))
+		
+		$Node2D/ConveyorBelt.change_conveyor_speed(-0.156)
+
+
+# Reload
+func _on_Reload_pressed():
+	get_tree().reload_current_scene()
