@@ -1,5 +1,8 @@
 extends Node
 
+var rank_range = [-1000000, -1500, -1000, -500, 0, 1000, 2000, 3000, 4000, 8000, 10000, 20000, 30000, 1000000]
+var rank_name = ["Company Destoryer", "Going Bankrupt", "Big Oof", "What Happened?", "What Happened?", "Sushi Amature", "Sushi Unroller", "Sushi Chef", "Sushi Master", "Sushi Killer", "Sushi Senpai", "Sushi Kami", "How did u even get this high?"]
+
 
 func _ready():
 	get_tree().set_pause(true)
@@ -31,8 +34,14 @@ func _on_Timer_timeout():
 	
 	# Setting the game over screen
 	$"Game_Over/CenterContainer/VBoxContainer/Salary".set_text("Salary: %d¥" % (Global.Console.money * 100))
+	$"Game_Over/CenterContainer/VBoxContainer/Rank".set_text("Rank: %s" % ranking(Global.Console.money * 100))
 	
 	$AnimationPlayer.play("game_over")
+
+
+func ranking(score):
+	var index = rank_range.bsearch(score)
+	return rank_name[index - 1]
 
 
 # Reload Scene
