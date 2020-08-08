@@ -470,6 +470,7 @@ current = true
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Hand" parent="Node2D" instance=ExtResource( 2 )]
+position = Vector2( -365.377, 0 )
 
 [node name="Cutting_Board" parent="Node2D" instance=ExtResource( 7 )]
 position = Vector2( 960, 637.012 )
