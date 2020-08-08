@@ -23,8 +23,6 @@ func _on_Rice_area_entered(area):
 		
 		$AnimationPlayer.play("Scrapped")
 		
-		$Rice_Particle.set_emitting(true)
-		
 		$AudioStreamPlayer2D.play()
 		
 		Global.Console.addPoint(0.01)
