@@ -10,9 +10,24 @@ func _ready():
 	$AnimationPlayer.play("menu_intro")
 
 
-func _on_Play_pressed():
+func enter_game():
 	$Tap_Sound.play()
 	$AnimationPlayer.play("scene_intro")
+
+
+func _on_Play_pressed():
+	if Global.tutorial_seen:
+		enter_game()
+	else:
+		$Tutorial.show()
+		$Menu.hide()
+
+
+# Tutorial Changing
+func _on_Next_pressed():
+	Global.tutorial_seen = true
+	$Tutorial.hide()
+	enter_game()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

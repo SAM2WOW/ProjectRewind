@@ -15,6 +15,9 @@ var rice_box_pos = Vector2(1649.43, 427.442)
 # Console Reference
 var Console = null
 
+# Check if seen tutorial
+var tutorial_seen = false
+
 
 # Return ingredient address
 func ingredient_to_address(i):
