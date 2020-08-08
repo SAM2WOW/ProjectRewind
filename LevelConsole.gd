@@ -39,5 +39,4 @@ func addPoint(_point):
 		money += _point
 	else:
 		money += 5
-	
 	money_node.changePoint(_point,1)
