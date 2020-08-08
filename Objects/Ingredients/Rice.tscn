@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Arts/Sushi/sushi_roll_rice.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Ingredients/Rice.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/rice.wav" type="AudioStream" id=4]
+[ext_resource path="res://Arts/Particles/rice_grain.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 40 )
@@ -23,6 +24,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -200 ), Vector2( 0, 8 ) ]
 }
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.08849, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 78.7
+initial_velocity_random = 0.61
+angular_velocity = 150.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 1.0
+scale_curve = SubResource( 4 )
 
 [node name="Rice" type="Area2D"]
 z_index = 4
@@ -47,6 +67,17 @@ script = ExtResource( 3 )
 base_volume = -5.0
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Rice_Particle" type="Particles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.16
+randomness = 0.7
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 5 )
 [connection signal="area_entered" from="." to="." method="_on_Rice_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Rice_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
