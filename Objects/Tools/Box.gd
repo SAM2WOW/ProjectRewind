@@ -11,8 +11,8 @@ var outTime = 300
 var curTime = 0 #current time, count every 0.2 sec
 
 # For Spawning Graphics
-var original_sprite_position = Vector2(-60, -8)
-var temp_sprite_location = Vector2(-60, -8)
+var original_sprite_position = Vector2(-52, 0)
+var temp_sprite_location = Vector2(-52, 0)
 
 
 func _ready():
@@ -43,7 +43,7 @@ func spawn_graphic():
 	s.set_position(temp_sprite_location)
 	s.set_rotation_degrees(rand_range(80.0, 100.0))
 	
-	temp_sprite_location.x += 30
+	temp_sprite_location.x += 52
 	
 	$boxarea/Sushi_Sprites.add_child(s)
 
