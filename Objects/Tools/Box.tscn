@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=14]
 [ext_resource path="res://Sounds/box_drop.wav" type="AudioStream" id=15]
 [ext_resource path="res://Arts/Font/shrimp_outline.png" type="Texture" id=16]
+[ext_resource path="res://Sounds/button.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/swing.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
@@ -62,6 +64,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -1000, 2.29 ), Vector2( -130, 2.29 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("Swing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.09 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Output"
@@ -102,6 +118,20 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -130, 2.29 ), Vector2( -300, 2.29 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Swing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.02 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="ShaderMaterial" id=5]
@@ -225,6 +255,13 @@ __meta__ = {
 wait_time = 3.0
 one_shot = true
 
+[node name="Pressed" type="AudioStreamPlayer2D" parent="Button/TextureButton"]
+position = Vector2( 352, 48 )
+stream = ExtResource( 17 )
+bus = "SFX"
+script = ExtResource( 14 )
+base_volume = -8.0
+
 [node name="ProgressBarDown" type="ProgressBar" parent="Button"]
 visible = false
 self_modulate = Color( 0.858824, 0.858824, 0.858824, 1 )
@@ -322,7 +359,7 @@ anims/ready = SubResource( 8 )
 [node name="rec" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.517647, 0.811765, 0.27451, 0.698039 )
-position = Vector2( -1000, 2.29 )
+position = Vector2( -300, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
 
@@ -335,6 +372,14 @@ stream = ExtResource( 15 )
 bus = "SFX"
 script = ExtResource( 14 )
 base_volume = -10.0
+
+[node name="Swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
+bus = "SFX"
+script = ExtResource( 14 )
+base_volume = -10.0
+[connection signal="mouse_entered" from="." to="." method="_on_Box_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Box_mouse_exited"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]

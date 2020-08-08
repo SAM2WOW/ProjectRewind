@@ -187,3 +187,11 @@ func _on_Timeout_timeout():
 
 func _on_popTimer_timeout():
 	$rec.hide()
+
+
+func _on_Box_mouse_entered():
+	$boxarea.set_scale(Vector2(1.1,1.1))
+
+
+func _on_Box_mouse_exited():
+	$boxarea.set_scale(Vector2(1,1))
