@@ -70,11 +70,11 @@ func _on_Sushi_Piece_area_entered(area):
 
 
 func _on_Sushi_Piece_area_exited(area):
-	if "Box" in area.name:
-		if area.ingredient == ingredient:
-			droppable = false
+	#if "Box" in area.name:
+		#if area.ingredient == ingredient:
+		#	droppable = false
 	
-	elif "Trash" in area.name:
+	if "Trash" in area.name:
 		droppable = false
 	
 	elif "Cutting_Board" in area.name:
