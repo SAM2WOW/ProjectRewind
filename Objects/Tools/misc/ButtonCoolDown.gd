@@ -9,9 +9,8 @@ func _on_TextureButton_pressed():
 
 
 func _on_Timer_timeout():
-	
-	$"../ProgressBarUp".show()
-	$"../ProgressBarDown".hide()
+	pass
+
 
 
 func _on_TextureButton_button_down():
