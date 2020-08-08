@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var note = preload("res://Objects/Others/FloatingLabe2.tscn")
 var is_mouse_hover: bool  = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +29,7 @@ func checkOutput(_statu):
 
 func forceOutput():
 	var combo = 0
+	var noter = null
 	if $Box1.statu == 1:
 		combo += 1
 	if $Box2.statu == 1:
@@ -38,10 +39,14 @@ func forceOutput():
 	$Box1.checkOutput(1)
 	$Box2.checkOutput(1)
 	$Box3.checkOutput(1)
-	if combo > 1:
-		Global.Console.addPoint(2.5)
-		if combo > 2:
-			Global.Console.addPoint(5)
+	if combo > 0:
+		noter = note.instance()
+		noter.value = combo
+		if combo > 1:
+			Global.Console.addPoint(2.5)
+			if combo > 2:
+				Global.Console.addPoint(5)
+	add_child(noter)
 	
 func countOutput(_type,statu):
 	if statu == 1:
