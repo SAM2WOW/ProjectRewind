@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
@@ -153,7 +153,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "NotReady"
+resource_name = "out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("rec:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -130, 2.29 ), Vector2( -230, 2.29 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("rec:offset")
@@ -180,7 +195,7 @@ tracks/1/keys = {
 "values": [ Color( 0.811765, 0.282353, 0.27451, 0.698039 ), Color( 0.811765, 0.282353, 0.27451, 0.501961 ), Color( 0.811765, 0.282353, 0.27451, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -348,21 +363,24 @@ wait_time = 0.1
 
 [node name="Pop" type="AnimationPlayer" parent="."]
 anims/in = SubResource( 6 )
+anims/out = SubResource( 7 )
+
 
 [node name="Counter" type="AnimationPlayer" parent="."]
-anims/NotReady = SubResource( 7 )
-anims/ready = SubResource( 8 )
-"anims/ready 2" = SubResource( 8 )
+anims/NotReady = SubResource( 8 )
+anims/ready = SubResource( 9 )
+"anims/ready 2" = SubResource( 9 )
 
 [node name="rec" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.811765, 0.282353, 0.27451, 0.698039 )
-position = Vector2( -1000, 2.29 )
+
+position = Vector2( -130, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
 
 [node name="popTimer" type="Timer" parent="."]
-wait_time = 1.8
+wait_time = 1.2
 one_shot = true
 
 [node name="Drop" type="AudioStreamPlayer2D" parent="."]
@@ -384,4 +402,5 @@ base_volume = -10.0
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
 [connection signal="timeout" from="Timeout" to="." method="_on_Timeout_timeout"]
+[connection signal="animation_finished" from="Pop" to="." method="_on_Pop_animation_finished"]
 [connection signal="timeout" from="popTimer" to="." method="_on_popTimer_timeout"]

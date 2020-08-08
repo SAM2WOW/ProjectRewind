@@ -80,6 +80,7 @@ func checkOutput(_forced):
 
 
 func output():
+	$popTimer.stop()
 	get_node("Button/TextureButton").disabled = true
 	curTime = 0
 	get_node("CollisionShape2D").disabled = true
@@ -186,7 +187,7 @@ func _on_Timeout_timeout():
 
 
 func _on_popTimer_timeout():
-	$rec.hide()
+	$Pop.play("out")
 
 
 func _on_Box_mouse_entered():
@@ -195,3 +196,8 @@ func _on_Box_mouse_entered():
 
 func _on_Box_mouse_exited():
 	$boxarea.set_scale(Vector2(1,1))
+
+
+func _on_Pop_animation_finished(anim_name):
+	if anim_name == "out":
+		$rec.hide() # Replace with function body.
