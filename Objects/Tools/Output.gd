@@ -22,17 +22,26 @@ func _ready():
 
 
 func checkOutput(statu):
-	var combo = 0
 	if statu == 1:
-		combo += 1
+		pass
 
 
 func forceOutput():
+	var combo = 0
+	if $Box1.statu == 1:
+		combo += 1
+	if $Box2.statu == 1:
+		combo += 1
+	if $Box3.statu == 1:
+		combo += 1
 	$Box1.checkOutput(1)
 	$Box2.checkOutput(1)
 	$Box3.checkOutput(1)
-
-
+	if combo > 1:
+		Global.Console.addPoint(2.5)
+		if combo > 2:
+			Global.Console.addPoint(2.5)
+	
 func countOutput(_type,statu):
 	if statu == 1:
 		Global.Console.addPoint(5)
