@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Objects/Tools/Box.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Objects/front_of_box.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://Arts/Objects/progress_up.tres" type="StyleBox" id=11]
 [ext_resource path="res://Arts/Objects/progress_down.tres" type="StyleBox" id=12]
 [ext_resource path="res://Arts/Objects/rec.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=14]
+[ext_resource path="res://Sounds/box_drop.wav" type="AudioStream" id=15]
+[ext_resource path="res://Arts/Font/shrimp_outline.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 104, 96 )
@@ -105,7 +108,7 @@ tracks/2/keys = {
 shader = ExtResource( 6 )
 shader_param/speed = 0.0
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 resource_name = "in"
 length = 0.3
 tracks/0/type = "value"
@@ -121,7 +124,7 @@ tracks/0/keys = {
 "values": [ Vector2( -230, 2.29 ), Vector2( -130, 2.29 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "NotReady"
 length = 0.6
 tracks/0/type = "value"
@@ -146,11 +149,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.827451, 0.176471, 0.176471, 0.698039 ), Color( 0.839216, 0.305882, 0.278431, 0.501961 ), Color( 0.827451, 0.25098, 0.176471, 0.486275 ) ]
+"values": [ Color( 0.811765, 0.282353, 0.27451, 0.698039 ), Color( 0.811765, 0.282353, 0.27451, 0.501961 ), Color( 0.811765, 0.282353, 0.27451, 0.486275 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "ready"
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -175,7 +177,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.301961, 0.827451, 0.176471, 0.698039 ), Color( 0.501961, 0.803922, 0.427451, 0.662745 ), Color( 0.301961, 0.827451, 0.176471, 0.698039 ) ]
+"values": [ Color( 0.517647, 0.811765, 0.27451, 0.698039 ), Color( 0.517647, 0.811765, 0.27451, 0.662745 ), Color( 0.517647, 0.811765, 0.27451, 0.698039 ) ]
 }
 
 [node name="Box" type="Area2D"]
@@ -242,6 +244,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ProgressBarDown" type="ProgressBar" parent="Button"]
+visible = false
 self_modulate = Color( 0.858824, 0.858824, 0.858824, 1 )
 margin_left = -352.0
 margin_top = -48.0
@@ -252,7 +255,6 @@ mouse_filter = 2
 custom_styles/fg = ExtResource( 12 )
 custom_styles/bg = SubResource( 4 )
 max_value = 300.0
-value = 150.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -269,20 +271,31 @@ mouse_filter = 2
 custom_styles/fg = ExtResource( 11 )
 custom_styles/bg = SubResource( 4 )
 max_value = 300.0
-value = 150.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Number" type="Label" parent="Button"]
-margin_left = -248.0
+self_modulate = Color( 1, 1, 1, 0.745098 )
+margin_left = -277.0
 margin_top = -56.0
-margin_right = -191.0
+margin_right = -177.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color_shadow = Color( 0.658824, 0.658824, 0.658824, 1 )
-text = "x 0"
+text = "DONE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="Button"]
+self_modulate = Color( 1, 1, 1, 0.745098 )
+margin_left = -330.0
+margin_top = -48.0
+margin_right = -265.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -299,16 +312,16 @@ texture = ExtResource( 4 )
 wait_time = 0.1
 
 [node name="Pop" type="AnimationPlayer" parent="."]
-anims/in = SubResource( 7 )
+anims/in = SubResource( 9 )
 
 [node name="Counter" type="AnimationPlayer" parent="."]
-anims/NotReady = SubResource( 8 )
-anims/ready = SubResource( 6 )
-"anims/ready 2" = SubResource( 6 )
+anims/NotReady = SubResource( 7 )
+anims/ready = SubResource( 8 )
+"anims/ready 2" = SubResource( 8 )
 
 [node name="rec" type="Sprite" parent="."]
 visible = false
-modulate = Color( 0.827451, 0.176471, 0.176471, 0.698039 )
+modulate = Color( 0.517647, 0.811765, 0.27451, 0.698039 )
 position = Vector2( -1000, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
@@ -316,6 +329,12 @@ texture = ExtResource( 13 )
 [node name="popTimer" type="Timer" parent="."]
 wait_time = 1.8
 one_shot = true
+
+[node name="Drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+script = ExtResource( 14 )
+base_volume = -10.0
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_down" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_button_down"]

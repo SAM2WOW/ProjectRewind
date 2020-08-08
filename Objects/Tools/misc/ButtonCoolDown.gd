@@ -16,3 +16,6 @@ func _on_Timer_timeout():
 func _on_TextureButton_button_down():
 	$"../ProgressBarUp".hide()
 	$"../ProgressBarDown".show()
+	
+	$"../Number".set_position(Vector2(-277, -17))
+	$"../Icon".set_position(Vector2(-330, -9))
