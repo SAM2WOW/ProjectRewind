@@ -9,13 +9,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 95.8463, 72.826 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.736264, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.25606, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 1
 emission_sphere_radius = 34.01
 flag_disable_z = true
@@ -27,9 +27,9 @@ angular_velocity = 152.39
 angular_velocity_random = 0.75
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
+scale_curve = SubResource( 3 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -82,7 +82,7 @@ amount = 6
 one_shot = true
 explosiveness = 0.79
 randomness = 0.46
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
 texture = ExtResource( 5 )
 
 [node name="front_of_box" type="Sprite" parent="."]
@@ -90,5 +90,5 @@ position = Vector2( 0.794678, -3.5636 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/drop = SubResource( 3 )
+anims/drop = SubResource( 5 )
 [connection signal="area_entered" from="." to="." method="_on_RiceBox_area_entered"]

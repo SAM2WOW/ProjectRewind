@@ -24,4 +24,8 @@ func _on_Timer_timeout():
 	#noter.set_position(charge_node.get_position())
 	charge_node.add_child(noter)
 	self.set_text(str($"../../..".money * 100) + "¥")
-	charge = 0 
+	
+	if charge > 0:
+		$Coin_Sound.play()
+	
+	charge = 0
