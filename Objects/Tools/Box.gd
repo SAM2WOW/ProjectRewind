@@ -94,6 +94,14 @@ func swipe():
 	$Button/Number.set_text("")
 	$Button/Icon.hide()
 	
+	# Change Progress bar visibilty
+	$Button/ProgressBarUp.hide()
+	$Button/ProgressBarDown.show()
+	
+	# Change button icon visibility
+	$Button/Number.set_position(Vector2(-277, -17))
+	$Button/Icon.set_position(Vector2(-330, -9))
+	
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)

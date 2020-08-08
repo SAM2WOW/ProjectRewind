@@ -336,7 +336,6 @@ bus = "SFX"
 script = ExtResource( 14 )
 base_volume = -10.0
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
-[connection signal="button_down" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_button_down"]
 [connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
