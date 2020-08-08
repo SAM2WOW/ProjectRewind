@@ -21,6 +21,7 @@ func _ready():
 	change_button_graphic()
 	getNumber()
 	$Button/Number.set_text("x"+str(space))
+	$Counter.play("ready")
 
 
 func getNumber():
@@ -73,6 +74,7 @@ func checkOutput(_forced):
 
 
 func output():
+	get_node("Button/TextureButton").disabled = true
 	curTime = 0
 	get_node("CollisionShape2D").disabled = true
 	get_parent().countOutput(ingredient,statu)
@@ -97,8 +99,10 @@ func _on_Ani_animation_finished(anim_name):
 		change_button_graphic()
 		$Button/Number.set_text("x"+str(space))
 		$Ani.play("MoveIn")
+		$rec.hide()
 	if anim_name == "MoveIn":
 		$Timeout.start()
+		get_node("Button/TextureButton").disabled = false
 
 
 func _on_TextureButton_pressed():
@@ -110,6 +114,18 @@ func _on_TextureButton_pressed():
 
 func _on_TextureButton_button_down():
 		get_parent().checkOutput(statu)
+		popUp()
+
+		
+func popUp():
+		if statu == 0:
+			$Counter.play("NotReady")
+		if statu == 1:
+			$Counter.play("ready")
+		$Pop.play("in")
+		if statu == 1:
+			$rec.show()
+		$rec.show()
 
 
 func _on_Timeout_timeout():
