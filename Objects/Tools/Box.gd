@@ -35,6 +35,8 @@ func dropped():
 	spawn_graphic()
 	filled += 1
 	checkOutput(0)
+	
+	$Drop.play()
 
 
 func spawn_graphic():
@@ -62,13 +64,17 @@ func change_button_graphic():
 	$Button/TextureButton.set_self_modulate(color)
 	$Button/ProgressBarDown.set_modulate(color)
 	$Button/ProgressBarUp.set_modulate(color)
+	
+	# Reset Icon visibility
+	$Button/Icon.set_texture(load(Global.ingredient_to_icons(ingredient)))
+	$Button/Icon.show()
 
 
 func checkOutput(_forced):
 	$Button/Number.set_text("x"+str(space-filled))
 	if filled >= space:
 		statu = 1
-		$Button/Number.set_text("READY")
+		$Button/Number.set_text("DONE")
 	if statu == 1 and _forced == 1:
 		output()
 
@@ -84,7 +90,18 @@ func output():
 
 
 func swipe():
+	# Hide Icon and text
 	$Button/Number.set_text("")
+	$Button/Icon.hide()
+	
+	# Change Progress bar visibilty
+	$Button/ProgressBarUp.hide()
+	$Button/ProgressBarDown.show()
+	
+	# Change button icon visibility
+	$Button/Number.set_position(Vector2(-277, -17))
+	$Button/Icon.set_position(Vector2(-330, -9))
+	
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)
@@ -103,8 +120,14 @@ func _on_Ani_animation_finished(anim_name):
 	if anim_name == "MoveIn":
 		$Timeout.start()
 		get_node("Button/TextureButton").disabled = false
+		
+		# Reset Progress Bar Visibilty
 		$"Button/ProgressBarUp".show()
 		$"Button/ProgressBarDown".hide()
+
+		# Reset Icon Position
+		$Button/Number.set_position(Vector2(-277, -56))
+		$Button/Icon.set_position(Vector2(-330, -48))
 
 
 func _on_TextureButton_pressed():

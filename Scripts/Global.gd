@@ -47,6 +47,20 @@ func ingredient_to_colors(i):
 			return Color("4a4b31")
 
 
+func ingredient_to_icons(i):
+	match i:
+		INGREDIENT.SALMON:
+			return "res://Arts/Font/salmon_outline.png"
+		INGREDIENT.SHRIMP:
+			return "res://Arts/Font/shrimp_outline.png"
+		INGREDIENT.CUCUMBER:
+			return "res://Arts/Font/cucumber_outline.png"
+		INGREDIENT.RADISH:
+			return "res://Arts/Font/radish_outline.png"
+		INGREDIENT.SEAWEED:
+			return "res://Arts/Font/seaweed_outline.png"
+
+
 # Used for reparenting nodes
 func reparent(child: Node, new_parent: Node):
 	var old_parent = child.get_parent()
