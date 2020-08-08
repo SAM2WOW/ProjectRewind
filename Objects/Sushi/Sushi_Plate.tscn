@@ -113,7 +113,7 @@ rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Plate" type="Sprite" parent="."]
-position = Vector2( 0.002165, 41.5 )
+position = Vector2( 0, 52.5 )
 z_index = 10
 texture = ExtResource( 3 )
 
@@ -188,6 +188,7 @@ bus = "SFX"
 script = ExtResource( 7 )
 
 [node name="PlateAnimation" type="AnimationPlayer" parent="."]
+pause_mode = 2
 anims/flip = SubResource( 4 )
 
 [node name="Flip_Sound" type="AudioStreamPlayer2D" parent="."]
@@ -199,8 +200,8 @@ script = ExtResource( 7 )
 [connection signal="area_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_exited"]
 [connection signal="mouse_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_entered"]
 [connection signal="mouse_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_exited"]
-[connection signal="on_dragging" from="Drag_Plate" to="." method="_on_Sushi_on_dragging"]
 [connection signal="on_dragging" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_dragging"]
-[connection signal="on_released" from="Drag_Plate" to="." method="_on_Sushi_on_released"]
+[connection signal="on_dragging" from="Drag_Plate" to="." method="_on_Sushi_on_dragging"]
 [connection signal="on_released" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_released"]
+[connection signal="on_released" from="Drag_Plate" to="." method="_on_Sushi_on_released"]
 [connection signal="animation_finished" from="PlateAnimation" to="." method="_on_PlateAnimation_animation_finished"]
