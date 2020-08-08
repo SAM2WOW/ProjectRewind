@@ -312,6 +312,10 @@ modulate = Color( 0.827451, 0.176471, 0.176471, 0.698039 )
 position = Vector2( -1000, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
+
+[node name="popTimer" type="Timer" parent="."]
+wait_time = 1.8
+one_shot = true
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_down" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_button_down"]
@@ -319,3 +323,4 @@ texture = ExtResource( 13 )
 [connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timeout" to="." method="_on_Timeout_timeout"]
+[connection signal="timeout" from="popTimer" to="." method="_on_popTimer_timeout"]

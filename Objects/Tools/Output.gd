@@ -21,12 +21,9 @@ func _ready():
 #		$Box3.output()
 
 
-func checkOutput(statu):
-	if $Box1.statu == 1:
+func checkOutput(_statu):
 		$Box1.popUp()
-	if $Box2.statu == 1:
 		$Box2.popUp()
-	if $Box3.statu == 1:
 		$Box3.popUp()
 
 
@@ -44,7 +41,7 @@ func forceOutput():
 	if combo > 1:
 		Global.Console.addPoint(2.5)
 		if combo > 2:
-			Global.Console.addPoint(2.5)
+			Global.Console.addPoint(5)
 	
 func countOutput(_type,statu):
 	if statu == 1:

@@ -103,6 +103,8 @@ func _on_Ani_animation_finished(anim_name):
 	if anim_name == "MoveIn":
 		$Timeout.start()
 		get_node("Button/TextureButton").disabled = false
+		$"Button/ProgressBarUp".show()
+		$"Button/ProgressBarDown".hide()
 
 
 func _on_TextureButton_pressed():
@@ -113,25 +115,25 @@ func _on_TextureButton_pressed():
 
 
 func _on_TextureButton_button_down():
-		get_parent().checkOutput(statu)
+		if statu == 1:
+			get_parent().checkOutput(statu)
 		popUp()
 
 		
 func popUp():
 		if statu == 0:
 			$Counter.play("NotReady")
+			$popTimer.start()
 		if statu == 1:
 			$Counter.play("ready")
 		$Pop.play("in")
-		if statu == 1:
-			$rec.show()
 		$rec.show()
 
 
 func _on_Timeout_timeout():
 	curTime += 1
-	
 	if curTime >= outTime:
+		popUp()
 		output()
 		$Timeout.stop()
 		curTime = 0
@@ -158,3 +160,7 @@ func _on_Timeout_timeout():
 	
 	$Button/ProgressBarDown.set_value(curTime)
 	$Button/ProgressBarUp.set_value(curTime)
+
+
+func _on_popTimer_timeout():
+	$rec.hide()
