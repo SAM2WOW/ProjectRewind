@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.85098, 0.713726, 0.027451, 0 ), Color( 0.85098, 0.713726, 0.027451, 0.623529 ), Color( 0.85098, 0.713726, 0.027451, 0.623529 ), Color( 0.85098, 0.713726, 0.027451, 0 ) ]
+"values": [ Color( 0.85098, 0.713726, 0.027451, 0 ), Color( 0.717647, 0.101961, 0.145098, 0.623529 ), Color( 0.52549, 0.0941176, 0.0941176, 0.623529 ), Color( 0.85098, 0.713726, 0.027451, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:scale")
@@ -124,17 +124,17 @@ tracks/2/keys = {
 }
 
 [node name="Note" type="Node2D"]
-modulate = Color( 1, 1, 1, 0.112941 )
-scale = Vector2( 1.05834, 1.05834 )
+modulate = Color( 0.85098, 0.713726, 0.027451, 0 )
+scale = Vector2( 1.06667, 1.06667 )
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -13.0223
-margin_top = 222.353
-margin_right = 13.9777
-margin_bottom = 292.355
+margin_left = -13.379
+margin_top = 230.0
+margin_right = 13.621
+margin_bottom = 300.002
 custom_fonts/font = ExtResource( 2 )
 text = "0"
 __meta__ = {
