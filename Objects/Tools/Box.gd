@@ -80,6 +80,7 @@ func checkOutput(_forced):
 
 
 func output():
+	$popTimer.stop()
 	get_node("Button/TextureButton").disabled = true
 	curTime = 0
 	get_node("CollisionShape2D").disabled = true
