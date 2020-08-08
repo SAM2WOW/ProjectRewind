@@ -41,16 +41,15 @@ font_data = ExtResource( 19 )
 size = 90
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 150
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "game_over"
+[sub_resource type="Animation" id=6]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -153,7 +152,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 step = 0.02
 tracks/0/type = "value"
@@ -207,8 +206,7 @@ tracks/3/keys = {
 "values": [ -0.156 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "menu_outro"
+[sub_resource type="Animation" id=8]
 length = 0.5
 step = 0.02
 tracks/0/type = "value"
@@ -236,7 +234,7 @@ tracks/1/keys = {
 "values": [ false, true, true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 5.0
 step = 0.01
 tracks/0/type = "value"
@@ -472,6 +470,7 @@ current = true
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Hand" parent="Node2D" instance=ExtResource( 2 )]
+position = Vector2( -365.377, 0 )
 
 [node name="Cutting_Board" parent="Node2D" instance=ExtResource( 7 )]
 position = Vector2( 960, 637.012 )
@@ -657,7 +656,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -369.0
 margin_top = -50.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.498039, 0.282353, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
@@ -696,7 +695,7 @@ alignment = 1
 [node name="Title" type="Label" parent="Game_Over/CenterContainer/VBoxContainer"]
 margin_right = 601.0
 margin_bottom = 188.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
@@ -734,10 +733,10 @@ text = "Continue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/game_over = SubResource( 5 )
-anims/menu_intro = SubResource( 6 )
-anims/menu_outro = SubResource( 7 )
-anims/scene_intro = SubResource( 8 )
+anims/game_over = SubResource( 6 )
+anims/menu_intro = SubResource( 7 )
+anims/menu_outro = SubResource( 8 )
+anims/scene_intro = SubResource( 9 )
 
 [node name="Clock_Sound" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
