@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Arts/Menu/menu_button.tres" type="StyleBox" id=2]
+[ext_resource path="res://Arts/Font/Staatliches-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Objects/Menu/MenuButtons.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Menu/Leaderboard.gd" type="Script" id=5]
+[ext_resource path="res://Arts/Font/UI_font_small.tres" type="DynamicFont" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 3 )
+
+[node name="Leaderboard" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1900.0
+margin_bottom = 1050.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1880.0
+margin_bottom = 125.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Leaderboard"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 129.0
+margin_right = 1880.0
+margin_bottom = 901.0
+size_flags_vertical = 3
+
+[node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 940.0
+margin_top = 386.0
+margin_right = 940.0
+margin_bottom = 386.0
+
+[node name="Message" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/ScoreContainer"]
+visible = false
+margin_right = 271.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+text = "Leaderboard"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 905.0
+margin_right = 1880.0
+margin_bottom = 1030.0
+custom_constants/separation = 71
+alignment = 1
+
+[node name="Close" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 59.0
+margin_right = 446.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "close"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 517.0
+margin_right = 904.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 387, 125 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+placeholder_text = "Your Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submit" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 975.0
+margin_right = 1362.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Submit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "submit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refresh" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 1433.0
+margin_right = 1820.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Refresh"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Refresh"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Submit" to="." method="_on_Submit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Refresh" to="." method="_on_Refresh_pressed"]

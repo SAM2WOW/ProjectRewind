@@ -137,3 +137,18 @@ func _on_Reload_pressed():
 # Quit game
 func _on_Quit_pressed():
 	get_tree().quit()
+
+
+# Leader Board
+func _on_Leaderboard_pressed():
+	$Game_Over.hide()
+	$Leaderboard.show()
+	
+	$AnimationPlayer.play("to_tutorial")
+
+
+func _on_Leaderboard_on_leaderboard_closed():
+	$Game_Over.show()
+	$Leaderboard.hide()
+	
+	$AnimationPlayer.play("back_leaderboard")
