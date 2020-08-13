@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Arts/Font/UI_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Arts/Menu/menu_button.tres" type="StyleBox" id=2]
@@ -6,6 +6,44 @@
 [ext_resource path="res://Objects/Menu/MenuButtons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Menu/Leaderboard.gd" type="Script" id=5]
 [ext_resource path="res://Arts/Font/UI_font_small.tres" type="DynamicFont" id=6]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.498039 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.376471, 0.34902, 0.2, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color( 0.65098, 0.611765, 0.368627, 1 )
+border_color = Color( 0.65098, 0.611765, 0.368627, 1 )
+
+[sub_resource type="Theme" id=3]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 4 )
+VScrollBar/styles/grabber_highlight = SubResource( 5 )
+VScrollBar/styles/grabber_pressed = SubResource( 6 )
+VScrollBar/styles/scroll = SubResource( 2 )
+VScrollBar/styles/scroll_focus = null
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -56,16 +94,25 @@ margin_right = 1880.0
 margin_bottom = 901.0
 size_flags_vertical = 3
 
-[node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 940.0
-margin_top = 386.0
-margin_right = 940.0
-margin_bottom = 386.0
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 545.0
+margin_top = 35.0
+margin_right = 1335.0
+margin_bottom = 735.0
+rect_min_size = Vector2( 790, 700 )
+rect_clip_content = false
+theme = SubResource( 3 )
+scroll_horizontal_enabled = false
 
-[node name="Message" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/ScoreContainer"]
+[node name="ScoreContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer/ScrollContainer"]
+alignment = 1
+
+[node name="Message" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
 visible = false
-margin_right = 271.0
-margin_bottom = 70.0
+margin_left = 804.0
+margin_top = 351.0
+margin_right = 1075.0
+margin_bottom = 421.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 5

@@ -49,24 +49,22 @@ custom_fonts/font = SubResource( 1 )
 text = "Leaderboard"
 
 [node name="MessageContainer" type="CenterContainer" parent="Board"]
-visible = false
-margin_top = 89.0
+margin_top = 85.0
 margin_right = 1864.0
-margin_bottom = 126.0
+margin_bottom = 87.0
 
 [node name="TextMessage" type="Label" parent="Board/MessageContainer"]
 margin_left = 923.0
-margin_top = 17.0
 margin_right = 940.0
-margin_bottom = 19.0
+margin_bottom = 2.0
 custom_fonts/font = SubResource( 2 )
 text = "Loading scores..."
 valign = 1
 
 [node name="HighScores" type="CenterContainer" parent="Board"]
-margin_top = 85.0
+margin_top = 87.0
 margin_right = 1864.0
-margin_bottom = 185.0
+margin_bottom = 187.0
 rect_min_size = Vector2( 0, 100 )
 theme = SubResource( 3 )
 
@@ -77,9 +75,9 @@ margin_right = 932.0
 margin_bottom = 50.0
 
 [node name="CloseButtonContainer" type="CenterContainer" parent="Board"]
-margin_top = 185.0
+margin_top = 187.0
 margin_right = 1864.0
-margin_bottom = 303.0
+margin_bottom = 305.0
 
 [node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource( 4 )]
 margin_left = 582.0

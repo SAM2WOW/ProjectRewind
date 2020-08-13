@@ -9,6 +9,13 @@ var ld_name = "main"
 
 
 func _ready():
+	loading_board()
+
+
+func loading_board():
+	# Reset list index
+	list_index = 0
+	
 	print("SilentWolf.Scores.leaderboards: " + str(SilentWolf.Scores.leaderboards))
 	print("SilentWolf.Scores.ldboard_config: " + str(SilentWolf.Scores.ldboard_config))
 	#var scores = SilentWolf.Scores.scores
@@ -82,35 +89,40 @@ func score_in_score_array(scores, new_score):
 func add_item(player_name, score):
 	var item = ScoreItem.instance()
 	list_index += 1
-	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
-	item.get_node("Score").text = score
+	item.get_node("MarginContainer/HBoxContainer/PlayerName").text = str(list_index) + str(". ") + player_name
+	item.get_node("MarginContainer/HBoxContainer/Score").text = score
 	item.margin_top = list_index * 100
-	$MarginContainer/VBoxContainer/CenterContainer/ScoreContainer.add_child(item)
-
+	$MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/ScoreContainer.add_child(item)
+	item.get_node("AnimationPlayer").play("intro")
 
 func add_no_scores_message():
-	var item = $MarginContainer/VBoxContainer/CenterContainer/ScoreContainer/Message
+	var item = $MarginContainer/VBoxContainer/CenterContainer/Message
 	item.text = "No scores yet!"
 	item.show()
 	item.margin_top = 135
 
 
 func add_loading_scores_message():
-	var item = $MarginContainer/VBoxContainer/CenterContainer/ScoreContainer/Message
+	var item = $MarginContainer/VBoxContainer/CenterContainer/Message
 	item.text = "Loading scores..."
 	item.show()
 	item.margin_top = 135
 
 
 func hide_message():
-	$MarginContainer/VBoxContainer/CenterContainer/ScoreContainer/Message.hide()
+	$MarginContainer/VBoxContainer/CenterContainer/Message.hide()
 
 
+# Submit Scores
 func _on_Submit_pressed():
 	var name = $MarginContainer/VBoxContainer/HBoxContainer/NameEdit.get_text()
 	if not name.empty():
 		SilentWolf.Scores.persist_score(name, (Global.Console.money * 100))
-	SilentWolf.Scores.get_high_scores()
+	
+	$MarginContainer/VBoxContainer/HBoxContainer/NameEdit.hide()
+	$MarginContainer/VBoxContainer/HBoxContainer/Submit.hide()
+	
+	refresh_board()
 
 
 # Closed
@@ -120,4 +132,11 @@ func _on_Close_pressed():
 
 # Refresh
 func _on_Refresh_pressed():
-	SilentWolf.Scores.get_high_scores()
+	refresh_board()
+
+
+func refresh_board():
+	var scorebox = $MarginContainer/VBoxContainer/CenterContainer/ScrollContainer/ScoreContainer
+	for i in scorebox.get_children():
+		i.queue_free()
+	loading_board()

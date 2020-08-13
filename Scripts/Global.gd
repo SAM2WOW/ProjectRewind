@@ -21,14 +21,17 @@ var tutorial_seen = false
 # Game Version
 var game_version = "1.2.0"
 
-
 func _ready():
 	# Load the slientwolf plugins
 	SilentWolf.configure({
 		"api_key": "2miuqSdUCS15IuAR2w1JW1nhosvRbg7e9jCzDefb",
 		"game_id": "SUSHIunROLL",
 		"game_version": game_version,
-		"log_level": 1
+		"log_level": 2
+	})
+
+	SilentWolf.configure_scores({
+		"open_scene_on_close": "res://Maps/Main.tscn"
 	})
 
 

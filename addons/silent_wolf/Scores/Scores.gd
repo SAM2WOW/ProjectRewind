@@ -122,7 +122,7 @@ func get_high_scores(maximum=10, ldboard_name="main", period_offset=0):
 	wrHighScores = weakref(HighScores)
 	if OS.get_name() != "HTML5":
 		HighScores.set_use_threads(true)
-	get_tree().get_root().call_deferred("add_child", HighScores)
+	get_tree().get_root().add_child(HighScores)
 	HighScores.connect("request_completed", self, "_on_GetHighScores_request_completed")
 	SWLogger.info("Calling SilentWolf backend to get scores...")
 	# resetting the latest_number value in case the first requests times out, we need to request the same amount of top scores in the retry
