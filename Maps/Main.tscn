@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://Arts/Menu/Pause_hover.png" type="Texture" id=35]
 [ext_resource path="res://Arts/Menu/Reload_Hover.png" type="Texture" id=36]
 [ext_resource path="res://Arts/Tutorial/tutorial_part_2.png" type="Texture" id=37]
+[ext_resource path="res://Objects/Menu/Leaderboard.tscn" type="PackedScene" id=38]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 18 )
@@ -58,8 +59,12 @@ font_data = ExtResource( 19 )
 size = 150
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "back_tutorial"
+[sub_resource type="DynamicFont" id=6]
+size = 67
+font_data = ExtResource( 19 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "back_leaderboard"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -74,7 +79,22 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -1000 ), Vector2( 0, -753 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, -1000 ), Vector2( 0, -753 ) ]
+}
+
+[sub_resource type="Animation" id=9]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -189,7 +209,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 0.5
 step = 0.02
 tracks/0/type = "value"
@@ -243,7 +263,7 @@ tracks/3/keys = {
 "values": [ -0.156 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 0.5
 step = 0.02
 tracks/0/type = "value"
@@ -271,7 +291,7 @@ tracks/1/keys = {
 "values": [ false, true, true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 5.0
 step = 0.01
 tracks/0/type = "value"
@@ -505,8 +525,7 @@ tracks/17/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "to_tutorial"
+[sub_resource type="Animation" id=13]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
@@ -589,7 +608,6 @@ margin_left = 645.0
 margin_top = 321.0
 margin_right = 1275.0
 margin_bottom = 759.0
-rect_scale = Vector2( 0.675, 0.675 )
 rect_pivot_offset = Vector2( 315, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
@@ -647,7 +665,7 @@ texture_hover = ExtResource( 36 )
 [node name="Pause" type="TextureButton" parent="CanvasLayer/HUD/HBoxContainer"]
 margin_left = 94.0
 margin_right = 185.0
-margin_bottom = 89.0
+margin_bottom = 88.0
 toggle_mode = true
 texture_normal = ExtResource( 31 )
 texture_pressed = ExtResource( 32 )
@@ -780,7 +798,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.498039, 0.282353, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
-text = "© 2020 unSAME studio                v 1.0 "
+text = "© 2020 unSAME studio                v 1.2 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -799,17 +817,17 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="Game_Over"]
 anchor_right = 1.0
-anchor_bottom = 0.81
-margin_bottom = 0.199951
+anchor_bottom = 1.0
+margin_bottom = -205.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game_Over/CenterContainer"]
 margin_left = 676.0
-margin_top = 142.0
+margin_top = 93.0
 margin_right = 1243.0
-margin_bottom = 732.0
+margin_bottom = 782.0
 alignment = 1
 
 [node name="Title" type="Label" parent="Game_Over/CenterContainer/VBoxContainer"]
@@ -844,12 +862,36 @@ custom_constants/shadow_offset_y = 5
 text = "Rank: None"
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Game_Over/CenterContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Game_Over/CenterContainer/VBoxContainer"]
 margin_top = 395.0
 margin_right = 567.0
-margin_bottom = 590.0
+margin_bottom = 530.0
 custom_constants/margin_right = 90
-custom_constants/margin_top = 70
+custom_constants/margin_top = 50
+custom_constants/margin_left = 90
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leaderboard" type="Button" parent="Game_Over/CenterContainer/VBoxContainer/MarginContainer2"]
+margin_left = 90.0
+margin_top = 50.0
+margin_right = 477.0
+margin_bottom = 135.0
+focus_mode = 0
+custom_styles/hover = ExtResource( 30 )
+custom_styles/pressed = ExtResource( 29 )
+custom_styles/normal = ExtResource( 29 )
+custom_fonts/font = SubResource( 6 )
+enabled_focus_mode = 0
+text = "leaderboard"
+
+[node name="MarginContainer" type="MarginContainer" parent="Game_Over/CenterContainer/VBoxContainer"]
+margin_top = 534.0
+margin_right = 567.0
+margin_bottom = 689.0
+custom_constants/margin_right = 90
+custom_constants/margin_top = 30
 custom_constants/margin_left = 90
 __meta__ = {
 "_edit_use_anchors_": false
@@ -857,9 +899,9 @@ __meta__ = {
 
 [node name="Continue" type="Button" parent="Game_Over/CenterContainer/VBoxContainer/MarginContainer"]
 margin_left = 90.0
-margin_top = 70.0
+margin_top = 30.0
 margin_right = 477.0
-margin_bottom = 195.0
+margin_bottom = 155.0
 focus_mode = 0
 custom_styles/hover = ExtResource( 30 )
 custom_styles/pressed = ExtResource( 29 )
@@ -867,6 +909,11 @@ custom_styles/normal = ExtResource( 29 )
 custom_fonts/font = ExtResource( 13 )
 enabled_focus_mode = 0
 text = "Continue"
+
+[node name="Leaderboard" parent="." instance=ExtResource( 38 )]
+visible = false
+margin_top = -1000.0
+margin_bottom = -1000.0
 
 [node name="Tutorial" type="Control" parent="."]
 visible = false
@@ -914,7 +961,6 @@ margin_bottom = 879.0
 custom_constants/margin_bottom = 30
 
 [node name="TextureRect" type="TextureRect" parent="Tutorial/CenterContainer/VBoxContainer/MarginContainer"]
-margin_top = -6.10352e-05
 margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 1280, 720 )
@@ -951,12 +997,13 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/back_tutorial = SubResource( 11 )
-anims/game_over = SubResource( 6 )
-anims/menu_intro = SubResource( 7 )
-anims/menu_outro = SubResource( 8 )
-anims/scene_intro = SubResource( 9 )
-anims/to_tutorial = SubResource( 10 )
+anims/back_leaderboard = SubResource( 7 )
+anims/back_tutorial = SubResource( 8 )
+anims/game_over = SubResource( 9 )
+anims/menu_intro = SubResource( 10 )
+anims/menu_outro = SubResource( 11 )
+anims/scene_intro = SubResource( 12 )
+anims/to_tutorial = SubResource( 13 )
 
 [node name="Clock_Sound" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
@@ -1000,7 +1047,9 @@ wait_time = 180.0
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/MarginContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="toggled" from="Menu/Options/Music" to="." method="_on_Music_toggled"]
 [connection signal="toggled" from="Menu/Options/Sounds" to="." method="_on_Sounds_toggled"]
+[connection signal="pressed" from="Game_Over/CenterContainer/VBoxContainer/MarginContainer2/Leaderboard" to="." method="_on_Leaderboard_pressed"]
 [connection signal="pressed" from="Game_Over/CenterContainer/VBoxContainer/MarginContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="on_leaderboard_closed" from="Leaderboard" to="." method="_on_Leaderboard_on_leaderboard_closed"]
 [connection signal="pressed" from="Tutorial/CenterContainer/VBoxContainer/CenterContainer/Next" to="." method="_on_Next_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

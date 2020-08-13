@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Arts/Font/UI_font_small.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.537255, 0.494118, 0.278431, 1 )
+shadow_color = Color( 0.27451, 0.25098, 0.141176, 0.729412 )
+shadow_size = 1
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "intro"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[node name="ScoreItem" type="Panel"]
+margin_right = 782.0
+margin_bottom = 76.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 782, 76 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 30
+custom_constants/margin_left = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 30.0
+margin_right = 752.0
+margin_bottom = 76.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+margin_right = 622.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 600, 76 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 1 )
+text = "1. ABC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 626.0
+margin_top = 3.0
+margin_right = 722.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 1 )
+text = "13123"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/intro = SubResource( 2 )

@@ -21,5 +21,5 @@ func _ready():
 #	pass
 
 
-func _on_Anim_animation_finished(anim_name):
+func _on_Anim_animation_finished(_anim_name):
 	queue_free() # Replace with function body.
