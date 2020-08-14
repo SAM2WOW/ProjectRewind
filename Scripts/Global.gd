@@ -27,7 +27,7 @@ func _ready():
 		"api_key": "2miuqSdUCS15IuAR2w1JW1nhosvRbg7e9jCzDefb",
 		"game_id": "SUSHIunROLL",
 		"game_version": game_version,
-		"log_level": 2
+		"log_level": 0
 	})
 
 	SilentWolf.configure_scores({
