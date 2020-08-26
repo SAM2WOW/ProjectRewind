@@ -95,14 +95,6 @@ func swipe():
 	$Button/Number.set_text("")
 	$Button/Icon.hide()
 	
-	# Change Progress bar visibilty
-	$Button/ProgressBarUp.hide()
-	$Button/ProgressBarDown.show()
-	
-	# Change button icon visibility
-	$Button/Number.set_position(Vector2(-277, -17))
-	$Button/Icon.set_position(Vector2(-330, -9))
-	
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
 	ingredient = Global.Console.getIng(ingredient)
@@ -121,14 +113,6 @@ func _on_Ani_animation_finished(anim_name):
 	if anim_name == "MoveIn":
 		$Timeout.start()
 		get_node("Button/TextureButton").disabled = false
-		
-		# Reset Progress Bar Visibilty
-		$"Button/ProgressBarUp".show()
-		$"Button/ProgressBarDown".hide()
-
-		# Reset Icon Position
-		$Button/Number.set_position(Vector2(-277, -56))
-		$Button/Icon.set_position(Vector2(-330, -48))
 
 
 func _on_TextureButton_pressed():
