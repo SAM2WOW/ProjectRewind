@@ -1,17 +1,22 @@
 extends Node2D
 
-const hand_colors = ["ffffff", "f5dbb6", "614a2e", "3b2608"]
+const hand_colors = ["ffffff", "efd0a3", "a58557"]
 
 var hand_open = preload("res://Arts/open_hand.png")
 var hand_close = preload("res://Arts/closed_hand.png")
 
 
 func _ready():
-	# Hide mouse while in game
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# Check if device is touch supported
+	if OS.has_touchscreen_ui_hint():
+		queue_free()
+	else:
+		# Hide mouse while in game
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	# Random skin tone
-	#$Sprite.set_self_modulate(Color(hand_colors[randi() % 4]))
+	#randomize()
+	#$Sprite.set_self_modulate(Color(hand_colors[randi() % 3]))
 
 
 func _process(_delta):
