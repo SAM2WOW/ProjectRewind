@@ -208,6 +208,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer/HUD/HBoxContainer/Pause:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.5
@@ -524,6 +536,30 @@ tracks/17/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("CanvasLayer/HUD/HBoxContainer/Pause:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 4.71 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CanvasLayer/HUD/HBoxContainer/Pause:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 4.71, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.2
@@ -547,7 +583,7 @@ script = ExtResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 0, -1000 )
+position = Vector2( 0, -753 )
 offset = Vector2( 960, 540 )
 current = true
 
@@ -608,6 +644,7 @@ margin_left = 645.0
 margin_top = 321.0
 margin_right = 1275.0
 margin_bottom = 759.0
+rect_scale = Vector2( 0.884, 0.884 )
 rect_pivot_offset = Vector2( 315, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
@@ -663,6 +700,8 @@ texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 36 )
 
 [node name="Pause" type="TextureButton" parent="CanvasLayer/HUD/HBoxContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.137931 )
 margin_left = 94.0
 margin_right = 185.0
 margin_bottom = 88.0
@@ -716,9 +755,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
 margin_left = 305.0
-margin_top = 398.0
+margin_top = 460.0
 margin_right = 654.0
-margin_bottom = 682.0
+margin_bottom = 619.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -737,13 +776,14 @@ text = "      Play      "
 [node name="MarginContainer" type="MarginContainer" parent="Menu/CenterContainer/VBoxContainer"]
 margin_top = 129.0
 margin_right = 349.0
-margin_bottom = 284.0
+margin_bottom = 159.0
 custom_constants/margin_top = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer/MarginContainer"]
+visible = false
 margin_top = 30.0
 margin_right = 349.0
 margin_bottom = 155.0
@@ -1024,7 +1064,7 @@ bus = "BGM"
 [node name="MenuBGM" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 8 )
-volume_db = -10.5025
+volume_db = -14.7739
 autoplay = true
 bus = "BGM"
 
