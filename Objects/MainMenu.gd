@@ -22,6 +22,7 @@ func _on_Play_pressed():
 		$Menu.hide()
 		
 		$AnimationPlayer.play("to_tutorial")
+		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.play()
 
 
 # Tutorial Changing
@@ -29,11 +30,12 @@ func _on_Next_pressed():
 	$Tap_Sound.play()
 	
 	if tutorial_count == 2:
-		$"Tutorial/CenterContainer/VBoxContainer/MarginContainer/TextureRect".set_texture(load("res://Arts/Tutorial/main_tutorial.png"))
-	
+		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.set_stream(load("res://Arts/Tutorial/Tutorial2.webm"))
+		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.play()
 	if tutorial_count == 1:
-		$"Tutorial/CenterContainer/VBoxContainer/MarginContainer/TextureRect".set_texture(load("res://Arts/Tutorial/tutorial_part_3.png"))
-	
+		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.set_stream(load("res://Arts/Tutorial/Tutorial3.webm"))
+		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.play()
+		
 	elif tutorial_count <= 0:
 		Global.tutorial_seen = true
 		
