@@ -513,11 +513,14 @@ base_volume = -5.0
 stream = ExtResource( 16 )
 bus = "SFX"
 script = ExtResource( 12 )
+
+[connection signal="input_event" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_input_event"]
 [connection signal="mouse_entered" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_mouse_exited"]
 [connection signal="on_dragging" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_on_dragging"]
 [connection signal="on_released" from="Top_Seaweed" to="Top_Seaweed" method="_on_Top_Seaweed_on_released"]
 [connection signal="animation_finished" from="Top_Seaweed/AnimationPlayer" to="Top_Seaweed" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="input_event" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_input_event"]
 [connection signal="mouse_entered" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_mouse_entered"]
 [connection signal="mouse_exited" from="Actual_Roll/Bottom_Seaweed" to="Actual_Roll/Bottom_Seaweed" method="_on_Bottom_Seaweed_mouse_exited"]
 [connection signal="animation_finished" from="Actual_Roll/Bottom_Seaweed/AnimationPlayer" to="Actual_Roll/Bottom_Seaweed" method="_on_AnimationPlayer_animation_finished"]

@@ -71,9 +71,8 @@ stream = ExtResource( 4 )
 bus = "SFX"
 script = ExtResource( 3 )
 base_volume = -5.0
+
 [connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]
-[connection signal="mouse_entered" from="." to="." method="_on_Sushi_Piece_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Sushi_Piece_mouse_exited"]
 [connection signal="on_dragging" from="." to="." method="_on_Sushi_Piece_on_dragging"]
 [connection signal="on_released" from="." to="." method="_on_Sushi_Piece_on_released"]

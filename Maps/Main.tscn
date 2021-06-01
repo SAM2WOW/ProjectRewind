@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -31,9 +31,7 @@
 [ext_resource path="res://Arts/Menu/menu_button.tres" type="StyleBox" id=29]
 [ext_resource path="res://Arts/Menu/menu_button_pressed.tres" type="StyleBox" id=30]
 [ext_resource path="res://Arts/Menu/Pause.png" type="Texture" id=31]
-[ext_resource path="res://Arts/Menu/Pause_Pressed.png" type="Texture" id=32]
 [ext_resource path="res://Arts/Menu/Reload.png" type="Texture" id=33]
-[ext_resource path="res://Arts/Menu/Reload_Pressed.png" type="Texture" id=34]
 [ext_resource path="res://Arts/Menu/Pause_hover.png" type="Texture" id=35]
 [ext_resource path="res://Arts/Menu/Reload_Hover.png" type="Texture" id=36]
 [ext_resource path="res://Arts/Tutorial/Tutorial1.webm" type="VideoStream" id=37]
@@ -306,7 +304,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=12]
 length = 5.0
-step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
@@ -561,6 +558,18 @@ tracks/19/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/20/type = "value"
+tracks/20/path = NodePath("Menu:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.2
@@ -580,13 +589,13 @@ tracks/0/keys = {
 [node name="Main" type="Node"]
 script = ExtResource( 14 )
 
-[node name="Console" parent="." instance=ExtResource( 3 )]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 0, -2000 )
+position = Vector2( 0, -753 )
 offset = Vector2( 960, 540 )
 current = true
+
+[node name="Console" parent="." instance=ExtResource( 3 )]
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -611,6 +620,8 @@ position = Vector2( 228.704, 64.9657 )
 position = Vector2( 1649.43, 993.73 )
 
 [node name="BG" type="Sprite" parent="Node2D"]
+position = Vector2( -960, 0 )
+scale = Vector2( 2, 1 )
 z_index = -20
 texture = ExtResource( 9 )
 offset = Vector2( 960, 540 )
@@ -645,6 +656,7 @@ margin_left = 645.0
 margin_top = 321.0
 margin_right = 1275.0
 margin_bottom = 759.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 315, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
@@ -696,18 +708,18 @@ visible = false
 margin_right = 90.0
 margin_bottom = 89.0
 texture_normal = ExtResource( 33 )
-texture_pressed = ExtResource( 34 )
+texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 36 )
 
 [node name="Pause" type="TextureButton" parent="CanvasLayer/HUD/HBoxContainer"]
 visible = false
-modulate = Color( 1, 1, 1, 0.137931 )
+modulate = Color( 1, 1, 1, 0.655173 )
 margin_left = 94.0
 margin_right = 185.0
 margin_bottom = 88.0
 toggle_mode = true
 texture_normal = ExtResource( 31 )
-texture_pressed = ExtResource( 32 )
+texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 35 )
 
 [node name="SceneBlocker" type="TextureRect" parent="CanvasLayer/HUD"]
@@ -743,11 +755,10 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 960.0
 margin_top = -3.0
-margin_bottom = -3.0
+margin_right = 1920.0
+margin_bottom = 1077.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -795,11 +806,9 @@ enabled_focus_mode = 0
 text = "      Quit      "
 
 [node name="Options" type="HBoxContainer" parent="Menu"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -370.0
+margin_left = 1550.0
 margin_top = 51.0
-margin_right = -56.0
+margin_right = 1864.0
 margin_bottom = 212.0
 alignment = 2
 __meta__ = {
@@ -827,17 +836,15 @@ pressed = true
 enabled_focus_mode = 0
 
 [node name="Label" type="Label" parent="Menu"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -541.0
-margin_top = -50.0
+margin_left = 1379.0
+margin_top = 1030.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.498039, 0.282353, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
-text = "© 2020 unSAME studio                v 1.2 "
+text = "© 2020 unSAME studio                v 1.3 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -855,9 +862,8 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Game_Over"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -205.0
+margin_right = 1920.0
+margin_bottom = 875.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -967,8 +973,8 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Tutorial"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -984,7 +990,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Tutorial/CenterContainer/VBoxContainer"]
-margin_right = 856.0
+margin_right = 1280.0
 margin_bottom = 125.0
 custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.498039, 0.282353, 1 )
@@ -995,8 +1001,8 @@ align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Tutorial/CenterContainer/VBoxContainer"]
 margin_top = 129.0
-margin_right = 856.0
-margin_bottom = 629.0
+margin_right = 1280.0
+margin_bottom = 869.0
 custom_constants/margin_bottom = 20
 
 [node name="VideoPlayer" type="VideoPlayer" parent="Tutorial/CenterContainer/VBoxContainer/MarginContainer"]
@@ -1010,14 +1016,14 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Tutorial/CenterContainer/VBoxContainer"]
-margin_top = 633.0
-margin_right = 856.0
-margin_bottom = 758.0
+margin_top = 873.0
+margin_right = 1280.0
+margin_bottom = 998.0
 
 [node name="Next" type="Button" parent="Tutorial/CenterContainer/VBoxContainer/CenterContainer"]
 pause_mode = 2
-margin_left = 254.0
-margin_right = 602.0
+margin_left = 466.0
+margin_right = 814.0
 margin_bottom = 125.0
 focus_mode = 0
 custom_styles/hover = ExtResource( 30 )
@@ -1060,7 +1066,7 @@ bus = "BGM"
 [node name="MenuBGM" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 8 )
-volume_db = -14.7739
+volume_db = -12.2613
 autoplay = true
 bus = "BGM"
 
@@ -1077,6 +1083,7 @@ bus = "BGM"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 180.0
+
 [connection signal="pressed" from="CanvasLayer/HUD/HBoxContainer/Reload" to="." method="_on_Reload_pressed"]
 [connection signal="toggled" from="CanvasLayer/HUD/HBoxContainer/Pause" to="." method="_on_Pause_toggled"]
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]

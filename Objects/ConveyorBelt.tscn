@@ -29,4 +29,5 @@ position = Vector2( 2118.49, 146.078 )
 
 [node name="Sushi_Plate" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2118.49, 146.078 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

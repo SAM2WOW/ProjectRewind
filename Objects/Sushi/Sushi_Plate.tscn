@@ -195,13 +195,12 @@ anims/flip = SubResource( 4 )
 stream = ExtResource( 6 )
 bus = "SFX"
 script = ExtResource( 7 )
+
 [connection signal="area_entered" from="Base_Plate" to="." method="_on_Base_Plate_area_entered"]
 [connection signal="area_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_entered"]
 [connection signal="area_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_exited"]
-[connection signal="mouse_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_entered"]
-[connection signal="mouse_exited" from="Drag_Plate" to="Drag_Plate" method="_on_Sushi_Piece_mouse_exited"]
-[connection signal="on_dragging" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_dragging"]
 [connection signal="on_dragging" from="Drag_Plate" to="." method="_on_Sushi_on_dragging"]
-[connection signal="on_released" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_released"]
+[connection signal="on_dragging" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_dragging"]
 [connection signal="on_released" from="Drag_Plate" to="." method="_on_Sushi_on_released"]
+[connection signal="on_released" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_on_released"]
 [connection signal="animation_finished" from="PlateAnimation" to="." method="_on_PlateAnimation_animation_finished"]
