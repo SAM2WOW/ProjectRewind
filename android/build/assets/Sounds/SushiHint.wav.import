@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SushiHint.wav-f23ae3526d5d447248626732c45f609b.sample"
+
+[deps]
+
+source_file="res://Sounds/SushiHint.wav"
+dest_files=[ "res://.import/SushiHint.wav-f23ae3526d5d447248626732c45f609b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

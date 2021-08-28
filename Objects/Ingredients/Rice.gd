@@ -3,6 +3,7 @@ extends Area2D
 # For manually setting scrappable
 export var forced_scrappable = false
 
+var overlapped = 0
 var scrappable = true
 
 
@@ -30,11 +31,17 @@ func _on_Rice_area_entered(area):
 	# Else Check if anything on top of the rice
 	elif "Sushi" in area.name:
 		scrappable = false
+		overlapped += 1
+		$Sprite.set_modulate(Color("bababa"))
 
 
 func _on_Rice_area_exited(area):
 	if "Sushi" in area.name:
-		scrappable = true
+		overlapped -= 1
+		
+		if overlapped == 0:
+			scrappable = true
+			$Sprite.set_modulate(Color("ffffff"))
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

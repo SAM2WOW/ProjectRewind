@@ -10,6 +10,10 @@ func _ready():
 	get_tree().set_pause(true)
 	
 	$AnimationPlayer.play("menu_intro")
+	
+	# Hide Leaderboard on mobile
+	if OS.get_name() in ["Android", "iOS"]:
+		$"Game_Over/CenterContainer/VBoxContainer/MarginContainer2".hide()
 
 
 func _on_Play_pressed():

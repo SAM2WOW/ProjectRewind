@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Sushi/Sushi_Piece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Sushi_Scenes/Nigiri.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "spawn"
+length = 0.3
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sushi_Piece:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.16, 0.3 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.546196, 0.546196 ), Vector2( 1, 1 ), Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sushi_Piece:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.06, 0.3 ),
+"transitions": PoolRealArray( 0.5, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -23.3223 ), Vector2( 0, -77.165 ), Vector2( 0, -39.7895 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sushi_Piece2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.06, 0.16, 0.3 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.546, 0.546 ), Vector2( 1, 1 ), Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sushi_Piece2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.06, 0.3 ),
+"transitions": PoolRealArray( 0.5, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 13.0914 ), Vector2( 0, 66.4208 ), Vector2( 0, 40.3914 ) ]
+}
+
+[node name="Nigiri" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sushi_Piece" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -39.7895 )
+z_index = 12
+
+[node name="Sushi_Piece2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 40.3914 )
+z_index = 11
+ingredient = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spawn = SubResource( 1 )
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
+script = ExtResource( 4 )
+[connection signal="on_dropped" from="Sushi_Piece" to="." method="_on_Sushi_Piece_on_dropped"]
+[connection signal="on_dropped" from="Sushi_Piece2" to="." method="_on_Sushi_Piece2_on_dropped"]

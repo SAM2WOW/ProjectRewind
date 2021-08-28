@@ -1,6 +1,5 @@
 extends Area2D
 
-var is_mouse_hover  = false
 
 var ready = false
 
@@ -14,21 +13,19 @@ func _process(_delta):
 		ready = true
 
 
-func _input(_event):
-	if is_mouse_hover and ready and Input.is_action_just_pressed("touch"):
+func _on_Bottom_Seaweed_input_event(_viewport, event, _shape_idx):
+	var touch = ((event is InputEventScreenTouch) or (event is InputEventMouseButton))
+	if ready and touch:
 		$Grab.play()
 		$AnimationPlayer.play("pick_up")
 
 
 func _on_Bottom_Seaweed_mouse_entered():
-	is_mouse_hover = true
-	
 	if ready:
 		set_scale(Vector2(1.1, 1.1))
 
 
 func _on_Bottom_Seaweed_mouse_exited():
-	is_mouse_hover = false
 	set_scale(Vector2(1, 1))
 
 
