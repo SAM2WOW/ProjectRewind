@@ -19,7 +19,7 @@ func _process(delta):
 		position += Vector2(SPEED * delta, 0)
 		
 	# Delete plate if out of screen
-	if global_position.x <= -155:
+	if global_position.x <= -300:
 		queue_free()
 
 

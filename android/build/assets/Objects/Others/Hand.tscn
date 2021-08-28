@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Arts/open_hand.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Others/Hand.gd" type="Script" id=2]
+
+[node name="Hand" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 504 )
+z_index = 100
+texture = ExtResource( 1 )

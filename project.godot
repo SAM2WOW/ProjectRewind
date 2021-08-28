@@ -18,6 +18,7 @@ config/name="SUSHI unROLL"
 config/description="(c) 2020 unSAME Studio"
 run/main_scene="res://Maps/Main.tscn"
 boot_splash/image="res://Logo Color (Small).png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.968627, 0.968627, 0.968627, 1 )
 config/icon="res://Icon.png"
 config/windows_native_icon="res://Icon.ico"
@@ -61,5 +62,6 @@ touch={
 
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
+threads/thread_model=2
 environment/default_clear_color=Color( 0.65098, 0.611765, 0.368627, 1 )
 environment/default_environment="res://default_env.tres"
