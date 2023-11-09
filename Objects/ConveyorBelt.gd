@@ -4,6 +4,12 @@ extends Node2D
 var sushi_plate = preload("res://Objects/Sushi/Sushi_Plate.tscn")
 
 
+func _ready():
+	$SpawnPosition.set_position(Vector2(get_viewport_rect().size.x + 198.49, 146.078))
+	
+	_on_Timer_timeout()
+
+
 func _on_Timer_timeout():
 	var p = sushi_plate.instance()
 	p.set_position($SpawnPosition.get_position())

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Godot win64\\ProjectRewind\\android\\build\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-fa\\values-fa.xml",
+            "outputFile": "com.godot.game-mergeReleaseResources-9:/values-fa/values-fa.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-2\\files-2.1\\0c34d097d652ad56bfc91f68f7d385c1\\jetified-godot-lib.release\\res\\values-fa\\values-fa.xml",
+                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-3\\0fa57c0f6a5b656a5e020e48cde123e3\\transformed\\jetified-godot-lib.release\\res\\values-fa\\values-fa.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Godot win64\\ProjectRewind\\android\\build\\res\\values-fa\\godot_project_name_string.xml",
+                    "source": "F:\\Godot Projects\\ProjectRewind\\android\\build\\res\\values-fa\\godot_project_name_string.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "1",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-2\\files-2.1\\ee4998e5c44f8791e55e396202e7f092\\core-1.0.0\\res\\values-fa\\values-fa.xml",
+                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-3\\086694f904f7332915774462ffe124fb\\transformed\\core-1.2.0\\res\\values-fa\\values-fa.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Godot win64\\ProjectRewind\\android\\build\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-ml\\values-ml.xml",
+            "outputFile": "com.godot.game-mergeReleaseResources-9:/values-ml/values-ml.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-2\\files-2.1\\ee4998e5c44f8791e55e396202e7f092\\core-1.0.0\\res\\values-ml\\values-ml.xml",
+                    "source": "C:\\Users\\fengy\\.gradle\\caches\\transforms-3\\086694f904f7332915774462ffe124fb\\transformed\\core-1.2.0\\res\\values-ml\\values-ml.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,0 +1,4 @@
+#Wed Nov 08 23:51:09 PST 2023
+base.0=F\:\\Godot Projects\\ProjectRewind\\android\\build\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

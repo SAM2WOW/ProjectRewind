@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Godot win64\\ProjectRewind\\android\\build\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-zh\\values-zh.xml",
+            "outputFile": "com.godot.game-mergeReleaseResources-9:/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "D:\\Godot win64\\ProjectRewind\\android\\build\\res\\values-zh\\godot_project_name_string.xml",
+                    "source": "F:\\Godot Projects\\ProjectRewind\\android\\build\\res\\values-zh\\godot_project_name_string.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "1",
