@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/Sushi/Sushi_Plate.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/salmon.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Arts/Sushi/sushi_roll_piece.png" type="Texture" id=9]
 [ext_resource path="res://Arts/Sushi/nigiri_rice.png" type="Texture" id=10]
 [ext_resource path="res://Arts/Sushi/sushi_roll_inside.png" type="Texture" id=11]
+[ext_resource path="res://Arts/light.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 40.0001
@@ -195,6 +196,13 @@ anims/flip = SubResource( 4 )
 stream = ExtResource( 6 )
 bus = "SFX"
 script = ExtResource( 7 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 0, 41 )
+scale = Vector2( 1.17836, 1.17836 )
+texture = ExtResource( 12 )
+energy = 0.57
 
 [connection signal="area_entered" from="Base_Plate" to="." method="_on_Base_Plate_area_entered"]
 [connection signal="area_entered" from="Drag_Plate" to="Drag_Plate" method="_on_Drag_Plate_area_entered"]

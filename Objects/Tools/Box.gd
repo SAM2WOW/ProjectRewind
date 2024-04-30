@@ -15,7 +15,7 @@ var original_sprite_position = Vector2(-52, 0)
 var temp_sprite_location = Vector2(-52, 0)
 
 
-func _ready():
+func start():
 	$Ani.play("MoveIn")
 	ingredient = Global.Console.getIng(9)
 	change_button_graphic()
@@ -25,10 +25,13 @@ func _ready():
 
 
 func getNumber():
-	if ingredient == Global.INGREDIENT.SEAWEED:
+	if Global.Console.frenzy_mode:
 		space = 2
 	else:
-		space = 3
+		if ingredient == Global.INGREDIENT.SEAWEED:
+			space = 2
+		else:
+			space = 3
 
 
 func dropped():
@@ -88,6 +91,8 @@ func output():
 	$Ani.play("Output")
 	statu = 0
 	swipe()
+	
+	$boxarea/Light2D.hide()
 
 
 func swipe():
@@ -112,10 +117,12 @@ func _on_Ani_animation_finished(anim_name):
 		$rec.hide()
 	if anim_name == "MoveIn":
 		if Global.Console.frenzy_mode:
-			$Timeout.start(0.05)
+			$Timeout.start(0.08)
 		else:
 			$Timeout.start(0.1)
 		get_node("Button/TextureButton").disabled = false
+		
+		$boxarea/Light2D.show()
 
 
 func _on_TextureButton_pressed():

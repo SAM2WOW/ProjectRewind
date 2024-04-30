@@ -15,7 +15,10 @@ var recipe = [Global.INGREDIENT.SALMON, Global.INGREDIENT.CUCUMBER, Global.INGRE
 
 func _ready():
 	# Randomize Orders
-	type = randi() % Global.S_TYPE.size()
+	if Global.Console.frenzy_mode:
+		type = Global.S_TYPE.NIGIRI
+	else:
+		type = randi() % Global.S_TYPE.size()
 	
 	# Randomize Ingredients
 	match type:

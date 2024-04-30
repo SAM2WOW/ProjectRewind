@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Arts/Menu/menu_button.tres" type="StyleBox" id=29]
 [ext_resource path="res://Arts/Menu/menu_button_pressed.tres" type="StyleBox" id=30]
 [ext_resource path="res://Arts/Menu/Pause.png" type="Texture" id=31]
+[ext_resource path="res://Sounds/SushiLoveNightcore.ogg" type="AudioStream" id=32]
 [ext_resource path="res://Arts/Menu/Reload.png" type="Texture" id=33]
 [ext_resource path="res://Arts/Menu/Pause_hover.png" type="Texture" id=35]
 [ext_resource path="res://Arts/Menu/Reload_Hover.png" type="Texture" id=36]
@@ -1572,6 +1573,11 @@ stream = ExtResource( 11 )
 volume_db = -10.0
 bus = "BGM"
 
+[node name="BGM2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 32 )
+volume_db = -10.0
+bus = "BGM"
+
 [node name="MenuBGM" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 8 )
@@ -1606,3 +1612,5 @@ wait_time = 180.0
 [connection signal="pressed" from="Tutorial/CenterContainer/VBoxContainer/CenterContainer/Next" to="." method="_on_Next_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Node2D/Output"]

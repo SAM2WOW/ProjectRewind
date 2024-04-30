@@ -29,6 +29,13 @@ func _on_Play2_pressed():
 	
 	$Tap_Sound.play()
 	$AnimationPlayer.play("scene_intro_2")
+	
+	$Node2D/Hand/Light2D.show()
+	
+	# move in the box
+	$Node2D/Output/Box1.start()
+	$Node2D/Output/Box2.start()
+	$Node2D/Output/Box3.start()
 
 
 func _on_Play_pressed():
@@ -42,6 +49,11 @@ func _on_Play_pressed():
 		
 		$AnimationPlayer.play("to_tutorial")
 		$Tutorial/CenterContainer/VBoxContainer/MarginContainer/VideoPlayer.play()
+	
+	# move in the box
+	$Node2D/Output/Box1.start()
+	$Node2D/Output/Box2.start()
+	$Node2D/Output/Box3.start()
 
 
 # Tutorial Changing
@@ -74,7 +86,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			$Node2D/ConveyorBelt/Timer.start(0.5)
 			
 			$Timer.start(60)
-			$BGM.play()
+			$BGM2.play()
 		else:
 			$Node2D/ConveyorBelt/Timer.start(1.5)
 			
