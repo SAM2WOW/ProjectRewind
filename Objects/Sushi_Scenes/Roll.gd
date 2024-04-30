@@ -15,6 +15,9 @@ func _ready():
 		sushi.change_ingredient()
 	
 	$Spawn.play()
+	
+	if Global.Console.frenzy_mode:
+		$Fake_Cuttingboard.modulate = Color("848a95")
 
 
 func finished_unroll():

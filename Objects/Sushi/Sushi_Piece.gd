@@ -21,6 +21,12 @@ func change_ingredient():
 	$Sprite.set_texture(load(Global.ingredient_to_address(ingredient)))
 
 
+func _process(delta):
+	if Global.Console.frenzy_mode:
+		var new_volume = clamp(Global.Console.get_parent().volume * 0.2 + 1, 1, 1.5)
+		$Sprite.scale = lerp($Sprite.scale, Vector2(new_volume, new_volume), delta * 20)
+
+
 func _on_Sushi_Piece_on_dragging():
 	# Set random rotation
 	set_rotation_degrees(rand_range(-20, 20))

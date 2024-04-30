@@ -3,7 +3,7 @@ extends Node2D
 
 const COLORS_LIST = ["22b2ea", "f2786d", "f2a341", "d9b607", "888c07", "cecece"]
 
-const SPEED = -300
+var SPEED = -300
 
 var is_sushi_dragging = false
 
@@ -11,6 +11,10 @@ var is_sushi_dragging = false
 func _ready():
 	# Random plate colors
 	$Plate.set_modulate(Color(COLORS_LIST[randi() % 6]))
+	
+	# FRENZY
+	if Global.Console.frenzy_mode:
+		SPEED = -900
 
 
 func _process(delta):

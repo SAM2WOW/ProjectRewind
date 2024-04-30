@@ -111,7 +111,10 @@ func _on_Ani_animation_finished(anim_name):
 		$Ani.play("MoveIn")
 		$rec.hide()
 	if anim_name == "MoveIn":
-		$Timeout.start()
+		if Global.Console.frenzy_mode:
+			$Timeout.start(0.05)
+		else:
+			$Timeout.start(0.1)
 		get_node("Button/TextureButton").disabled = false
 
 

@@ -5,6 +5,8 @@ var rank_name = ["Company Destoryer", "Going Bankrupt", "Big Oof", "What Happene
 
 var tutorial_count = 2
 
+var spectrum
+var volume = 1.0
 
 func _ready():
 	get_tree().set_pause(true)
@@ -14,6 +16,19 @@ func _ready():
 	# Hide Leaderboard on mobile
 	if OS.get_name() in ["Android", "iOS"]:
 		$"Game_Over/CenterContainer/VBoxContainer/MarginContainer2".hide()
+	
+	# show frenzy mode on replay
+	#if Global.tutorial_seen:
+	#	$Menu/CenterContainer/VBoxContainer/MarginContainer3.show()
+	
+	spectrum = AudioServer.get_bus_effect_instance(2, 0)
+
+
+func _on_Play2_pressed():
+	Global.Console.frenzy_mode = true
+	
+	$Tap_Sound.play()
+	$AnimationPlayer.play("scene_intro_2")
 
 
 func _on_Play_pressed():
@@ -54,8 +69,20 @@ func _on_Next_pressed():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if "scene_intro" in anim_name:
 		get_tree().set_pause(false)
-		$Timer.start()
-		$BGM.play()
+		
+		if Global.Console.frenzy_mode:
+			$Node2D/ConveyorBelt/Timer.start(0.5)
+			
+			$Timer.start(60)
+			$BGM.play()
+		else:
+			$Node2D/ConveyorBelt/Timer.start(1.5)
+			
+			$Timer.start()
+			$BGM.play()
+		
+		# spawn the first plate
+		$Node2D/ConveyorBelt._on_Timer_timeout()
 	
 	elif "menu_outro" in anim_name:
 # warning-ignore:return_value_discarded
@@ -100,12 +127,17 @@ func _on_Sounds_toggled(button_pressed):
 
 
 # Timer
-func _process(_delta):
+func _process(delta):
 	var time_remain = int($Timer.get_time_left())
 	var seconds = time_remain % 60
 	var minutes = time_remain / 60
 	$"CanvasLayer/HUD/CenterContainer2/Time".set_text("%02d:%02d" % [minutes, seconds])
-
+	
+	# frenzy
+	if Global.Console.frenzy_mode:
+		volume = spectrum.get_magnitude_for_frequency_range(50, 2000).length() * 4
+		
+		$Node2D/ColorRect.modulate.a = lerp($Node2D/ColorRect.modulate.a, volume, delta * 10)
 
 # Pause Game
 func _on_Pause_toggled(button_pressed):
@@ -131,7 +163,10 @@ func _on_Pause_toggled(button_pressed):
 		var big_text = get_node("CanvasLayer/HUD/CenterContainer/Label")
 		big_text.set_modulate(Color("00ffffff"))
 		
-		$Node2D/ConveyorBelt.change_conveyor_speed(-0.156)
+		if Global.Console.frenzy_mode:
+			$Node2D/ConveyorBelt.change_conveyor_speed(-0.468)
+		else:
+			$Node2D/ConveyorBelt.change_conveyor_speed(-0.156)
 
 
 # Reload

@@ -341,47 +341,35 @@ region_filter_clip = true
 [node name="Actual_Roll" type="Node2D" parent="."]
 light_mask = 2
 
-[node name="Sushi_Piece1" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece1" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( -117.262, -193.85 )
 z_as_relative = true
 is_draggable = false
 ingredient = 1
 
-[node name="Sushi_Piece2" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece2" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( 123.155, -193.85 )
 z_as_relative = true
 is_draggable = false
 ingredient = 1
 
-[node name="Sushi_Piece3" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece3" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( -119.931, -272.53 )
 z_as_relative = true
 is_draggable = false
 
-[node name="Sushi_Piece4" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece4" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( 120.485, -272.53 )
 z_as_relative = true
 is_draggable = false
 
-[node name="Sushi_Piece5" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece5" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( -119.931, -348.256 )
 z_as_relative = true
 is_draggable = false
 ingredient = 2
 
-[node name="Sushi_Piece6" parent="Actual_Roll" groups=[
-"roll_ingredients",
-] instance=ExtResource( 3 )]
+[node name="Sushi_Piece6" parent="Actual_Roll" groups=["roll_ingredients"] instance=ExtResource( 3 )]
 position = Vector2( 120.485, -348.256 )
 z_as_relative = true
 is_draggable = false

@@ -3,6 +3,7 @@ extends Node
 #export (Global.INGREDIENT) var ingredient = Global.INGREDIENT.SALMON
 #Only level related stuff
 
+var frenzy_mode = false
 var testI = [0,1,2,3,5,0,1,2,3]
 var money = 0
 var IngList = []

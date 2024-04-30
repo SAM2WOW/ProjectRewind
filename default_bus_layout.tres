@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+[gd_resource type="AudioBusLayout" load_steps=3 format=2]
 
 [sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
@@ -6,6 +6,9 @@ room_size = 0.34
 damping = 0.16
 spread = 0.19
 wet = 0.12
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=2]
+resource_name = "SpectrumAnalyzer"
 
 [resource]
 bus/1/name = "SFX"
@@ -22,3 +25,5 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = "Master"
+bus/2/effect/0/effect = SubResource( 2 )
+bus/2/effect/0/enabled = true

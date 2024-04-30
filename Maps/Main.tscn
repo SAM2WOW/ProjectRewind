@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -38,10 +38,93 @@
 [ext_resource path="res://Objects/Menu/Leaderboard.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Scripts/VideoPlayerLooping.gd" type="Script" id=39]
 
+[sub_resource type="Shader" id=15]
+code = "shader_type canvas_item;
+
+uniform float strength: hint_range(0., 1.) = 0.3;
+uniform float speed: hint_range(0., 10.) = 0.5;
+uniform float angle: hint_range(0., 360.) = 0.;
+
+void fragment() {
+	float hue = UV.x * cos(radians(angle)) - UV.y * sin(radians(angle));
+	hue = fract(hue + fract(TIME  * speed));
+	float x = 1. - abs(mod(hue / (1./ 6.), 2.) - 1.);
+	vec3 rainbow;
+	if(hue < 1./6.){
+		rainbow = vec3(1., x, 0.);
+	} else if (hue < 1./3.) {
+		rainbow = vec3(x, 1., 0);
+	} else if (hue < 0.5) {
+		rainbow = vec3(0, 1., x);
+	} else if (hue < 2./3.) {
+		rainbow = vec3(0., x, 1.);
+	} else if (hue < 5./6.) {
+		rainbow = vec3(x, 0., 1.);
+	} else {
+		rainbow = vec3(1., 0., x);
+	}
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, vec4(rainbow, color.a), strength);
+}"
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 15 )
+shader_param/strength = 0.3
+shader_param/speed = 0.5
+shader_param/angle = 0.0
+
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 18 )
 shader_param/speed = -0.156
 shader_param/x_scale = 1.5
+
+[sub_resource type="Shader" id=18]
+code = "shader_type canvas_item;
+
+uniform float speed = 1.0;
+
+render_mode blend_add;
+
+void fragment() {
+    float time = TIME * speed;
+    
+    vec2 uv = (UV - vec2(0.5)) * vec2(2.0);
+    float dist = length(uv);
+    
+    float angle = atan(uv.y, uv.x);
+    
+    vec3 color = vec3(
+        (sin(angle * 10.0 + time) + 1.0) * 0.5,
+        (cos(angle * 5.0 + time) + 1.0) * 0.5,
+        (sin(angle * 15.0 + time) + 1.0) * 0.5
+    );
+    
+    color *= smoothstep(0.0, 1.0, 1.0 - dist);
+    
+    COLOR = vec4(color, 1.0);
+}
+
+
+//Leave comments if you want If you want a white light effect with a transparent background
+//shader_type canvas_item;
+
+//void fragment() {
+//    float time = TIME;
+    
+//    vec2 uv = (UV - vec2(0.5)) * vec2(2.0);
+//    float dist = length(uv);
+//    float angle = atan(uv.y, uv.x);
+    
+//   float opacity = sin(angle * 5.0 + time) * 0.5 + 0.5;
+    
+//    opacity *= smoothstep(0.0, 1.0, 1.0 - dist);
+    
+//    COLOR = vec4(1.0, 1.0, 1.0, opacity);
+//}"
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
+shader_param/speed = 1.0
 
 [sub_resource type="DynamicFont" id=2]
 size = 350
@@ -62,6 +145,33 @@ font_data = ExtResource( 19 )
 [sub_resource type="DynamicFont" id=6]
 size = 67
 font_data = ExtResource( 19 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D/BG2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "back_leaderboard"
@@ -609,6 +719,325 @@ tracks/22/keys = {
 "values": [ 1.5, 1.0 ]
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "scene_intro_2"
+length = 5.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.8, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 0.5, 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -753 ), Vector2( 0, -753 ), Vector2( 0, -798.255 ), Vector2( 0, -767.142 ), Vector2( 0, -781.284 ), Vector2( 0, -753 ), Vector2( 0, -753 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Node2D/ConveyorBelt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -0.468 ],
+"method": "change_conveyor_speed"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Menu/Logo:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.02 ),
+"transitions": PoolRealArray( 1, 0.203063 ),
+"update": 1,
+"values": [ ExtResource( 16 ), ExtResource( 15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Menu/Logo:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.12, 0.24, 0.4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.85, 0.85 ), Vector2( 0.9, 0.9 ), Vector2( 0.8, 0.8 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D/Credit:material:shader_param/speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -0.156, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D/Credit:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.01, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( -476.25, 181.16 ), Vector2( 0, 181.16 ), Vector2( 0, 181.16 ), Vector2( -2000, 181.16 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D/Credit:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/HUD/CenterContainer/Label:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2, 2.2, 2.7, 3, 3.2, 3.7, 4, 4.2, 4.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/HUD/CenterContainer/Label:rect_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2, 2.2, 2.7, 2.99, 3, 3.2, 3.7, 3.99, 4, 4.2, 4.7, 5 ),
+"transitions": PoolRealArray( 0.5, 1, 2, 1, 0.5, 1, 2, 1, 0.5, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer/HUD/CenterContainer/Label:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "1 MIN !?", "FRENZY", "START" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CanvasLayer/HUD/CenterContainer/Label:rect_pivot_offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 2, 2.99, 3, 3.99, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 315, 219 ), Vector2( 315, 219 ), Vector2( 385, 219 ), Vector2( 385, 219 ), Vector2( 159, 219 ), Vector2( 159, 219 ) ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("Clock_Sound")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("MenuBGM:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.01, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, -60.0 ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("MenuBGM")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("Hint")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("CanvasLayer/HUD/CenterContainer2/Time:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Menu/Label:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("CanvasLayer/HUD/HBoxContainer:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 4.5, 4.93 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("CanvasLayer/HUD/HBoxContainer/Pause:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 4.71 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("CanvasLayer/HUD/HBoxContainer/Pause:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 4.71, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Menu:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Node2D/Credit:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Node2D/Credit:material:shader_param/x_scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.5, 1.0 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Node2D/CanvasModulate:color")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 2.07, 4.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.517647, 0.541176, 0.584314, 1 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Node2D/BG2:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 1.94, 4.77 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.243137 ) ]
+}
+
 [sub_resource type="Animation" id=13]
 length = 0.2
 tracks/0/type = "value"
@@ -664,12 +1093,31 @@ z_index = -20
 texture = ExtResource( 9 )
 offset = Vector2( 960, 540 )
 
+[node name="BG2" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 16 )
+position = Vector2( -960, 0 )
+scale = Vector2( 2, 1 )
+z_index = -20
+texture = ExtResource( 9 )
+offset = Vector2( 960, 540 )
+
 [node name="Credit" type="Sprite" parent="Node2D"]
 material = SubResource( 1 )
 position = Vector2( -476.25, 181.16 )
 scale = Vector2( 1.5, 1 )
 texture = ExtResource( 17 )
 offset = Vector2( 960, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 19 )
+margin_top = -1077.0
+margin_right = 1920.0
+margin_bottom = 945.0
+mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -691,18 +1139,18 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CanvasLayer/HUD/CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 801.0
+margin_left = 547.0
 margin_top = 321.0
-margin_right = 1119.0
+margin_right = 1372.0
 margin_bottom = 759.0
-rect_pivot_offset = Vector2( 159, 219 )
+rect_pivot_offset = Vector2( 315, 219 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
 custom_fonts/font = SubResource( 2 )
-text = "GO"
+text = "1 MIN !?"
 align = 1
 valign = 1
 
@@ -802,16 +1250,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
-margin_left = 305.0
-margin_top = 398.0
-margin_right = 654.0
-margin_bottom = 682.0
+margin_left = 260.0
+margin_top = 318.0
+margin_right = 699.0
+margin_bottom = 761.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="Button" parent="Menu/CenterContainer/VBoxContainer"]
-margin_right = 349.0
+margin_right = 439.0
 margin_bottom = 125.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 13 )
@@ -821,10 +1269,31 @@ custom_styles/normal = ExtResource( 29 )
 enabled_focus_mode = 0
 text = "      Play      "
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu/CenterContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="Menu/CenterContainer/VBoxContainer"]
 margin_top = 129.0
-margin_right = 349.0
+margin_right = 439.0
 margin_bottom = 284.0
+custom_constants/margin_top = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play2" type="Button" parent="Menu/CenterContainer/VBoxContainer/MarginContainer3"]
+margin_top = 30.0
+margin_right = 439.0
+margin_bottom = 155.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = ExtResource( 30 )
+custom_styles/pressed = ExtResource( 29 )
+custom_styles/normal = ExtResource( 29 )
+enabled_focus_mode = 0
+text = "      Frenzy      "
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/CenterContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 439.0
+margin_bottom = 443.0
 custom_constants/margin_top = 30
 __meta__ = {
 "_edit_use_anchors_": false
@@ -832,7 +1301,7 @@ __meta__ = {
 
 [node name="Quit" type="Button" parent="Menu/CenterContainer/VBoxContainer/MarginContainer"]
 margin_top = 30.0
-margin_right = 349.0
+margin_right = 439.0
 margin_bottom = 155.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 13 )
@@ -907,9 +1376,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game_Over/CenterContainer"]
 margin_left = 676.0
-margin_top = 93.0
+margin_top = 162.0
 margin_right = 1243.0
-margin_bottom = 782.0
+margin_bottom = 712.0
 alignment = 1
 
 [node name="Title" type="Label" parent="Game_Over/CenterContainer/VBoxContainer"]
@@ -945,6 +1414,7 @@ text = "Rank: None"
 align = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Game_Over/CenterContainer/VBoxContainer"]
+visible = false
 margin_top = 395.0
 margin_right = 567.0
 margin_bottom = 530.0
@@ -969,9 +1439,9 @@ enabled_focus_mode = 0
 text = "leaderboard"
 
 [node name="MarginContainer" type="MarginContainer" parent="Game_Over/CenterContainer/VBoxContainer"]
-margin_top = 534.0
+margin_top = 395.0
 margin_right = 567.0
-margin_bottom = 689.0
+margin_bottom = 550.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 30
 custom_constants/margin_left = 90
@@ -1076,12 +1546,14 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
+anims/RESET = SubResource( 17 )
 anims/back_leaderboard = SubResource( 7 )
 anims/back_tutorial = SubResource( 8 )
 anims/game_over = SubResource( 9 )
 anims/menu_intro = SubResource( 10 )
 anims/menu_outro = SubResource( 11 )
 anims/scene_intro = SubResource( 12 )
+anims/scene_intro_2 = SubResource( 14 )
 anims/to_tutorial = SubResource( 13 )
 
 [node name="Clock_Sound" type="AudioStreamPlayer" parent="."]
@@ -1103,7 +1575,7 @@ bus = "BGM"
 [node name="MenuBGM" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 8 )
-volume_db = -10.2513
+volume_db = -18.5427
 autoplay = true
 bus = "BGM"
 
@@ -1124,6 +1596,7 @@ wait_time = 180.0
 [connection signal="pressed" from="CanvasLayer/HUD/HBoxContainer/Reload" to="." method="_on_Reload_pressed"]
 [connection signal="toggled" from="CanvasLayer/HUD/HBoxContainer/Pause" to="." method="_on_Pause_toggled"]
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/MarginContainer3/Play2" to="." method="_on_Play2_pressed"]
 [connection signal="pressed" from="Menu/CenterContainer/VBoxContainer/MarginContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="toggled" from="Menu/Options/Music" to="." method="_on_Music_toggled"]
 [connection signal="toggled" from="Menu/Options/Sounds" to="." method="_on_Sounds_toggled"]

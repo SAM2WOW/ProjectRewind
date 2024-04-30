@@ -135,6 +135,7 @@ tracks/3/keys = {
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 6 )
 shader_param/speed = 0.0
+shader_param/x_scale = 1.0
 
 [sub_resource type="Animation" id=6]
 resource_name = "in"
@@ -261,9 +262,6 @@ texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 10 )
 texture_disabled = ExtResource( 10 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="Button/TextureButton"]
 wait_time = 3.0
@@ -397,8 +395,8 @@ base_volume = -10.0
 [connection signal="mouse_entered" from="." to="." method="_on_Box_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Box_mouse_exited"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
-[connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="Ani" to="." method="_on_Ani_animation_finished"]
 [connection signal="timeout" from="Timeout" to="." method="_on_Timeout_timeout"]
