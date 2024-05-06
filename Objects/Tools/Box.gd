@@ -109,12 +109,12 @@ func swipe():
 
 func _on_Ani_animation_finished(anim_name):
 	if anim_name == "Output":
-		#output()
-		delete_graphic()
-		change_button_graphic()
-		$Button/Number.set_text("x"+str(space))
-		$Ani.play("MoveIn")
-		$rec.hide()
+		if Global.Console.frenzy_mode:
+			$CDtimer.start(0.1)
+		else:
+			$CDtimer.start(1)
+
+
 	if anim_name == "MoveIn":
 		if Global.Console.frenzy_mode:
 			$Timeout.start(0.08)
@@ -195,3 +195,12 @@ func _on_Box_mouse_exited():
 func _on_Pop_animation_finished(anim_name):
 	if anim_name == "out":
 		$rec.hide() # Replace with function body.
+
+
+func _on_CDtimer_timeout():
+		#output()
+		delete_graphic()
+		change_button_graphic()
+		$Button/Number.set_text("x"+str(space))
+		$Ani.play("MoveIn")
+		$rec.hide()

@@ -80,7 +80,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 1.5
+length = 0.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("boxarea:position")
@@ -238,9 +238,6 @@ shape = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
 margin_left = -352.0
@@ -249,9 +246,13 @@ margin_right = -152.0
 margin_bottom = 59.0
 mouse_filter = 2
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Light2D" type="Light2D" parent="Button/TextureRect"]
+visible = false
+position = Vector2( 100, 30 )
+scale = Vector2( 0.689132, 0.546874 )
+texture = ExtResource( 19 )
+energy = 0.5
 
 [node name="TextureButton" type="TextureButton" parent="Button"]
 margin_left = -352.0
@@ -316,9 +317,6 @@ margin_right = -177.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 9 )
 text = "DONE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Icon" type="TextureRect" parent="Button"]
 self_modulate = Color( 1, 1, 1, 0.745098 )
@@ -379,7 +377,7 @@ anims/ready = SubResource( 9 )
 [node name="rec" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.811765, 0.282353, 0.27451, 0.698039 )
-position = Vector2( -130, 2.29 )
+position = Vector2( -300, 2.29 )
 scale = Vector2( 1.5039, 1.5039 )
 texture = ExtResource( 13 )
 
@@ -399,9 +397,14 @@ bus = "SFX"
 script = ExtResource( 14 )
 base_volume = -10.0
 
+[node name="CDtimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_Box_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Box_mouse_exited"]
 [connection signal="button_down" from="Button/TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="mouse_entered" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_mouse_exited"]
 [connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Button/TextureButton" to="Button/TextureButton" method="_on_TextureButton_pressed"]
 [connection signal="timeout" from="Button/TextureButton/Timer" to="Button/TextureButton" method="_on_Timer_timeout"]
@@ -409,3 +412,4 @@ base_volume = -10.0
 [connection signal="timeout" from="Timeout" to="." method="_on_Timeout_timeout"]
 [connection signal="animation_finished" from="Pop" to="." method="_on_Pop_animation_finished"]
 [connection signal="timeout" from="popTimer" to="." method="_on_popTimer_timeout"]
+[connection signal="timeout" from="CDtimer" to="." method="_on_CDtimer_timeout"]

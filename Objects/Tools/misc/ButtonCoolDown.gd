@@ -32,3 +32,11 @@ func _process(_delta):
 		$"../Number".set_position(Vector2(-277, -56))
 		$"../Icon".set_position(Vector2(-330, -48))
 
+
+
+func _on_TextureButton_mouse_entered():
+	$"../TextureRect/Light2D".show()
+
+
+func _on_TextureButton_mouse_exited():
+	$"../TextureRect/Light2D".hide()
