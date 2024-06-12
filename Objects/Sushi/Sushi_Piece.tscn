@@ -43,6 +43,7 @@ tracks/0/keys = {
 }
 
 [node name="Sushi_Piece" type="Area2D"]
+scale = Vector2( 1.1, 1.1 )
 z_index = 10
 z_as_relative = false
 collision_layer = 8
@@ -71,6 +72,12 @@ stream = ExtResource( 4 )
 bus = "SFX"
 script = ExtResource( 3 )
 base_volume = -5.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 0 )
+collision_mask = 256
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]

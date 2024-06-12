@@ -30,15 +30,16 @@ __meta__ = {
 
 [node name="Money" type="Label" parent="HUD/CenterContainer"]
 process_priority = 1
+light_mask = 2
 margin_left = 915.0
 margin_top = 5.0
 margin_right = 1004.0
 margin_bottom = 130.0
 rect_pivot_offset = Vector2( 25, 62.5 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 3 )
 text = "0¥"
 script = ExtResource( 2 )
 __meta__ = {
@@ -65,12 +66,13 @@ __meta__ = {
 }
 
 [node name="Charge" type="Label" parent="HUD/CenterContainer/MarginContainer"]
+light_mask = 2
 margin_left = 500.0
 margin_right = 500.0
 margin_bottom = 70.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0.537255, 0.494118, 0.278431, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 4 )
 
 [connection signal="timeout" from="HUD/CenterContainer/Money/Timer" to="HUD/CenterContainer/Money" method="_on_Timer_timeout"]

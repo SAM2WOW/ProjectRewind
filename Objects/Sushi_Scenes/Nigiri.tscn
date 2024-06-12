@@ -77,5 +77,6 @@ anims/spawn = SubResource( 1 )
 stream = ExtResource( 3 )
 bus = "SFX"
 script = ExtResource( 4 )
+
 [connection signal="on_dropped" from="Sushi_Piece" to="." method="_on_Sushi_Piece_on_dropped"]
 [connection signal="on_dropped" from="Sushi_Piece2" to="." method="_on_Sushi_Piece2_on_dropped"]

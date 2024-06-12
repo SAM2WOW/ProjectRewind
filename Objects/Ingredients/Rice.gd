@@ -32,7 +32,7 @@ func _on_Rice_area_entered(area):
 	elif "Sushi" in area.name:
 		scrappable = false
 		overlapped += 1
-		$Sprite.set_modulate(Color("bababa"))
+		$Sprite.set_modulate(Color("cbcbcb"))
 
 
 func _on_Rice_area_exited(area):

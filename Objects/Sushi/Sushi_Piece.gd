@@ -11,11 +11,10 @@ var on_cutting_board = false
 
 # Reference for the dropped box
 var box_ref
-
+var board_ref
 
 func _ready():
 	change_ingredient()
-
 
 func change_ingredient():
 	$Sprite.set_texture(load(Global.ingredient_to_address(ingredient)))
@@ -47,11 +46,21 @@ func _on_Sushi_Piece_on_released():
 		box_ref.dropped()
 		emit_signal("on_dropped")
 		queue_free()
-		
 	
 	# If drop on cutting board
 	if on_cutting_board:
-		set_original_position(get_position())
+		
+		$RayCast2D.enabled = true
+		$RayCast2D.cast_to = to_local(board_ref.get_global_position())
+		$RayCast2D.force_raycast_update()
+
+		if $RayCast2D.is_colliding():
+			
+			set_original_position(get_parent().to_local($RayCast2D.get_collision_point()))
+		else:
+			set_original_position(get_position())
+			
+		$RayCast2D.enabled = false
 		$AnimationPlayer.play("drop")
 	
 	$Drop.play()
@@ -75,6 +84,7 @@ func _on_Sushi_Piece_area_entered(area):
 	
 	elif "Cutting_Board" in area.name:
 		on_cutting_board = true
+		board_ref = area
 
 
 func _on_Sushi_Piece_area_exited(area):

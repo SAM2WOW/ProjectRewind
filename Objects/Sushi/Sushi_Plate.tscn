@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/Sushi/Sushi_Plate.gd" type="Script" id=1]
 [ext_resource path="res://Arts/Sushi/salmon.png" type="Texture" id=2]
@@ -101,6 +101,23 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "frenzyLight"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
 [node name="Sushi_Plate" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -191,6 +208,7 @@ script = ExtResource( 7 )
 [node name="PlateAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
 anims/flip = SubResource( 4 )
+anims/frenzyLight = SubResource( 5 )
 
 [node name="Flip_Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
@@ -200,7 +218,7 @@ script = ExtResource( 7 )
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
 position = Vector2( 0, 41 )
-scale = Vector2( 1.17836, 1.17836 )
+scale = Vector2( 1.2554, 1.2554 )
 texture = ExtResource( 12 )
 energy = 0.57
 

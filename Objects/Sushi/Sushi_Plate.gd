@@ -15,7 +15,7 @@ func _ready():
 	# FRENZY
 	if Global.Console.frenzy_mode:
 		SPEED = -900
-		
+		$PlateAnimation.play("frenzyLight")
 		$Light2D.color = Color.from_hsv(rand_range(0.0, 1.0), 0.5, 1.0)
 		$Light2D.show()
 
