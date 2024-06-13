@@ -99,6 +99,7 @@ func swipe():
 	# Hide Icon and text
 	$Button/Number.set_text("")
 	$Button/Icon.hide()
+	$Button/TextureRect/Light2D.hide()
 	
 	get_node("CollisionShape2D").disabled = false
 	filled = 0
@@ -120,6 +121,7 @@ func _on_Ani_animation_finished(anim_name):
 			$Timeout.start(0.08)
 		else:
 			$Timeout.start(0.1)
+
 		get_node("Button/TextureButton").disabled = false
 		
 		$boxarea/Light2D.show()

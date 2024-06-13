@@ -53,11 +53,11 @@ func _on_Drag_Plate_on_released():
 
 
 func _on_Drag_Plate_area_entered(area):
-	if "Cutting_Board" in area.name:
-		board_ref = area
+	if "board_area" in area.name:
+		board_ref = area.get_parent()
 		droppable = true
 
 
 func _on_Drag_Plate_area_exited(area):
-	if "Cutting_Board" in area.name:
+	if "board_area" in area.name:
 		droppable = false
