@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Objects/ConveyorBelt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Others/Hand.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Arts/Menu/Pause.png" type="Texture" id=31]
 [ext_resource path="res://Sounds/SushiLoveNightcore.ogg" type="AudioStream" id=32]
 [ext_resource path="res://Arts/Menu/Reload.png" type="Texture" id=33]
+[ext_resource path="res://Arts/whitesquare.png" type="Texture" id=34]
 [ext_resource path="res://Arts/Menu/Pause_hover.png" type="Texture" id=35]
 [ext_resource path="res://Arts/Menu/Reload_Hover.png" type="Texture" id=36]
 [ext_resource path="res://Arts/Tutorial/Tutorial1.webm" type="VideoStream" id=37]
@@ -1086,6 +1087,36 @@ position = Vector2( 228.704, 64.9657 )
 
 [node name="Trash" parent="Node2D" instance=ExtResource( 10 )]
 position = Vector2( 1649.43, 993.73 )
+
+[node name="Whitesquare" type="Sprite" parent="Node2D"]
+modulate = Color( 0.65098, 0.611765, 0.368627, 1 )
+position = Vector2( 925, 530 )
+scale = Vector2( 66.8125, 43.4844 )
+z_index = -500
+texture = ExtResource( 34 )
+
+[node name="TopCover" type="Sprite" parent="Node2D"]
+modulate = Color( 0.59, 0.556173, 0.3363, 1 )
+position = Vector2( 925, 2231 )
+scale = Vector2( 66.8125, 16.9063 )
+z_index = 500
+texture = ExtResource( 34 )
+
+[node name="TopCover2" type="Sprite" parent="Node2D"]
+visible = false
+modulate = Color( 0.59, 0.556173, 0.3363, 1 )
+position = Vector2( 3793.5, 19.0001 )
+scale = Vector2( 21.9922, 51.4688 )
+z_index = 500
+texture = ExtResource( 34 )
+
+[node name="TopCover3" type="Sprite" parent="Node2D"]
+visible = false
+modulate = Color( 0.59, 0.556173, 0.3363, 1 )
+position = Vector2( -1944.5, 24.0001 )
+scale = Vector2( 23.0391, 51.3906 )
+z_index = 500
+texture = ExtResource( 34 )
 
 [node name="BG" type="Sprite" parent="Node2D"]
 position = Vector2( -960, 0 )
