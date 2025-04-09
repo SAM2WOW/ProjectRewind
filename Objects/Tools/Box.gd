@@ -15,6 +15,7 @@ var original_sprite_position = Vector2(-52, 0)
 var temp_sprite_location = Vector2(-52, 0)
 
 
+
 func start():
 	$Ani.play("MoveIn")
 	ingredient = Global.Console.getIng(9)
@@ -188,10 +189,14 @@ func _on_popTimer_timeout():
 
 func _on_Box_mouse_entered():
 	$boxarea.set_scale(Vector2(1.1,1.1))
+	
+	Global.check_dropping = true
 
 
 func _on_Box_mouse_exited():
 	$boxarea.set_scale(Vector2(1,1))
+	
+	Global.check_dropping = false
 
 
 func _on_Pop_animation_finished(anim_name):
@@ -206,3 +211,22 @@ func _on_CDtimer_timeout():
 		$Button/Number.set_text("x"+str(space))
 		$Ani.play("MoveIn")
 		$rec.hide()
+
+
+func _on_Box_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == BUTTON_LEFT:
+			if not event.is_pressed():
+				
+				var temp_array = Global.current_holding.duplicate()
+				
+				# drop all the pieces that's the right thing
+				for i in temp_array:
+					if is_instance_valid(i):
+						if i.ingredient == ingredient and statu == 0:
+							dropped()
+							i.emit_signal("on_dropped")
+							i.queue_free()
+							
+							Global.current_holding.erase(i)
+				

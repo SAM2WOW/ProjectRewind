@@ -47,9 +47,12 @@ func _on_Drag_Plate_on_dragging():
 
 
 func _on_Drag_Plate_on_released():
-	if droppable and not board_ref.occupied:
-		board_ref.spawn_sushi(type, recipe)
-		get_parent().queue_free()
+	if droppable:
+		if board_ref.occupied:
+			board_ref.show_occupied_hint()
+		else:
+			board_ref.spawn_sushi(type, recipe)
+			get_parent().queue_free()
 
 
 func _on_Drag_Plate_area_entered(area):

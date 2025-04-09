@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Arts/Sushi/salmon.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Sushi/Sushi_Piece.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/RandomSFX.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/drop.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/grab.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/rice.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 46.9889
@@ -47,7 +48,7 @@ scale = Vector2( 1.1, 1.1 )
 z_index = 10
 z_as_relative = false
 collision_layer = 8
-collision_mask = 176
+collision_mask = 180
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -79,7 +80,16 @@ collision_mask = 256
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ScrapRice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+script = ExtResource( 3 )
+base_volume = -5.0
+
 [connection signal="area_entered" from="." to="." method="_on_Sushi_Piece_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Sushi_Piece_area_exited"]
 [connection signal="on_dragging" from="." to="." method="_on_Sushi_Piece_on_dragging"]
 [connection signal="on_released" from="." to="." method="_on_Sushi_Piece_on_released"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

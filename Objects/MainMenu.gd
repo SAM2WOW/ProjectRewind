@@ -108,6 +108,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Timer_timeout():
 	get_tree().set_pause(true)
 	
+	if Global.Console.frenzy_mode:
+		$Game_Over/CenterContainer/VBoxContainer/MarginContainer2.hide()
+	
 	$Menu.hide()
 	$Game_Over.show()
 	

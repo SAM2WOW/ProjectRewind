@@ -4,6 +4,11 @@ extends Area2D
 var ingredient = Global.INGREDIENT.RICE
 var statu = 0
 
+
+func _ready():
+	Global.rice_box = self
+
+
 func dropped():
 	Global.Console.addPoint(0.1)
 	

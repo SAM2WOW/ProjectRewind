@@ -55,3 +55,9 @@ func finished_unroll():
 func bottom_seaweed_rolled():
 	get_parent().occupied = false
 	queue_free()
+
+
+func show_hint():
+	if is_instance_valid($Top_Seaweed):
+		$Top_Seaweed/Sprite/AnimationPlayer.play("hint")
+		$Top_Seaweed/Blocked.play()

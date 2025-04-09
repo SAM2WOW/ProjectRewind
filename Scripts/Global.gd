@@ -11,6 +11,7 @@ var mouse_selected = false
 
 # Rice box position for rice doing the animation
 var rice_box_pos = Vector2(1649.43, 427.442)
+var rice_box
 
 # Console Reference
 var Console = null
@@ -20,6 +21,9 @@ var tutorial_seen = false
 
 # Game Version
 var game_version = "1.2.0"
+
+var current_holding = []
+var check_dropping = false
 
 func _ready():
 	# Load the slientwolf plugins

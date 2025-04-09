@@ -33,19 +33,33 @@ func _on_Sushi_Piece_on_dragging():
 	$AnimationPlayer.play("pick_up")
 	
 	$Grab.play()
+	
+	Global.current_holding.append(self)
 
 
 # Drop and kill the ingredient 
 func _on_Sushi_Piece_on_released():
-	# If drop on the box
+	if Global.check_dropping:
+		return
+	
+	Global.current_holding.erase(self)
+	
+	# If drop on the trash
 	if droppable and "Trash" in box_ref.name:
 		box_ref.dropped(ingredient)
 		emit_signal("on_dropped")
 		queue_free()
-	elif droppable and box_ref.ingredient == ingredient and box_ref.statu == 0:
+	
+	if droppable and "RiceBox" in box_ref.name:
 		box_ref.dropped()
 		emit_signal("on_dropped")
 		queue_free()
+	
+	# I moved this detection to drop box
+	#elif droppable and box_ref.ingredient == ingredient and box_ref.statu == 0:
+	#	box_ref.dropped()
+	#	emit_signal("on_dropped")
+	#	queue_free()
 	
 	# If drop on cutting board
 	if on_cutting_board:
@@ -75,9 +89,10 @@ func _on_Sushi_Piece_area_entered(area):
 		# Only allow dropping on correct ingredient box
 		if area.ingredient == ingredient:
 			droppable = true
+	
 	if "Drop" in area.name:
 		droppable = true
-		
+	
 	elif "Trash" in area.name:
 		box_ref = area
 		droppable = true
@@ -85,6 +100,21 @@ func _on_Sushi_Piece_area_entered(area):
 	elif "Cutting_Board" in area.name:
 		on_cutting_board = true
 		board_ref = area
+	
+	# Scrap the rice if scrappable
+	elif "Scrap" in area.name and ingredient == Global.INGREDIENT.RICE:
+		if area.get_parent().enabled:
+			$CollisionShape2D.call_deferred("set_disabled", true)
+			
+			$Tween.interpolate_property(self, "global_position",
+				get_global_position(), Global.rice_box_pos, 0.2,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.start()
+			
+			$ScrapRice.play()
+			
+			#Global.Console.addPoint(0.1)
+			Global.rice_box.dropped()
 
 
 func _on_Sushi_Piece_area_exited(area):
@@ -97,3 +127,8 @@ func _on_Sushi_Piece_area_exited(area):
 	
 	elif "Cutting_Board" in area.name:
 		on_cutting_board = false
+
+
+func _on_Tween_tween_all_completed():
+	Global.current_holding.erase(self)
+	queue_free()

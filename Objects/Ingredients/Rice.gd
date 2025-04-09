@@ -15,6 +15,7 @@ func _ready():
 func _on_Rice_area_entered(area):
 	# Scrap the rice if scrappable
 	if "Scrap" in area.name and scrappable and forced_scrappable:
+		$CollisionShape2D.call_deferred("set_disabled", true)
 		
 		#$AnimationPlayer.play("Scrapped")
 		$Tween.interpolate_property(self, "global_position",
